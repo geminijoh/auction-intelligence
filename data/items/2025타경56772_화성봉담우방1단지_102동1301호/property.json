@@ -1,0 +1,64 @@
+{
+  "id": "2025-56772",
+  "caseNumber": "2025타경56772",
+  "category": "경매",
+  "status": "추천",
+  "court": "수원지방법원 본원 경매4계",
+  "auctionDate": "2026-11-25",
+  "propertyName": "화성 봉담 우방아이유쉘1단지 102동 1301호",
+  "address": "경기도 화성시 봉담읍 수영리 674",
+  "buildingType": "아파트",
+  "exclusiveAreaM2": 85.0,
+  "exclusiveAreaPyung": 25.71,
+  "floorInfo": "13 / 23층 (로얄동 로얄층)",
+  "buildYear": 2017,
+  "totalUnits": 888,
+  "appraisedValue": 405000000,
+  "minimumBidPrice": 283500000,
+  "minimumBidRate": 70,
+  "recommendedBidPrice": 330000000,
+  "marketPrice": 420000000,
+  "safetyMargin": 82560000,
+  "expenses": {
+    "acquisitionTax": 3630000,
+    "legalFee": 800000,
+    "evictionFee": 1500000,
+    "repairFee": 0,
+    "unpaidManagementFee": 0,
+    "brokerageFee": 1680000,
+    "loanInterest": 2310000,
+    "totalExpenses": 7440000
+  },
+  "financing": {
+    "ltvPercent": 70,
+    "loanAmount": 231000000,
+    "interestRate": 4.0,
+    "monthlyInterest": 770000
+  },
+  "rental": {
+    "rentalType": "전세",
+    "deposit": 280000000,
+    "monthlyRent": 0,
+    "expectedSalePrice": 420000000
+  },
+  "netInvestment": 57440000,
+  "expectedNetMonthlyProfit": 0,
+  "annualNetCashflow": 0,
+  "roePercent": 21.5,
+  "roiCapitalGainPercent": 21.5,
+  "rights": {
+    "malsoStandard": "2016-12-01 한국주택금융공사 근저당 (1억 5,915만 원)",
+    "occupantStatus": "조사된 임차인 없음 (소유자 장OO 세대 전입)",
+    "isSafe": true,
+    "takeoverAmount": 0,
+    "evictionDifficulty": "하",
+    "riskNotes": "말소기준권리 이후 후순위 권리 전액 소멸. 소유자 점유 추정으로 통상적인 협의 이사비 150만원 배정으로 원활한 명도 가능."
+  },
+  "locationHighlights": [
+    "수인분당선 오목천역 및 봉담IC 인근, 신분당선 호매실-봉담 연장 노선 호재권",
+    "봉담 1·2지구와 효행지구 중심축 연결로 대규모 신흥 주거타운 형성 중",
+    "수영초등학교 도보 통학 및 봉담 호수공원 녹지 인프라 우수",
+    "2017년식 준신축 888세대 대단지로 환금성과 거래 회전율 우수"
+  ],
+  "strategyBrief": "실거래 4.2억원 대비 최저가 2.835억원(70%)으로 가격 메리트 극대화. 3.3억원에 낙찰받을 경우 총 취득원가는 3억 3,744만원이며, 전세 2.8억 셋팅(갭 5,744만) 또는 4.2억 단기 매도시 순차익 약 7,256만원(수익률 21.5%)을 기대할 수 있는 우량 물건입니다. 동일 단지 105동 일반 급매(3.4억 네고)와 병행 전략 추천."
+}

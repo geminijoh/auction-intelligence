@@ -1,0 +1,416 @@
+<!-- ================= 3. VIEW: 경매 분석 시뮬레이터 (V5: 2줄 정밀 사건목록 & 역산 입찰가 레이아웃 완전 정돈) ================= -->
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+  <!-- Top Real Auction Property Selector Bar (2줄 구조: 정확한 사건번호 + 경매 이름) -->
+  <div class="bg-surface-container-lowest rounded-2xl p-4 sm:p-5 shadow-sm border border-outline-variant/30 space-y-3">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary text-[20px]">account_tree</span>
+        <span class="font-label-md text-label-md font-bold text-on-surface uppercase tracking-wide">실전 분석 대상 매물 선택 (원클릭 전환)</span>
+      </div>
+      <span class="text-xs text-secondary font-medium">선택 즉시 5대 공적 서류 및 수지분석 슬라이더 자동 동기화</span>
+    </div>
+    
+    <!-- 6개 매물 2줄 카드형 선택기 -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2" id="sim-property-selector">
+      <!-- JavaScript로 2줄 정밀 사건번호 + 물건명 동적 렌더링 -->
+    </div>
+  </div>
+
+  <!-- Main Analysis Briefing Header -->
+  <section class="bg-surface-container-lowest rounded-2xl p-5 sm:p-6 shadow-sm border border-outline-variant/30 space-y-4">
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-outline-variant/20">
+      <div class="space-y-2">
+        <div class="flex flex-wrap items-center gap-2">
+          <span id="sim-category-badge" class="px-2.5 py-0.5 rounded-md font-label-sm text-label-sm font-bold bg-primary text-on-primary">
+            경매
+          </span>
+          <span id="sim-court-case" class="font-label-md text-label-md text-secondary font-mono font-bold">
+            수원지방법원 평택지원 경매4계 • 2026타경239
+          </span>
+          <span id="sim-status-badge" class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-error/10 text-error font-bold">
+            1회 유찰
+          </span>
+        </div>
+        <h1 id="sim-property-name" class="font-headline-lg text-headline-lg font-black text-on-surface tracking-tight">
+          안성동남타운 102동 1202호
+          <span id="sim-area-info" class="font-headline-sm text-headline-sm text-secondary font-medium">(42.18㎡ / 17.76평형)</span>
+        </h1>
+        <div class="flex items-center gap-2 text-secondary font-body-sm text-body-sm">
+          <span class="material-symbols-outlined text-[18px]">location_on</span>
+          <span id="sim-address">경기도 안성시 금석동 81 (도로명: 안성맞춤대로 1320-21)</span>
+        </div>
+      </div>
+
+      <div class="flex flex-row lg:flex-col items-center lg:items-end justify-between gap-2 border-t lg:border-t-0 pt-3 lg:pt-0">
+        <div class="text-left lg:text-right">
+          <span class="text-xs text-secondary font-medium block">매각 기일</span>
+          <span id="sim-auction-date" class="font-headline-sm text-headline-sm font-bold text-primary font-mono">2026.04.10 (10:00)</span>
+        </div>
+        <button onclick="window.print()" class="px-3.5 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition flex items-center gap-1.5 border border-outline-variant/30 shadow-sm">
+          <span class="material-symbols-outlined text-[18px]">print</span>
+          <span>브리핑 출력</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 4 Key Price Comparison Metrics -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between">
+        <span id="sim-label-appraised" class="font-label-sm text-label-sm text-secondary font-medium">감정평가액</span>
+        <div class="mt-1">
+          <span id="sim-val-appraised" class="font-headline-sm text-headline-sm font-bold text-on-surface">9,100만 원</span>
+        </div>
+        <span class="font-label-sm text-label-sm text-secondary mt-0.5">법원 공인 감정가</span>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span id="sim-label-min" class="font-label-sm text-label-sm text-error font-bold">최저입찰가</span>
+          <span id="sim-rate-min" class="font-label-sm text-label-sm text-error font-medium">(70%)</span>
+        </div>
+        <div class="mt-1">
+          <span id="sim-val-min" class="font-headline-sm text-headline-sm font-black text-error">6,370만 원</span>
+        </div>
+        <span class="font-label-sm text-label-sm text-secondary mt-0.5">1회 유찰 감가 반영</span>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between">
+        <span class="font-label-sm text-label-sm text-secondary font-medium">인근 최근 실거래 시세</span>
+        <div class="mt-1">
+          <span id="sim-market-price" class="font-headline-sm text-headline-sm font-bold text-on-surface">8,500만 원</span>
+        </div>
+        <span id="sim-margin-text" class="font-label-sm text-label-sm text-tertiary font-bold mt-0.5">안전마진: 약 +1,700만</span>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-primary-container/10 border border-primary/20 flex flex-col justify-between">
+        <span class="font-label-sm text-label-sm text-primary font-bold">권리분석 안전 판정</span>
+        <div class="mt-1">
+          <span id="sim-takeover-val" class="font-headline-sm text-headline-sm font-black text-primary">인수금 0원</span>
+        </div>
+        <span class="font-label-sm text-label-sm text-tertiary font-bold mt-0.5">대항력 임차인 없음 (완벽 안전)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Simulator Grid: Left Controls (7 cols) + Right Documents & Output (5 cols) -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+    
+    <!-- LEFT COLUMN: Parameter Inputs & Reverse Bid Calculator (7 Cols) -->
+    <div class="lg:col-span-7 space-y-6">
+      
+      <!-- ================= [신규 기능 1] 목표 총 취득원가(최종 예산) 기준 역산 입찰가 계산기 (가독성 완전 개선) ================= -->
+      <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-primary/30 space-y-4">
+        <div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">calculate</span>
+            <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">최종 목표 예산 기준 역산 입찰가 계산기</h3>
+          </div>
+          <span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-bold">Reverse Engineering</span>
+        </div>
+        
+        <p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+          취득세, 법무비, 명도비, 수리비 등 부대비용을 선반영하여, 내가 가진 <strong>총 가용 자금 한도</strong>에 정확히 맞춘 실제 법원 입찰표 작성 금액을 산출합니다.
+        </p>
+
+        <!-- 예산 입력창 -->
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3 p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30">
+          <label class="font-label-md text-label-md font-bold text-on-surface shrink-0" for="reverse-budget-input">
+            내가 투입할 목표 총 예산 (매입원가 일체):
+          </label>
+          <div class="flex items-center gap-2 flex-1">
+            <div class="relative flex-1">
+              <input id="reverse-budget-input" oninput="calculateReverseBid()" class="w-full h-11 px-3.5 pr-10 rounded-lg bg-surface-container-lowest text-primary font-headline-sm text-headline-sm font-bold border border-outline-variant/40 text-right outline-none focus:ring-2 focus:ring-primary" step="50" type="number" value="7500"/>
+              <span class="absolute right-3 top-3 text-xs text-secondary font-bold">만원</span>
+            </div>
+            <button onclick="calculateReverseBid()" class="h-11 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-bold shrink-0 transition shadow-sm">
+              역산 계산
+            </button>
+          </div>
+        </div>
+
+        <!-- 역산 결과 카드: 줄바꿈 오류 완벽 수정 및 시인성 극대화 -->
+        <div class="p-4 rounded-xl bg-primary/5 border border-primary/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="space-y-1.5 flex-1 min-w-0">
+            <span class="font-label-sm text-label-sm text-secondary font-medium block">👉 역산 추천 한도 입찰가</span>
+            <div class="font-headline-lg text-headline-lg font-black text-primary tracking-tight" id="reverse-bid-result">
+              6,800만 원
+            </div>
+            <p class="font-body-sm text-body-sm text-secondary truncate" id="reverse-deduct-detail">
+              선반영 부대비용: 취득세 약 75만 + 부대비용 450만 (합계 약 525만원)
+            </p>
+          </div>
+          <div class="shrink-0 flex items-center">
+            <button onclick="applyReverseBidToSlider()" class="w-full md:w-auto px-4 py-3 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-bold transition flex items-center justify-center gap-2 shadow-sm">
+              <span>슬라이더에 반영</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 인터랙티브 파라미터 제어 카드 -->
+      <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-outline-variant/30 flex flex-col gap-5">
+        <div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">tune</span>
+            <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">실시간 수지분석 시뮬레이터</h2>
+          </div>
+          <button onclick="resetDynamicSimulator()" class="font-label-sm text-label-sm text-secondary hover:text-primary flex items-center gap-1 transition">
+            <span class="material-symbols-outlined text-[16px]">restart_alt</span>초기화
+          </button>
+        </div>
+
+        <!-- 1. 목표 입찰가 슬라이더 -->
+        <div class="flex flex-col gap-2">
+          <div class="flex justify-between items-center">
+            <label class="font-label-md text-label-md font-bold text-on-surface" for="sim-bid-slider">
+              목표 입찰가 (매수가)
+            </label>
+            <div class="flex items-baseline gap-1">
+              <span id="sim-bid-display" class="font-headline-md text-headline-md font-black text-primary">6,800</span>
+              <span class="font-label-md text-label-md text-primary font-bold">만 원</span>
+            </div>
+          </div>
+          <input id="sim-bid-slider" class="w-full accent-primary h-2 bg-surface-container rounded-lg cursor-pointer" max="10000" min="4000" oninput="runSimulatorEngine()" step="50" type="range" value="6800"/>
+          <div class="flex justify-between font-label-sm text-label-sm text-secondary">
+            <span id="sim-bid-min-lbl">최저 4,000만</span>
+            <span id="sim-bid-mid-lbl">추천 6,800만</span>
+            <span id="sim-bid-max-lbl">최대 10,000만</span>
+          </div>
+        </div>
+
+        <!-- 2. 대출 모드 선택 (대출 활용 vs 전액 자부담 100%) -->
+        <div class="flex flex-col gap-2 p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30">
+          <div class="flex items-center justify-between">
+            <span class="font-label-md text-label-md font-bold text-on-surface">금융 차입 방식 선택</span>
+            <div class="flex items-center gap-1 bg-surface-container p-1 rounded-lg" id="loan-mode-toggle">
+              <button onclick="setLoanMode(true)" id="btn-loan-use" class="px-2.5 py-1 rounded-md bg-primary text-on-primary font-label-sm text-label-sm font-semibold transition">
+                담보대출 활용 (LTV 70%)
+              </button>
+              <button onclick="setLoanMode(false)" id="btn-loan-none" class="px-2.5 py-1 rounded-md text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-medium transition">
+                대출 안 받음 (전액 현금 100%)
+              </button>
+            </div>
+          </div>
+          
+          <!-- 금리 슬라이더 및 퀵 버튼 -->
+          <div id="loan-slider-container" class="flex flex-col gap-2 pt-2 transition-all">
+            <div class="flex justify-between items-center">
+              <label class="font-label-md text-label-md font-bold text-on-surface" for="sim-rate-slider">
+                대출 조달금리 (연이율)
+              </label>
+              <div class="flex items-baseline gap-1">
+                <span id="sim-rate-display" class="font-headline-sm text-headline-sm font-bold text-on-surface">4.2</span>
+                <span class="font-label-md text-label-md text-secondary">%</span>
+              </div>
+            </div>
+            <input id="sim-rate-slider" class="w-full accent-primary h-2 bg-surface-container rounded-lg cursor-pointer" max="7.0" min="3.0" oninput="runSimulatorEngine()" step="0.1" type="range" value="4.2"/>
+            
+            <!-- 금리 퀵 버튼 4종 -->
+            <div class="grid grid-cols-4 gap-1.5 pt-1">
+              <button onclick="setQuickRate(0)" id="rate-btn-0" class="py-1 px-1 text-center rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm transition">
+                대출없음 (0%)
+              </button>
+              <button onclick="setQuickRate(3.0)" id="rate-btn-3" class="py-1 px-1 text-center rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm transition">
+                3.0% (저금리)
+              </button>
+              <button onclick="setQuickRate(4.2)" id="rate-btn-4" class="py-1 px-1 text-center rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-bold shadow-sm transition">
+                4.2% (기준)
+              </button>
+              <button onclick="setQuickRate(7.0)" id="rate-btn-7" class="py-1 px-1 text-center rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm transition">
+                7.0% (고금리)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 전세 보증금 / 임대 세팅 슬라이더 -->
+        <div class="flex flex-col gap-2">
+          <div class="flex justify-between items-center">
+            <label class="font-label-md text-label-md font-bold text-on-surface" for="sim-jeonse-slider">
+              출구 전세가 (또는 월세 보증금)
+            </label>
+            <div class="flex items-baseline gap-1">
+              <span id="sim-jeonse-display" class="font-headline-sm text-headline-sm font-bold text-tertiary">5,500</span>
+              <span class="font-label-md text-label-md text-tertiary font-bold">만 원</span>
+            </div>
+          </div>
+          <input id="sim-jeonse-slider" class="w-full accent-tertiary h-2 bg-surface-container rounded-lg cursor-pointer" max="8000" min="3000" oninput="runSimulatorEngine()" step="50" type="range" value="5500"/>
+          <div class="flex justify-between font-label-sm text-label-sm text-secondary">
+            <span id="sim-jeonse-min-lbl">최저 3,000만</span>
+            <span id="sim-jeonse-mid-lbl">시세 5,500만</span>
+            <span id="sim-jeonse-max-lbl">최대 8,000만</span>
+          </div>
+        </div>
+
+        <!-- 산출 결과 4대 KPI 요약 -->
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 flex flex-col">
+            <span class="font-label-sm text-label-sm text-secondary">최종 순 실투자금 (현금)</span>
+            <span id="sim-out-net-equity" class="font-headline-sm text-headline-sm font-black text-primary mt-1">1,850만 원</span>
+            <span class="font-label-sm text-label-sm text-secondary mt-0.5">대출/전세 보증금 회수 후</span>
+          </div>
+          <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 flex flex-col">
+            <span class="font-label-sm text-label-sm text-secondary">월 금융비용 (이자)</span>
+            <span id="sim-out-interest" class="font-headline-sm text-headline-sm font-bold text-error mt-1">16.6만 원 / 월</span>
+            <span id="sim-out-loan-amt" class="font-label-sm text-label-sm text-secondary mt-0.5">대출 4,760만원 기준</span>
+          </div>
+          <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 flex flex-col">
+            <span class="font-label-sm text-label-sm text-secondary">취득세 및 부대비용 일체</span>
+            <span id="sim-out-costs" class="font-headline-sm text-headline-sm font-bold text-on-surface mt-1">550만 원</span>
+            <span class="font-label-sm text-label-sm text-secondary mt-0.5">취득세·법무·명도·수리비</span>
+          </div>
+          <div class="p-3.5 rounded-xl bg-tertiary-container/10 border border-tertiary/20 flex flex-col">
+            <span class="font-label-sm text-label-sm text-tertiary">예상 연 ROE (자기자본수익률)</span>
+            <span id="sim-out-roe" class="font-headline-sm text-headline-sm font-black text-tertiary mt-1">28.4%</span>
+            <span class="font-label-sm text-label-sm text-tertiary mt-0.5">임대 + 자본이득 합산</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 출구 전략 3대 시나리오 카드 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <!-- 1. 전세 세팅 (갭투자) -->
+        <div class="p-4 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="flex items-center justify-between pb-1">
+              <span class="font-label-md text-label-md font-bold text-primary">시나리오 A: 전세 갭투자</span>
+              <span class="material-symbols-outlined text-primary text-[18px]">key</span>
+            </div>
+            <p class="font-label-sm text-label-sm text-secondary mt-1">전세금 회수로 묶인 자금 최소화</p>
+          </div>
+          <div class="pt-3 border-t border-outline-variant/20 mt-3 space-y-1">
+            <div class="flex justify-between text-xs">
+              <span class="text-secondary">필요 순현금</span>
+              <span id="sim-scen1-invest" class="font-bold text-on-surface">1,850만 원</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-secondary">금융 이자 부담</span>
+              <span class="font-bold text-tertiary">0원 (무이자)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 월세 세팅 (현금흐름) -->
+        <div class="p-4 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="flex items-center justify-between pb-1">
+              <span class="font-label-md text-label-md font-bold text-tertiary">시나리오 B: 월세 캐시카우</span>
+              <span class="material-symbols-outlined text-tertiary text-[18px]">payments</span>
+            </div>
+            <p class="font-label-sm text-label-sm text-secondary mt-1">보증금 1,000 / 월 45만 세팅</p>
+          </div>
+          <div class="pt-3 border-t border-outline-variant/20 mt-3 space-y-1">
+            <div class="flex justify-between text-xs">
+              <span class="text-secondary">필요 실투자금</span>
+              <span id="sim-scen2-invest" class="font-bold text-on-surface">2,060만 원</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-secondary">월 순현금흐름</span>
+              <span id="sim-scen2-flow" class="font-bold text-tertiary">+28.4만/월</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-secondary">자기자본 ROE</span>
+              <span id="sim-scen2-roe" class="font-bold text-tertiary">16.5%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 단기 매매 (자본이득) -->
+        <div class="p-4 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="flex items-center justify-between pb-1">
+              <span class="font-label-md text-label-md font-bold text-on-surface">시나리오 C: 단기 차익</span>
+              <span class="material-symbols-outlined text-on-surface text-[18px]">sell</span>
+            </div>
+            <p class="font-label-sm text-label-sm text-secondary mt-1">인근 실거래가 급매 처분</p>
+          </div>
+          <div class="pt-3 border-t border-outline-variant/20 mt-3 space-y-1">
+            <div class="flex justify-between text-xs">
+              <span class="text-secondary">예상 매매차익</span>
+              <span id="sim-scen3-gain" class="font-bold text-primary">+1,150만 원</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-secondary">목표 보유기간</span>
+              <span class="font-bold text-on-surface">6~12개월</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN: Public Official Documents & Rights Analysis (5 Cols) -->
+    <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-6">
+      
+      <!-- 5 Public Documents Official Tab Box -->
+      <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-outline-variant/30 space-y-4">
+        <div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">policy</span>
+            <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">공적 서류 5종 실무 열람</h3>
+          </div>
+          <span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-tertiary/10 text-tertiary font-bold">100% 안전 권리</span>
+        </div>
+
+        <!-- Document Tabs -->
+        <div class="flex items-center gap-1 overflow-x-auto pb-1" id="public-doc-tabs">
+          <button onclick="switchDocTab('doc-spec')" id="tab-doc-spec" class="px-3 py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold transition whitespace-nowrap">
+            매각물건명세서
+          </button>
+          <button onclick="switchDocTab('doc-appraisal')" id="tab-doc-appraisal" class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition whitespace-nowrap">
+            감정평가서
+          </button>
+          <button onclick="switchDocTab('doc-survey')" id="tab-doc-survey" class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition whitespace-nowrap">
+            현황조사서
+          </button>
+          <button onclick="switchDocTab('doc-register')" id="tab-doc-register" class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition whitespace-nowrap">
+            등기부등본
+          </button>
+          <button onclick="switchDocTab('doc-resident')" id="tab-doc-resident" class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition whitespace-nowrap">
+            전입세대확인서
+          </button>
+        </div>
+
+        <!-- Document Content Dynamic Area -->
+        <div id="public-doc-content" class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/30 min-h-[220px]">
+          <!-- JS 동적 로드 -->
+        </div>
+      </div>
+
+      <!-- Rights & Eviction Matrix -->
+      <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm border border-outline-variant/30 space-y-4">
+        <div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">verified</span>
+            <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">권리분석 및 명도 판정표</h3>
+          </div>
+          <span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-primary/10 text-primary font-bold">법원 촉탁말소</span>
+        </div>
+
+        <div class="space-y-3 font-body-sm text-body-sm">
+          <div class="flex justify-between items-center pb-2 border-b border-outline-variant/10">
+            <span class="text-secondary">말소기준권리:</span>
+            <span id="sim-malso-std" class="font-bold text-on-surface">근저당 (2020.08.14)</span>
+          </div>
+          <div class="flex justify-between items-center pb-2 border-b border-outline-variant/10">
+            <span class="text-secondary">점유자 현황:</span>
+            <span id="sim-tenant-status" class="font-bold text-on-surface">채무자(소유자) 단독 점유</span>
+          </div>
+          <div class="flex justify-between items-center pb-2 border-b border-outline-variant/10">
+            <span class="text-secondary">명도 난이도:</span>
+            <span id="sim-eviction-diff" class="font-bold text-tertiary">하 (예비비 150만원)</span>
+          </div>
+          <p id="sim-risk-comment" class="p-3 rounded-xl bg-surface-container-low text-xs text-on-surface-variant leading-relaxed">
+            후순위 권리는 낙찰 시 100% 소멸되며, 소유자 점유 건으로 잔금 납부 즉시 인도명령 신청이 가능합니다.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>부동산 투자수익률 & 취득비용 통합 시뮬레이터</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- React 18 & Babel CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- Font CDN: Pretendard -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* 인쇄 최적화 스타일 */
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; font-size: 12px; }
+      .shadow-sm, .shadow-md, .shadow-lg { box-shadow: none !important; border: 1px solid #e2e8f0; }
+    }
+    input[type=range] {
+      accent-color: #2563eb;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    // 숫자 포맷팅 유틸리티 (만원 단위 -> 억/만원 읽기 쉬운 한글 변환)
+    const formatKoreanMoney = (manwon) => {
+      if (!manwon || isNaN(manwon)) return '0원';
+      const val = Math.round(manwon);
+      if (val === 0) return '0원';
+      
+      const isNegative = val < 0;
+      const absVal = Math.abs(val);
+      const uk = Math.floor(absVal / 10000);
+      const rest = absVal % 10000;
+      
+      let res = '';
+      if (uk > 0) res += `${uk.toLocaleString()}억 `;
+      if (rest > 0 || uk === 0) res += `${rest.toLocaleString()}만`;
+      return (isNegative ? '-' : '') + res.trim() + '원';
+    };
+
+    const formatNumber = (num) => {
+      if (!num || isNaN(num)) return '0';
+      return Math.round(num).toLocaleString();
+    };
+
+    function App() {
+      // 1. 매물 기본 정보 State
+      const [priceManwon, setPriceManwon] = useState(60000); // 매매가 (기본 6억)
+      const [propertyType, setPropertyType] = useState('house'); // house, officetel, commercial
+      const [homeCountMode, setHomeCountMode] = useState('1_non_regulated'); 
+      // '1_non_regulated', '2_non_regulated', '2_regulated', '3_non_regulated', '3_regulated', '4_or_corp'
+      const [isOver85, setIsOver85] = useState(false); // 전용 85㎡ 초과 여부
+
+      // 2. 자금 조달 & 레버리지 State
+      const [loanManwon, setLoanManwon] = useState(36000); // 대출금 (기본 60% = 3.6억)
+      const [interestRate, setInterestRate] = useState(4.2); // 연 대출금리 (%)
+      const [depositManwon, setDepositManwon] = useState(5000); // 임대 보증금 (5,000만)
+      const [monthlyRentManwon, setMonthlyRentManwon] = useState(150); // 월세 (150만)
+
+      // 부가 옵션 (중개보수 부가세, 국민주택채권 매입 할인율)
+      const [includeVatBroker, setIncludeVatBroker] = useState(true);
+      const [bondDiscountRate, setBondDiscountRate] = useState(7.5); // 채권 할인율 (%)
+
+      // 프리셋 적용 함수
+      const applyPreset = (preset) => {
+        if (preset === 'apt_capital') {
+          // 수도권 국민평형 아파트 월세 셋팅 (8억)
+          setPriceManwon(80000);
+          setPropertyType('house');
+          setHomeCountMode('1_non_regulated');
+          setIsOver85(false);
+          setLoanManwon(40000);
+          setInterestRate(4.1);
+          setDepositManwon(10000);
+          setMonthlyRentManwon(220);
+        } else if (preset === 'officetel_yield') {
+          // 역세권 오피스텔 수익형 (2.5억)
+          setPriceManwon(25000);
+          setPropertyType('officetel');
+          setHomeCountMode('1_non_regulated');
+          setIsOver85(false);
+          setLoanManwon(15000);
+          setInterestRate(4.3);
+          setDepositManwon(2000);
+          setMonthlyRentManwon(95);
+        } else if (preset === 'small_villa') {
+          // 빌라/원룸 소액 투자 (1.5억)
+          setPriceManwon(15000);
+          setPropertyType('house');
+          setHomeCountMode('2_non_regulated');
+          setIsOver85(false);
+          setLoanManwon(8000);
+          setInterestRate(4.5);
+          setDepositManwon(2000);
+          setMonthlyRentManwon(65);
+        } else if (preset === 'high_value_apt') {
+          // 고가 아파트 (15억)
+          setPriceManwon(150000);
+          setPropertyType('house');
+          setHomeCountMode('1_non_regulated');
+          setIsOver85(true);
+          setLoanManwon(60000);
+          setInterestRate(3.9);
+          setDepositManwon(30000);
+          setMonthlyRentManwon(350);
+        }
+      };
+
+      // LTV 바로 맞춤 설정
+      const setLtvPercent = (percent) => {
+        const calculatedLoan = Math.round(priceManwon * (percent / 100));
+        setLoanManwon(calculatedLoan);
+      };
+
+      // ==========================================
+      // [계산 로직 1] 최신 취득세 및 부대비용 자동 산출
+      // ==========================================
+      const acquisitionCost = useMemo(() => {
+        const price = priceManwon;
+        let acqTaxRate = 0; // 취득세율 (%)
+        let eduTaxRate = 0; // 지방교육세율 (%)
+        let ruralTaxRate = 0; // 농어촌특별세율 (%)
+
+        if (propertyType === 'officetel') {
+          // 주거용/업무용 불문 취득 시점 건축물 4.0%
+          acqTaxRate = 4.0;
+          eduTaxRate = 0.4;
+          ruralTaxRate = 0.2;
+        } else if (propertyType === 'commercial') {
+          // 상가/토지 4.0%
+          acqTaxRate = 4.0;
+          eduTaxRate = 0.4;
+          ruralTaxRate = 0.2;
+        } else {
+          // 주택 (아파트/다세대/단독 등)
+          if (homeCountMode === '1_non_regulated' || homeCountMode === '2_non_regulated') {
+            // 1주택 또는 비조정 2주택 (1~3% 일반세율)
+            if (price <= 60000) {
+              acqTaxRate = 1.0;
+            } else if (price <= 90000) {
+              // (가격(억원) * 2/3 - 3)%
+              const priceUk = price / 10000;
+              acqTaxRate = Number(((priceUk * 2 / 3) - 3).toFixed(2));
+            } else {
+              acqTaxRate = 3.0;
+            }
+            eduTaxRate = Number((acqTaxRate * 0.1).toFixed(3));
+            ruralTaxRate = isOver85 ? 0.2 : 0.0;
+          } else if (homeCountMode === '2_regulated' || homeCountMode === '3_non_regulated') {
+            // 조정 2주택 또는 비조정 3주택 (8% 중과)
+            acqTaxRate = 8.0;
+            eduTaxRate = 0.4;
+            ruralTaxRate = isOver85 ? 0.6 : 0.4; // 8% 중과 시 농특세
+          } else if (homeCountMode === '3_regulated' || homeCountMode === '4_or_corp') {
+            // 조정 3주택 이상 또는 4주택/법인 (12% 중과)
+            acqTaxRate = 12.0;
+            eduTaxRate = 0.4;
+            ruralTaxRate = isOver85 ? 1.0 : 0.6; // 12% 중과 시 농특세
+          }
+        }
+
+        // 세액 계산 (만원 단위)
+        const acqTax = Math.round(price * (acqTaxRate / 100));
+        const eduTax = Math.round(price * (eduTaxRate / 100));
+        const ruralTax = Math.round(price * (ruralTaxRate / 100));
+        const totalTax = acqTax + eduTax + ruralTax;
+
+        // 2. 부동산 중개보수 계산 (상한요율 기준)
+        let brokerRate = 0;
+        let brokerLimit = null;
+        if (propertyType === 'house') {
+          if (price < 5000) { brokerRate = 0.6; brokerLimit = 25; }
+          else if (price < 20000) { brokerRate = 0.5; brokerLimit = 80; }
+          else if (price < 90000) { brokerRate = 0.4; }
+          else if (price < 120000) { brokerRate = 0.5; }
+          else if (price < 150000) { brokerRate = 0.6; }
+          else { brokerRate = 0.7; }
+        } else if (propertyType === 'officetel') {
+          brokerRate = 0.5; // 주거용 오피스텔 매매 상한 0.5%
+        } else {
+          brokerRate = 0.9; // 상가 0.9% 이내
+        }
+
+        let rawBrokerFee = price * (brokerRate / 100);
+        if (brokerLimit && rawBrokerFee > brokerLimit) {
+          rawBrokerFee = brokerLimit;
+        }
+        const brokerFee = Math.round(includeVatBroker ? rawBrokerFee * 1.1 : rawBrokerFee);
+
+        // 3. 법무사 보수 (대한법무사회 표준 보수 추정치)
+        // 기본 7만원 + 누진료(시가표준액 기준 약 0.05%~0.08%) + 교통비/일당
+        const legalFee = Math.round(35 + (price * 0.00035));
+
+        // 4. 국민주택채권 매입 할인 본인부담금
+        // 시가표준액(매매가의 약 70%) × 매입률(약 2.6%) × 할인율
+        const estimatedPublicPrice = price * 0.72;
+        const bondPurchase = estimatedPublicPrice * 0.026;
+        const bondDiscountFee = Math.round(bondPurchase * (bondDiscountRate / 100));
+
+        // 5. 정부수입인지세 (구간별 법정금액)
+        let stampDuty = 0;
+        if (price <= 5000) stampDuty = 0;
+        else if (price <= 10000) stampDuty = 7; // 7만원
+        else if (price <= 100000) stampDuty = 15; // 15만원
+        else stampDuty = 35; // 10억 초과 35만원
+
+        // 6. 등기신청수수료(증지대)
+        const certFee = 1.5; // 1.5만원
+
+        // 총 부대비용 합계
+        const otherExpenses = brokerFee + legalFee + bondDiscountFee + stampDuty + certFee;
+        const totalExpenses = totalTax + otherExpenses;
+
+        return {
+          acqTaxRate,
+          eduTaxRate,
+          ruralTaxRate,
+          totalTaxRate: Number((acqTaxRate + eduTaxRate + ruralTaxRate).toFixed(2)),
+          acqTax,
+          eduTax,
+          ruralTax,
+          totalTax,
+          brokerRate,
+          brokerFee,
+          legalFee,
+          bondDiscountFee,
+          stampDuty,
+          certFee,
+          otherExpenses,
+          totalExpenses,
+          costRatio: Number(((totalExpenses / price) * 100).toFixed(2))
+        };
+      }, [priceManwon, propertyType, homeCountMode, isOver85, includeVatBroker, bondDiscountRate]);
+
+      // ==========================================
+      // [계산 로직 2] 투자금 및 수익률/현금흐름 산출
+      // ==========================================
+      const investmentMetrics = useMemo(() => {
+        const price = priceManwon;
+        const totalAcquisitionCost = price + acquisitionCost.totalExpenses; // 총 소요비용 (매매가 + 부대비용)
+        
+        // 실투자금 (순 자기자본 Equity) = 총 소요비용 - 대출금 - 임대보증금
+        const netEquity = totalAcquisitionCost - loanManwon - depositManwon;
+        
+        // 연간 금융비용 (대출 이자)
+        const annualInterest = loanManwon * (interestRate / 100);
+        const monthlyInterest = annualInterest / 12;
+
+        // 연간 임대수익
+        const annualRentalIncome = monthlyRentManwon * 12;
+
+        // 순현금흐름 (Net Cash Flow)
+        const annualNetCashFlow = annualRentalIncome - annualInterest;
+        const monthlyNetCashFlow = monthlyRentManwon - monthlyInterest;
+
+        // 1. 단순 총투자수익률 (Cap Rate = 연간 임대수익 / 매매가)
+        const capRateSimple = Number(((annualRentalIncome / price) * 100).toFixed(2));
+        // 2. 부대비용 포함 총비용수익률 (연간 임대수익 / 총 취득원가)
+        const capRateTotal = Number(((annualRentalIncome / totalAcquisitionCost) * 100).toFixed(2));
+
+        // 3. 자기자본수익률 (ROE / Cash-on-Cash Return = 연 순현금흐름 / 실투자금)
+        let roe = 0;
+        if (netEquity > 0) {
+          roe = Number(((annualNetCashFlow / netEquity) * 100).toFixed(2));
+        }
+
+        // 레버리지 효과 판정
+        // 총투자수익률 > 대출금리 이면 지렛대 효과로 ROE 상승
+        const isPositiveLeverage = capRateSimple > interestRate;
+        const leverageDiff = Number((capRateSimple - interestRate).toFixed(2));
+
+        // 실질 LTV 및 대출비중
+        const actualLtv = Number(((loanManwon / price) * 100).toFixed(1));
+
+        return {
+          totalAcquisitionCost,
+          netEquity,
+          annualRentalIncome,
+          annualInterest,
+          monthlyInterest,
+          annualNetCashFlow,
+          monthlyNetCashFlow,
+          capRateSimple,
+          capRateTotal,
+          roe,
+          isPositiveLeverage,
+          leverageDiff,
+          actualLtv
+        };
+      }, [priceManwon, loanManwon, interestRate, depositManwon, monthlyRentManwon, acquisitionCost]);
+
+      // 텍스트 요약 복사 기능
+      const copySummaryReport = () => {
+        const text = `[부동산 투자수익률 & 취득비용 분석 결과]
+■ 매물 조건: 매매가 ${formatKoreanMoney(priceManwon)} (${propertyType === 'house' ? '주택' : propertyType === 'officetel' ? '오피스텔' : '상가'})
+■ 총 소요자금: ${formatKoreanMoney(investmentMetrics.totalAcquisitionCost)} (매매가 + 부대비용)
+  - 취득세 등 세금: ${formatKoreanMoney(acquisitionCost.totalTax)} (${acquisitionCost.totalTaxRate}%)
+  - 기타 부대비용: ${formatKoreanMoney(acquisitionCost.otherExpenses)} (중개보수 ${formatKoreanMoney(acquisitionCost.brokerFee)}, 법무·채권 등)
+■ 자금 조달: 대출 ${formatKoreanMoney(loanManwon)} (금리 ${interestRate}%), 보증금 ${formatKoreanMoney(depositManwon)}
+■ 실투자금(자기자본): ${formatKoreanMoney(investmentMetrics.netEquity)}
+■ 현금흐름:
+  - 월세: ${formatKoreanMoney(monthlyRentManwon)} / 월 이자: ${formatKoreanMoney(investmentMetrics.monthlyInterest)}
+  - 월 순수익: ${formatKoreanMoney(investmentMetrics.monthlyNetCashFlow)} (연 ${formatKoreanMoney(investmentMetrics.annualNetCashFlow)})
+■ 핵심 수익률:
+  - 총투자수익률: ${investmentMetrics.capRateSimple}%
+  - 자기자본수익률(ROE): ${investmentMetrics.roe}%
+  - 레버리지 효과: ${investmentMetrics.isPositiveLeverage ? '정(+)의 지렛대 효과 발생' : '역(-)의 레버리지 주의 (금리가 수익률 초과)'}`;
+        
+        navigator.clipboard.writeText(text).then(() => {
+          alert('요약 보고서가 클립보드에 복사되었습니다! 카카오톡이나 메모장에 붙여넣기 하세요.');
+        }).catch(() => {
+          alert('복사 권한이 제한되었습니다. 내용을 직접 드래그하여 복사해 주세요.');
+        });
+      };
+
+      return (
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          {/* Header */}
+          <header className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-200 pb-6">
+            <div>
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-100 text-blue-700 text-xs font-semibold mb-2">
+                <span>실무용 부동산 자산관리 시뮬레이터</span>
+                <span className="w-1 h-1 rounded-full bg-blue-500"></span>
+                <span>최신 세법·중개보수 요율 반영</span>
+              </div>
+              <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
+                부동산 투자수익률 & 취득비용 계산기
+              </h1>
+              <p className="text-sm text-slate-500 mt-1">
+                원금, 대출, 금리 설정에 따른 <strong>자기자본 수익률(ROE)</strong>과 취득 시 발생하는 <strong>취득세 및 전체 부대비용</strong>을 한눈에 산출합니다.
+              </p>
+            </div>
+            <div className="flex items-center gap-2 no-print">
+              <button 
+                onClick={copySummaryReport}
+                className="px-3.5 py-2 text-xs font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition shadow-sm flex items-center gap-1.5"
+              >
+                <span>📋 요약 복사</span>
+              </button>
+              <button 
+                onClick={() => window.print()}
+                className="px-3.5 py-2 text-xs font-medium text-white bg-slate-800 rounded-lg hover:bg-slate-700 transition shadow-sm flex items-center gap-1.5"
+              >
+                <span>🖨️ 인쇄 / PDF</span>
+              </button>
+            </div>
+          </header>
+
+          {/* Preset Buttons */}
+          <section className="mb-6 no-print">
+            <div className="text-xs font-semibold text-slate-500 mb-2 flex items-center gap-1.5">
+              <span>⚡ 빠른 시나리오 프리셋 선택:</span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              <button 
+                onClick={() => applyPreset('apt_capital')}
+                className="p-2.5 text-left bg-white border border-slate-200 hover:border-blue-400 rounded-lg transition shadow-xs group"
+              >
+                <div className="text-xs font-semibold text-slate-800 group-hover:text-blue-600">수도권 아파트 (8억)</div>
+                <div className="text-[11px] text-slate-500">대출 4억 · 보증금 1억/220만</div>
+              </button>
+              <button 
+                onClick={() => applyPreset('officetel_yield')}
+                className="p-2.5 text-left bg-white border border-slate-200 hover:border-blue-400 rounded-lg transition shadow-xs group"
+              >
+                <div className="text-xs font-semibold text-slate-800 group-hover:text-blue-600">역세권 오피스텔 (2.5억)</div>
+                <div className="text-[11px] text-slate-500">대출 1.5억 · 보증금 2천/95만</div>
+              </button>
+              <button 
+                onClick={() => applyPreset('small_villa')}
+                className="p-2.5 text-left bg-white border border-slate-200 hover:border-blue-400 rounded-lg transition shadow-xs group"
+              >
+                <div className="text-xs font-semibold text-slate-800 group-hover:text-blue-600">다세대 소액월세 (1.5억)</div>
+                <div className="text-[11px] text-slate-500">대출 8천 · 보증금 2천/65만</div>
+              </button>
+              <button 
+                onClick={() => applyPreset('high_value_apt')}
+                className="p-2.5 text-left bg-white border border-slate-200 hover:border-blue-400 rounded-lg transition shadow-xs group"
+              >
+                <div className="text-xs font-semibold text-slate-800 group-hover:text-blue-600">고가 대형아파트 (15억)</div>
+                <div className="text-[11px] text-slate-500">대출 6억 · 보증금 3억/350만</div>
+              </button>
+            </div>
+          </section>
+
+          {/* Main 2-Column Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            {/* Left Column: Input Settings (5 Cols) */}
+            <div className="lg:col-span-5 space-y-6">
+              
+              {/* Card 1: 매물 및 취득세 조건 */}
+              <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                <div className="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+                  <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+                    1. 매물 정보 & 취득 조건
+                  </h2>
+                  <span className="text-xs font-medium text-blue-600">세법 기준</span>
+                </div>
+
+                {/* 매매가 입력 */}
+                <div className="mb-4">
+                  <div className="flex justify-between items-center mb-1">
+                    <label className="text-xs font-semibold text-slate-700">매매가 (취득가액)</label>
+                    <span className="text-sm font-bold text-blue-700">{formatKoreanMoney(priceManwon)}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <input 
+                      type="range" 
+                      min="5000" 
+                      max="300000" 
+                      step="1000"
+                      value={priceManwon} 
+                      onChange={(e) => setPriceManwon(Number(e.target.value))}
+                      className="w-full h-2 bg-slate-200 rounded-lg cursor-pointer"
+                    />
+                    <div className="relative w-28 shrink-0">
+                      <input 
+                        type="number" 
+                        value={priceManwon} 
+                        onChange={(e) => setPriceManwon(Math.max(0, Number(e.target.value)))}
+                        className="w-full text-right pr-7 py-1 px-2 text-xs font-medium border border-slate-300 rounded-md focus:ring-1 focus:ring-blue-500"
+                      />
+                      <span className="absolute right-2 top-1 text-xs text-slate-400">만원</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 주택 유형 */}
+                <div className="mb-4">
+                  <label className="text-xs font-semibold text-slate-700 block mb-1.5">물건 종류</label>
+                  <div className="grid grid-cols-3 gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setPropertyType('house')}
+                      className={`py-1.5 text-xs font-medium rounded-lg border transition ${propertyType === 'house' ? 'bg-blue-50 border-blue-600 text-blue-700 font-bold' : 'border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                    >
+                      주택(아파트·빌라)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setPropertyType('officetel')}
+                      className={`py-1.5 text-xs font-medium rounded-lg border transition ${propertyType === 'officetel' ? 'bg-blue-50 border-blue-600 text-blue-700 font-bold' : 'border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                    >
+                      오피스텔 (4.6%)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setPropertyType('commercial')}
+                      className={`py-1.5 text-xs font-medium rounded-lg border transition ${propertyType === 'commercial' ? 'bg-blue-50 border-blue-600 text-blue-700 font-bold' : 'border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                    >
+                      상가/토지 (4.6%)
+                    </button>
+                  </div>
+                </div>
+
+                {/* 주택인 경우 주택 수 및 규제지역 선택 */}
+                {propertyType === 'house' && (
+                  <div className="mb-4 p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-3">
+                    <div>
+                      <label className="text-[11px] font-semibold text-slate-600 block mb-1">
+                        취득 세대 주택 수 및 규제지역 (취득세 중과 여부)
+                      </label>
+                      <select 
+                        value={homeCountMode} 
+                        onChange={(e) => setHomeCountMode(e.target.value)}
+                        className="w-full text-xs py-1.5 px-2 bg-white border border-slate-300 rounded-md focus:ring-1 focus:ring-blue-500 font-medium"
+                      >
+                        <option value="1_non_regulated">1주택(무주택자 신규) 또는 일시적 2주택 [1~3% 기본]</option>
+                        <option value="2_non_regulated">2주택자 (비규제지역 취득) [1~3% 기본]</option>
+                        <option value="2_regulated">2주택자 (조정대상지역 취득) [8% 중과]</option>
+                        <option value="3_non_regulated">3주택자 (비규제지역 취득) [8% 중과]</option>
+                        <option value="3_regulated">3주택자 (조정대상지역 취득) [12% 중과]</option>
+                        <option value="4_or_corp">4주택 이상 다주택자 또는 법인 [12% 중과]</option>
+                      </select>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-1 border-t border-slate-200">
+                      <span className="text-xs text-slate-600">전용면적 85㎡ 초과 여부 (농특세)</span>
+                      <label className="relative inline-flex items-center cursor-pointer">
+                        <input 
+                          type="checkbox" 
+                          checked={isOver85} 
+                          onChange={(e) => setIsOver85(e.target.checked)} 
+                          className="sr-only peer" 
+                        />
+                        <div className="w-9 h-5 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
+                        <span className="ml-2 text-xs font-medium text-slate-700">{isOver85 ? '85㎡ 초과' : '85㎡ 이하 (국민주택)'}</span>
+                      </label>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Card 2: 자금 조달 & 레버리지 조건 */}
+              <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                <div className="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+                  <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+                    2. 자금 조달 & 레버리지 (대출·월세)
+                  </h2>
+                  <span className="text-xs font-medium text-emerald-600">수익률 역산</span>
+                </div>
+
+                {/* 대출금액 및 LTV 퀵 버튼 */}
+                <div className="mb-4">
+                  <div className="flex justify-between items-center mb-1">
+                    <label className="text-xs font-semibold text-slate-700">
+                      대출 원금 <span className="text-slate-400 font-normal">(실질 LTV {investmentMetrics.actualLtv}%)</span>
+                    </label>
+                    <span className="text-sm font-bold text-emerald-700">{formatKoreanMoney(loanManwon)}</span>
+                  </div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <input 
+                      type="range" 
+                      min="0" 
+                      max={priceManwon} 
+                      step="500"
+                      value={loanManwon} 
+                      onChange={(e) => setLoanManwon(Number(e.target.value))}
+                      className="w-full h-2 bg-slate-200 rounded-lg cursor-pointer"
+                    />
+                    <div className="relative w-28 shrink-0">
+                      <input 
+                        type="number" 
+                        value={loanManwon} 
+                        onChange={(e) => setLoanManwon(Math.max(0, Number(e.target.value)))}
+                        className="w-full text-right pr-7 py-1 px-2 text-xs font-medium border border-slate-300 rounded-md focus:ring-1 focus:ring-emerald-500"
+                      />
+                      <span className="absolute right-2 top-1 text-xs text-slate-400">만원</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[10px] text-slate-400">LTV 기준:</span>
+                    {[0, 40, 50, 60, 70].map((pct) => (
+                      <button
+                        key={pct}
+                        type="button"
+                        onClick={() => setLtvPercent(pct)}
+                        className="px-2 py-0.5 text-[11px] bg-slate-100 hover:bg-slate-200 rounded text-slate-600 transition"
+                      >
+                        {pct}%
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 대출 금리 */}
+                <div className="mb-4">
+                  <div className="flex justify-between items-center mb-1">
+                    <label className="text-xs font-semibold text-slate-700">대출 금리 (연이율)</label>
+                    <span className="text-sm font-bold text-emerald-700">{interestRate}%</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <input 
+                      type="range" 
+                      min="2.0" 
+                      max="8.0" 
+                      step="0.1"
+                      value={interestRate} 
+                      onChange={(e) => setInterestRate(Number(e.target.value))}
+                      className="w-full h-2 bg-slate-200 rounded-lg cursor-pointer"
+                    />
+                    <div className="relative w-20 shrink-0">
+                      <input 
+                        type="number" 
+                        step="0.1"
+                        value={interestRate} 
+                        onChange={(e) => setInterestRate(Math.max(0, Number(e.target.value)))}
+                        className="w-full text-right pr-6 py-1 px-2 text-xs font-medium border border-slate-300 rounded-md focus:ring-1 focus:ring-emerald-500"
+                      />
+                      <span className="absolute right-2 top-1 text-xs text-slate-400">%</span>
+                    </div>
+                  </div>
+                  <div className="text-[11px] text-slate-400 mt-1 flex justify-between">
+                    <span>월 이자 부담: {formatKoreanMoney(investmentMetrics.monthlyInterest)}</span>
+                    <span>연 이자 합계: {formatKoreanMoney(investmentMetrics.annualInterest)}</span>
+                  </div>
+                </div>
+
+                {/* 임대 보증금 및 월세 */}
+                <div className="grid grid-cols-2 gap-3 pt-3 border-t border-slate-100">
+                  <div>
+                    <label className="text-xs font-semibold text-slate-700 block mb-1">임대 보증금</label>
+                    <div className="relative">
+                      <input 
+                        type="number" 
+                        step="100"
+                        value={depositManwon} 
+                        onChange={(e) => setDepositManwon(Math.max(0, Number(e.target.value)))}
+                        className="w-full text-right pr-8 py-1.5 px-2 text-xs font-bold border border-slate-300 rounded-md focus:ring-1 focus:ring-emerald-500 text-slate-800"
+                      />
+                      <span className="absolute right-2 top-1.5 text-xs text-slate-400">만원</span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 mt-0.5 block">{formatKoreanMoney(depositManwon)}</span>
+                  </div>
+                  <div>
+                    <label className="text-xs font-semibold text-slate-700 block mb-1">희망 월세</label>
+                    <div className="relative">
+                      <input 
+                        type="number" 
+                        step="5"
+                        value={monthlyRentManwon} 
+                        onChange={(e) => setMonthlyRentManwon(Math.max(0, Number(e.target.value)))}
+                        className="w-full text-right pr-8 py-1.5 px-2 text-xs font-bold border border-slate-300 rounded-md focus:ring-1 focus:ring-emerald-500 text-slate-800"
+                      />
+                      <span className="absolute right-2 top-1.5 text-xs text-slate-400">만원</span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 mt-0.5 block">연 {formatKoreanMoney(investmentMetrics.annualRentalIncome)}</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Right Column: Output Dashboards (7 Cols) */}
+            <div className="lg:col-span-7 space-y-6">
+
+              {/* KPI Header Cards: 핵심 성과 지표 */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {/* 실투자금 (내 돈) */}
+                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                  <div className="text-xs font-medium text-slate-500 mb-1">순 실투자금 (자기자본)</div>
+                  <div className="text-lg md:text-xl font-bold text-slate-900 tracking-tight">
+                    {formatKoreanMoney(investmentMetrics.netEquity)}
+                  </div>
+                  <div className="text-[11px] text-slate-400 mt-1">
+                    총소요금 - 대출 - 보증금
+                  </div>
+                </div>
+
+                {/* 월 순현금흐름 */}
+                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                  <div className="text-xs font-medium text-slate-500 mb-1">월 순현금흐름 (순수익)</div>
+                  <div className={`text-lg md:text-xl font-bold tracking-tight ${investmentMetrics.monthlyNetCashFlow >= 0 ? 'text-emerald-600' : 'text-red-500'}`}>
+                    {formatKoreanMoney(investmentMetrics.monthlyNetCashFlow)}
+                  </div>
+                  <div className="text-[11px] text-slate-400 mt-1">
+                    월세 {formatNumber(monthlyRentManwon)}만 - 월이자 {formatNumber(investmentMetrics.monthlyInterest)}만
+                  </div>
+                </div>
+
+                {/* 자기자본수익률 (ROE) */}
+                <div className="bg-gradient-to-br from-blue-900 to-slate-900 p-4 rounded-xl text-white shadow-sm">
+                  <div className="text-xs font-medium text-blue-200 mb-1">자기자본수익률 (ROE)</div>
+                  <div className="text-2xl font-extrabold tracking-tight text-blue-400">
+                    {investmentMetrics.roe}%
+                  </div>
+                  <div className="text-[11px] text-slate-300 mt-1 flex items-center gap-1">
+                    <span>단순총수익률: {investmentMetrics.capRateSimple}%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 레버리지 판정 배너 */}
+              <div className={`p-3.5 rounded-xl border text-xs leading-relaxed flex items-start gap-3 ${
+                investmentMetrics.isPositiveLeverage 
+                  ? 'bg-blue-50 border-blue-200 text-blue-900' 
+                  : 'bg-amber-50 border-amber-200 text-amber-900'
+              }`}>
+                <span className="text-base shrink-0 mt-0.5">
+                  {investmentMetrics.isPositiveLeverage ? '💡' : '⚠️'}
+                </span>
+                <div>
+                  <div className="font-bold mb-0.5">
+                    {investmentMetrics.isPositiveLeverage ? '정(+)의 레버리지 효과 작동 중' : '역(-)의 레버리지 경고: 대출 이자가 수익률을 상회함'}
+                  </div>
+                  <div>
+                    {investmentMetrics.isPositiveLeverage ? (
+                      <span>
+                        총투자수익률({investmentMetrics.capRateSimple}%)이 대출금리({interestRate}%)보다 <strong>+{investmentMetrics.leverageDiff}%p</strong> 높아, 대출을 지렛대 삼아 자기자본수익률이 <strong>{investmentMetrics.roe}%</strong>로 증폭되었습니다.
+                      </span>
+                    ) : (
+                      <span>
+                        대출금리({interestRate}%)가 총투자수익률({investmentMetrics.capRateSimple}%)보다 <strong>{Math.abs(investmentMetrics.leverageDiff)}%p</strong> 높아 이자비용 부담이 더 큽니다. 대출 비중을 낮추거나 보증금을 높이는 방안을 검토하세요.
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3: 최근 기준 취득세 및 부대비용 명세표 */}
+              <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                <div className="px-5 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                  <div>
+                    <h3 className="text-sm font-bold text-slate-900">
+                      최근 기준 취득세 및 부대비용 상세 명세
+                    </h3>
+                    <p className="text-xs text-slate-500">법정 세율, 상한 중개보수, 채권할인 등 전체 항목 자동 반영</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs text-slate-400">총 부대비용 합계</span>
+                    <div className="text-base font-bold text-blue-700">
+                      {formatKoreanMoney(acquisitionCost.totalExpenses)}
+                      <span className="text-xs text-slate-500 ml-1">({acquisitionCost.costRatio}%)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-5 space-y-4">
+                  {/* 1. 세금 내역 */}
+                  <div>
+                    <div className="text-xs font-bold text-slate-700 mb-2 flex items-center justify-between">
+                      <span className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                        1) 법정 세금 (취득세·지방교육세·농특세)
+                      </span>
+                      <span className="text-blue-600 font-bold">{formatKoreanMoney(acquisitionCost.totalTax)} ({acquisitionCost.totalTaxRate}%)</span>
+                    </div>
+                    <div className="bg-slate-50 rounded-lg p-3 text-xs space-y-1.5 border border-slate-100">
+                      <div className="flex justify-between text-slate-600">
+                        <span>• 취득세 (기본 {acquisitionCost.acqTaxRate}%)</span>
+                        <span className="font-medium text-slate-800">{formatKoreanMoney(acquisitionCost.acqTax)}</span>
+                      </div>
+                      <div className="flex justify-between text-slate-600">
+                        <span>• 지방교육세 ({acquisitionCost.eduTaxRate}%)</span>
+                        <span className="font-medium text-slate-800">{formatKoreanMoney(acquisitionCost.eduTax)}</span>
+                      </div>
+                      <div className="flex justify-between text-slate-600">
+                        <span>• 농어촌특별세 ({acquisitionCost.ruralTaxRate}% {isOver85 ? '/ 85㎡ 초과' : '/ 85㎡ 이하 비과세'})</span>
+                        <span className="font-medium text-slate-800">{formatKoreanMoney(acquisitionCost.ruralTax)}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 2. 기타 법무/중개/공적 부대비용 */}
+                  <div>
+                    <div className="text-xs font-bold text-slate-700 mb-2 flex items-center justify-between">
+                      <span className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
+                        2) 실무 행정 및 중개 부대비용
+                      </span>
+                      <span className="text-slate-800 font-bold">{formatKoreanMoney(acquisitionCost.otherExpenses)}</span>
+                    </div>
+                    <div className="divide-y divide-slate-100 text-xs">
+                      <div className="py-1.5 flex justify-between text-slate-600">
+                        <span>
+                          • 부동산 중개보수 
+                          <span className="text-[11px] text-slate-400 ml-1">(상한요율 {acquisitionCost.brokerRate}% + VAT)</span>
+                        </span>
+                        <span className="font-medium text-slate-800">{formatKoreanMoney(acquisitionCost.brokerFee)}</span>
+                      </div>
+                      <div className="py-1.5 flex justify-between text-slate-600">
+                        <span>
+                          • 법무사 등기 보수 
+                          <span className="text-[11px] text-slate-400 ml-1">(기본+누진+일당 실무 추정)</span>
+                        </span>
+                        <span className="font-medium text-slate-800">{formatKoreanMoney(acquisitionCost.legalFee)}</span>
+                      </div>
+                      <div className="py-1.5 flex justify-between text-slate-600">
+                        <span>
+                          • 국민주택채권 매입 할인 본인부담금 
+                          <span className="text-[11px] text-slate-400 ml-1">(시가표준액 기준, 할인율 {bondDiscountRate}%)</span>
+                        </span>
+                        <span className="font-medium text-slate-800">{formatKoreanMoney(acquisitionCost.bondDiscountFee)}</span>
+                      </div>
+                      <div className="py-1.5 flex justify-between text-slate-600">
+                        <span>
+                          • 정부수입인지세 
+                          <span className="text-[11px] text-slate-400 ml-1">(인지세법 법정 구간)</span>
+                        </span>
+                        <span className="font-medium text-slate-800">{formatKoreanMoney(acquisitionCost.stampDuty)}</span>
+                      </div>
+                      <div className="py-1.5 flex justify-between text-slate-600">
+                        <span>• 등기신청수수료(증지대)</span>
+                        <span className="font-medium text-slate-800">{formatKoreanMoney(acquisitionCost.certFee)}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 총 소요자금 Summary Bar */}
+                  <div className="pt-3 border-t border-slate-200 flex justify-between items-center text-xs">
+                    <span className="font-bold text-slate-800">최종 총 소요비용 (매매가 + 부대비용 전체)</span>
+                    <span className="text-sm font-extrabold text-blue-900">
+                      {formatKoreanMoney(investmentMetrics.totalAcquisitionCost)}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 4: 자금 수지 및 회수 분석 테이블 */}
+              <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                <h3 className="text-sm font-bold text-slate-900 mb-3">연간 자금 수지 & 투자 회수 요약표</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs text-left">
+                    <thead className="bg-slate-50 text-slate-600 border-y border-slate-200">
+                      <tr>
+                        <th className="py-2 px-3">구분 항목</th>
+                        <th className="py-2 px-3 text-right">월 기준</th>
+                        <th className="py-2 px-3 text-right">연간 합계</th>
+                        <th className="py-2 px-3 text-right">비고</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      <tr>
+                        <td className="py-2 px-3 font-medium text-slate-800">(+) 총 임대수입</td>
+                        <td className="py-2 px-3 text-right text-slate-700">{formatKoreanMoney(monthlyRentManwon)}</td>
+                        <td className="py-2 px-3 text-right font-bold text-slate-900">{formatKoreanMoney(investmentMetrics.annualRentalIncome)}</td>
+                        <td className="py-2 px-3 text-right text-slate-400">보증금 {formatKoreanMoney(depositManwon)} 별도</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 px-3 font-medium text-red-600">(-) 금융비용 (대출이자)</td>
+                        <td className="py-2 px-3 text-right text-red-500">-{formatKoreanMoney(investmentMetrics.monthlyInterest)}</td>
+                        <td className="py-2 px-3 text-right font-bold text-red-600">-{formatKoreanMoney(investmentMetrics.annualInterest)}</td>
+                        <td className="py-2 px-3 text-right text-slate-400">연 {interestRate}% 고정/변동</td>
+                      </tr>
+                      <tr className="bg-blue-50/50 font-bold">
+                        <td className="py-2 px-3 text-blue-900">(=) 순 현금흐름 (세전)</td>
+                        <td className="py-2 px-3 text-right text-blue-700">{formatKoreanMoney(investmentMetrics.monthlyNetCashFlow)}</td>
+                        <td className="py-2 px-3 text-right text-blue-800">{formatKoreanMoney(investmentMetrics.annualNetCashFlow)}</td>
+                        <td className="py-2 px-3 text-right text-blue-600">실투자금 대비 ROE {investmentMetrics.roe}%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Footer Note */}
+          <footer className="mt-12 text-center text-xs text-slate-400 border-t border-slate-200 pt-6">
+            <p>※ 본 계산기는 최신 지방세법(취득세 중과), 공인중개사법 시행규칙(중개보수 요율), 인지세법을 기반으로 제작되었습니다.</p>
+            <p className="mt-1">※ 실제 취득 시 지자체 감면 혜택, 다자녀 감면, 생애최초 주택 감면(최대 200만 원), 대출 상환방식(원리금균등 vs 만기일시)에 따라 세부 금액이 달라질 수 있습니다.</p>
+          </footer>
+        </div>
+      );
+    }
+
+    // React Mount
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

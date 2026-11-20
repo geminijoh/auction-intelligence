@@ -1,0 +1,161 @@
+<!-- ================= 1. VIEW: 거시 매물 분석 대시보드 (V4: 사진/추천배지 제거 & 거시 매트릭스 테이블 탑재) ================= -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+
+  <!-- Macro KPI Summary Ticker Bar -->
+  <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+      <div class="flex items-center justify-between">
+        <span class="font-label-sm text-label-sm text-secondary font-medium">관리 매물 총계</span>
+        <span class="material-symbols-outlined text-primary text-[20px]">inventory_2</span>
+      </div>
+      <div class="mt-2">
+        <div class="font-headline-md text-headline-md font-black text-on-surface">6<span class="text-sm font-normal text-secondary ml-1">건 (경매5 / 급매1)</span></div>
+        <p class="font-label-sm text-label-sm text-tertiary mt-0.5">평균 낙찰가율 70~80% 권역</p>
+      </div>
+    </div>
+
+    <div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+      <div class="flex items-center justify-between">
+        <span class="font-label-sm text-label-sm text-secondary font-medium">평균 예상 ROE</span>
+        <span class="material-symbols-outlined text-tertiary text-[20px]">trending_up</span>
+      </div>
+      <div class="mt-2">
+        <div class="font-headline-md text-headline-md font-black text-tertiary">17.8<span class="text-sm font-normal text-tertiary ml-0.5">%</span></div>
+        <p class="font-label-sm text-label-sm text-secondary mt-0.5">최대 21.5% (봉담우방 기준)</p>
+      </div>
+    </div>
+
+    <div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+      <div class="flex items-center justify-between">
+        <span class="font-label-sm text-label-sm text-secondary font-medium">평균 필요 실투자금</span>
+        <span class="material-symbols-outlined text-primary text-[20px]">savings</span>
+      </div>
+      <div class="mt-2">
+        <div class="font-headline-md text-headline-md font-black text-primary">3,850<span class="text-sm font-normal text-secondary ml-1">만 원</span></div>
+        <p class="font-label-sm text-label-sm text-secondary mt-0.5">최저 1,450만원(소액분산 가능)</p>
+      </div>
+    </div>
+
+    <div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+      <div class="flex items-center justify-between">
+        <span class="font-label-sm text-label-sm text-secondary font-medium">권리 분석 안전율</span>
+        <span class="material-symbols-outlined text-tertiary text-[20px]">verified_user</span>
+      </div>
+      <div class="mt-2">
+        <div class="font-headline-md text-headline-md font-black text-tertiary">100<span class="text-sm font-normal text-tertiary ml-0.5">%</span></div>
+        <p class="font-label-sm text-label-sm text-secondary mt-0.5">6건 전건 대항력 임차인 인수 0원</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Search Controls -->
+  <section class="space-y-3">
+    <div class="w-full bg-surface-container-lowest rounded-2xl p-3 sm:p-4 shadow-sm flex flex-col md:flex-row items-center gap-3 border border-outline-variant/30">
+      <div class="flex-1 flex items-center gap-3 px-3.5 py-2.5 w-full bg-surface-container rounded-xl">
+        <span class="material-symbols-outlined text-outline text-[20px]">search</span>
+        <input id="search-input" oninput="handleSearch()" class="w-full bg-transparent border-0 outline-none font-body-md text-body-md text-on-surface placeholder:text-outline" placeholder="사건번호(2026타경...), 물건명(안성동남, 봉담우방), 법원, 지역명 검색" type="text"/>
+      </div>
+      <div class="flex items-center gap-2 w-full md:w-auto">
+        <button onclick="setCategoryFilter('all')" class="px-4 py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md transition-colors whitespace-nowrap">
+          전체 초기화
+        </button>
+        <button onclick="handleSearch()" class="px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-all flex items-center justify-center gap-1 shrink-0">
+          <span class="material-symbols-outlined text-[18px]">search</span>검색
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Chips & View Toggle -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-1">
+      <div class="flex items-center gap-2 overflow-x-auto" id="category-filter-chips">
+        <button onclick="setCategoryFilter('all')" id="tab-all" class="tab-chip active px-4 py-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md transition-all whitespace-nowrap shadow-sm">
+          전체 매물 (6)
+        </button>
+        <button onclick="setCategoryFilter('auction')" id="tab-auction" class="tab-chip px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all whitespace-nowrap">
+          경매 물건 (5)
+        </button>
+        <button onclick="setCategoryFilter('sale')" id="tab-sale" class="tab-chip px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all whitespace-nowrap">
+          일반 급매 (1)
+        </button>
+        <button onclick="setCategoryFilter('sub-3000')" id="tab-sub-3000" class="tab-chip px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all whitespace-nowrap">
+          실투자 3천만 이하 소액 (3)
+        </button>
+      </div>
+
+      <!-- View Layout Mode Switch (Macro Matrix vs Clean Cards) -->
+      <div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-xl shrink-0 self-end sm:self-auto border border-outline-variant/30">
+        <button id="view-mode-table-btn" onclick="setDashboardViewMode('table')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-surface-container-lowest text-primary shadow-sm">
+          <span class="material-symbols-outlined text-[16px]">table_chart</span>거시 비교 테이블
+        </button>
+        <button id="view-mode-card-btn" onclick="setDashboardViewMode('card')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 text-secondary hover:text-on-surface">
+          <span class="material-symbols-outlined text-[16px]">grid_view</span>고밀도 카드
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 1-A. MACRO COMPARISON MATRIX TABLE (거시 매물 종합 비교 매트릭스) ================= -->
+  <section id="macro-matrix-section" class="bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant/30 overflow-hidden">
+    <div class="p-4 sm:p-5 border-b border-outline-variant/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-surface-container-low/50">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-[22px]">analytics</span>
+          <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">거시적 매물 횡적 비교 매트릭스 (Macro Matrix)</h3>
+          <span id="matrix-count-badge" class="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-bold">6건 분석</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-secondary mt-1">
+          사건별 감정가, 최저매각가, 추천입찰가, 안전마진, 실투자금 및 예상 ROE를 한눈에 횡적으로 교차 비교합니다.
+        </p>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-xs text-secondary font-medium">정렬 기준:</span>
+        <select id="matrix-sort-select" onchange="handleMatrixSort(this.value)" class="text-xs font-semibold bg-surface-container-lowest border border-outline-variant/40 rounded-lg px-2.5 py-1.5 text-on-surface outline-none focus:ring-1 focus:ring-primary">
+          <option value="roe-desc">예상 ROE 높은순</option>
+          <option value="invest-asc">실투자금 적은순</option>
+          <option value="margin-desc">안전마진 큰순</option>
+          <option value="bid-asc">추천입찰가 낮은순</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Responsive Table Wrapper -->
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse font-body-sm text-body-sm">
+        <thead>
+          <tr class="bg-surface-container text-on-surface-variant font-label-md text-label-md border-b border-outline-variant/30 whitespace-nowrap">
+            <th class="py-3 px-4 font-bold">사건번호 / 구분</th>
+            <th class="py-3 px-4 font-bold">물건명 및 소재지</th>
+            <th class="py-3 px-4 font-bold text-right">감정평가액</th>
+            <th class="py-3 px-4 font-bold text-right">최저매각가 (율)</th>
+            <th class="py-3 px-4 font-bold text-right text-primary">★ 추천입찰가</th>
+            <th class="py-3 px-4 font-bold text-right">안전마진</th>
+            <th class="py-3 px-4 font-bold text-right">필요 실투자금</th>
+            <th class="py-3 px-4 font-bold text-center text-tertiary">예상 ROE</th>
+            <th class="py-3 px-4 font-bold text-center">권리 분석</th>
+            <th class="py-3 px-4 font-bold text-center">원클릭 액션</th>
+          </tr>
+        </thead>
+        <tbody id="macro-matrix-tbody" class="divide-y divide-outline-variant/20">
+          <!-- JS 렌더링 -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= 1-B. CLEAN HIGH-DENSITY CARD GRID (사진/배지 제거 클린 카드) ================= -->
+  <section id="clean-cards-section" class="space-y-4">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">고밀도 매물 상세 분석 카드</h3>
+        <span id="list-count-badge" class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">6건</span>
+      </div>
+      <span class="text-xs text-secondary">사진 및 장식 요소를 배제한 실전 투자 데이터 집중 뷰</span>
+    </div>
+
+    <!-- Cards Grid -->
+    <div id="property-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- JavaScript로 고밀도 카드 렌더링 -->
+    </div>
+  </section>
+
+</div>

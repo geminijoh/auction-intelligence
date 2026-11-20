@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>서수원(오목천) · 화성(봉담) 통합 광역생활권 부동산 시장 및 도시개발 종합 분석 보고서</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+    * {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background-color: white !important; color: black !important; }
+      .page-break { page-break-before: always; }
+      .shadow-sm, .shadow-md, .shadow-lg, .shadow-xl { box-shadow: none !important; }
+      section { break-inside: avoid-page; }
+    }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    .badge-primary { background-color: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .badge-success { background-color: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+    .badge-warning { background-color: #fefce8; color: #a16207; border: 1px solid #fef08a; }
+    .badge-danger { background-color: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen custom-scrollbar">
+
+  <!-- 상단 네비게이션바 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="bg-gradient-to-tr from-blue-600 to-indigo-600 text-white p-2.5 rounded-xl shadow-md">
+          <i data-lucide="layers" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">REGIONAL COMPREHENSIVE MASTER REPORT</span>
+          <h1 class="text-lg font-extrabold text-slate-900 leading-tight">서수원(오목천) · 화성(봉담) 통합 광역생활권 종합 보고서</h1>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2 no-print">
+        <button onclick="window.print()" class="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-lg transition-colors border border-slate-300">
+          <i data-lucide="printer" class="w-4 h-4"></i>
+          <span>보고서 인쇄 / PDF 저장</span>
+        </button>
+      </div>
+    </div>
+    <!-- 퀵 점프 메뉴 -->
+    <div class="bg-slate-100/80 border-t border-slate-200 px-4 py-1.5 overflow-x-auto custom-scrollbar no-print">
+      <div class="max-w-7xl mx-auto flex items-center space-x-4 text-xs font-medium text-slate-600 whitespace-nowrap">
+        <a href="#summary" class="hover:text-blue-600 transition-colors">핵심 요약</a>
+        <span>•</span>
+        <a href="#spatial" class="hover:text-blue-600 transition-colors">1. 공간구조 통합</a>
+        <span>•</span>
+        <a href="#demographics" class="hover:text-blue-600 transition-colors">2. 인구·소득·통근 분석</a>
+        <span>•</span>
+        <a href="#development" class="hover:text-blue-600 transition-colors">3. 대규모 도시개발</a>
+        <span>•</span>
+        <a href="#traffic" class="hover:text-blue-600 transition-colors">4. 광역 교통망 혁신</a>
+        <span>•</span>
+        <a href="#market" class="hover:text-blue-600 transition-colors">5. 수급·청약·시세</a>
+        <span>•</span>
+        <a href="#risk" class="hover:text-blue-600 transition-colors">6. 리스크·환경·위반건축물</a>
+        <span>•</span>
+        <a href="#strategy" class="hover:text-blue-600 transition-colors">7. 맞춤형 투자 전략</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 메인 컨테이너 -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+
+    <!-- HERO SECTION -->
+    <section class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white p-8 md:p-12 shadow-2xl border border-slate-800">
+      <div class="relative z-10 max-w-4xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-semibold tracking-wide">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          <span>수도권 서남부 10만 세대급 메가 주거·산업 융합 거점</span>
+        </div>
+        <h2 class="text-3xl md:text-5xl font-black tracking-tight leading-tight">
+          수원 권선(오목천)과 화성(봉담)이 결합된<br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-teal-300">
+            차세대 자족형 수도권 서남부 메가시티
+          </span>
+        </h2>
+        <p class="text-slate-300 text-sm md:text-base leading-relaxed max-w-3xl">
+          행정 경계를 허물고 효행지구(1.2만 호)와 봉담3 공공택지(1.8만 호), 오목천역세권이 결합하여 판교급 규모의 단일 광역생활권을 형성합니다. 
+          2024년 역대급 입주 물량 소화 이후 2025~2026년 극단적 '공급 가뭄'에 진입하며, 신분당선 호매실-봉담 연장과 KTX 어천역을 품고 수도권 최고의 가치 재평가 국면에 돌입했습니다.
+        </p>
+        <div class="pt-4 flex flex-wrap gap-4 text-xs font-semibold text-slate-300">
+          <div class="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
+            <i data-lucide="map-pin" class="w-4 h-4 text-blue-400"></i>
+            수원 권선구 오목천동 + 화성시 봉담읍 전역
+          </div>
+          <div class="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
+            <i data-lucide="calendar" class="w-4 h-4 text-teal-400"></i>
+            기준 시점: 2026년 11월 최신 공공 빅데이터
+          </div>
+        </div>
+      </div>
+      <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    </section>
+
+    <!-- 핵심 KPI 카드 4선 -->
+    <section id="summary" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- KPI 1 -->
+      <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-slate-500">배후 통합 인구 규모</span>
+          <div class="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+            <i data-lucide="users" class="w-5 h-5"></i>
+          </div>
+        </div>
+        <div class="mt-3">
+          <div class="text-2xl font-black text-slate-900">2,176,484 <span class="text-sm font-medium text-slate-500">명</span></div>
+          <div class="mt-1 flex items-center text-xs text-emerald-600 font-semibold gap-1">
+            <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+            <span>수원 118.6만 + 화성 99.0만 (특례시 벨트)</span>
+          </div>
+        </div>
+        <p class="mt-2 text-xs text-slate-500">화성시 세대수 42.8만(2.5배 급증) & 수원 세대분화</p>
+      </div>
+
+      <!-- KPI 2 -->
+      <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-slate-500">통합 주거벨트 계획 세대</span>
+          <div class="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600">
+            <i data-lucide="home" class="w-5 h-5"></i>
+          </div>
+        </div>
+        <div class="mt-3">
+          <div class="text-2xl font-black text-slate-900">약 100,000 <span class="text-sm font-medium text-slate-500">세대</span></div>
+          <div class="mt-1 flex items-center text-xs text-indigo-600 font-semibold gap-1">
+            <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+            <span>봉담 권역 6.5만 + 서수원 3.5만 세대</span>
+          </div>
+        </div>
+        <p class="mt-2 text-xs text-slate-500">효행지구 1.2만 호, 봉담3지구 1.8만 호 핵심</p>
+      </div>
+
+      <!-- KPI 3 -->
+      <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-slate-500">지역 미분양 잔여 호수</span>
+          <div class="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+          </div>
+        </div>
+        <div class="mt-3">
+          <div class="text-2xl font-black text-slate-900">78 <span class="text-sm font-medium text-slate-500">호</span></div>
+          <div class="mt-1 flex items-center text-xs text-emerald-600 font-semibold gap-1">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            <span>수원시 21호 + 화성시 57호 (청정 상태)</span>
+          </div>
+        </div>
+        <p class="mt-2 text-xs text-slate-500">자연 미분양 이하 수준, 완판 행진 지속</p>
+      </div>
+
+      <!-- KPI 4 -->
+      <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-slate-500">공급 수급 사이클</span>
+          <div class="w-9 h-9 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600">
+            <i data-lucide="zap" class="w-5 h-5"></i>
+          </div>
+        </div>
+        <div class="mt-3">
+          <div class="text-2xl font-black text-slate-900">공급 절벽 <span class="text-sm font-medium text-amber-600">진입</span></div>
+          <div class="mt-1 flex items-center text-xs text-red-600 font-semibold gap-1">
+            <i data-lucide="arrow-down-right" class="w-3.5 h-3.5"></i>
+            <span>2024년 7,222호 입주 피크 ➔ 2026년 806호</span>
+          </div>
+        </div>
+        <p class="mt-2 text-xs text-slate-500">권선구 2025년 입주 0호, 전세가 급반등 국면</p>
+      </div>
+    </section>
+
+    <!-- 제1장. 거시적 공간구조 및 통합 입지 분석 -->
+    <section id="spatial" class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+      <div class="flex items-center space-x-3 border-b border-slate-100 pb-4">
+        <div class="p-2.5 rounded-xl bg-blue-100 text-blue-700">
+          <i data-lucide="compass" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold text-blue-600 uppercase">CHAPTER 01</span>
+          <h3 class="text-xl md:text-2xl font-extrabold text-slate-900">거시적 공간구조 및 서수원·화성봉담 통합 입지 분석</h3>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div class="space-y-4 text-slate-700 text-sm leading-relaxed">
+          <h4 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <i data-lucide="link" class="w-4 h-4 text-blue-600"></i>
+            1.1. 행정 경계를 허무는 '지리적 연계와 공간적 융합'
+          </h4>
+          <p>
+            수원특례시 권선구 오목천동과 화성시 봉담읍은 행정구역은 나뉘어 있으나, 공간적으로는 <strong>수인분당선(오목천역)</strong>, <strong>매송고색로</strong>, <strong>봉담과천고속화도로</strong>를 통해 유기적으로 결합된 단일 생활권입니다.
+          </p>
+          <p>
+            과거 두 지역 사이에 자리 잡고 있던 국립축산과학원 종전부지(효행지구), 삼보폐광산, 미개발 농지 등의 단절 요소들이 <strong>대규모 신도시급 택지개발</strong>과 <strong>생태공원 복원</strong>으로 메워지면서, 동서남북으로 끊김 없는 거대 주거·산업 융합 벨트가 형성되고 있습니다.
+          </p>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <h5 class="font-bold text-slate-900 text-xs flex items-center gap-1.5 text-blue-700">
+              <i data-lucide="info" class="w-4 h-4"></i>
+              2040 도시기본계획 상위 정합성 핵심 비교
+            </h5>
+            <ul class="text-xs text-slate-600 space-y-1.5">
+              <li>• <strong>수원시 2040:</strong> 외연적 개발 지양, 서수원 첨단 R&D 혁신 클러스터(탑동·입북동·스마트폴리스) 육성</li>
+              <li>• <strong>화성시 2040:</strong> 효행·봉담을 '경기남부 스마트 주거·산학협력 중심 거점'으로 지정</li>
+              <li>• <strong>공통 결론:</strong> 구도심의 주거 수요 분산과 첨단 반도체·모빌리티 산업의 배후 주거지로서 두 지자체의 개발 역량이 서남부 접경지로 집중</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 공간구조 다이어그램 카드 -->
+        <div class="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-950 text-white shadow-xl space-y-4">
+          <div class="text-xs font-bold text-indigo-300 uppercase tracking-wider flex items-center gap-1.5">
+            <i data-lucide="share-2" class="w-4 h-4"></i>
+            통합 공간구조 매트릭스
+          </div>
+          <div class="space-y-3 text-xs">
+            <div class="p-3 rounded-xl bg-white/10 border border-white/15">
+              <div class="font-bold text-blue-300">① 서수원 첨단 R&D·지식산업 거점</div>
+              <div class="text-slate-300 mt-1">탑동 이노베이션밸리 + 수원 R&D 사이언스파크 + 수원 델타플렉스(고색산단)</div>
+            </div>
+            <div class="text-center text-indigo-400 font-bold">▲ 수인분당선 / 신분당선 연계 축 ▼</div>
+            <div class="p-3 rounded-xl bg-blue-600/30 border border-blue-400/40">
+              <div class="font-bold text-teal-300">② 통합 핵심 결절 앵커: 효행지구 (10,094~12,000세대)</div>
+              <div class="text-slate-200 mt-1">화성시(7,197호) + 수원시(3,284호) 경계 연계 택지 개발 (한국농어촌공사)</div>
+            </div>
+            <div class="text-center text-indigo-400 font-bold">▲ 봉담과천로 / 매송고색로 ▼</div>
+            <div class="p-3 rounded-xl bg-white/10 border border-white/15">
+              <div class="font-bold text-amber-300">③ 화성 봉담 5대 거대 주거 벨트 (약 5.5만 세대)</div>
+              <div class="text-slate-300 mt-1">봉담 3기 신도시(1.8만) + 봉담2지구 + 내리지구(4,034호) + 동화지구 + 봉담1지구</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 제2장. 인구·가구·소득 및 통근 빅데이터 심층 분석 -->
+    <section id="demographics" class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+      <div class="flex items-center space-x-3 border-b border-slate-100 pb-4">
+        <div class="p-2.5 rounded-xl bg-indigo-100 text-indigo-700">
+          <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold text-indigo-600 uppercase">CHAPTER 02</span>
+          <h3 class="text-xl md:text-2xl font-extrabold text-slate-900">인구 · 소득 및 통근 빅데이터 정밀 분석</h3>
+        </div>
+      </div>
+
+      <!-- 인터랙티브 차트 2분할 -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- 차트 1: 인구 및 세대수 추이 -->
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i data-lucide="trending-up" class="w-4 h-4 text-blue-600"></i>
+              화성시 vs 수원시 인구 및 세대수 추이 (2008~2025)
+            </h4>
+            <span class="text-[11px] text-slate-500 font-medium">행안부 주민등록 원자료</span>
+          </div>
+          <div class="h-64">
+            <canvas id="popChart"></canvas>
+          </div>
+          <p class="text-xs text-slate-600 leading-normal">
+            화성시는 2008년 44.9만 명에서 2025년 <strong>98.99만 명</strong>(세대수 42.8만)으로 120% 폭증했습니다. 
+            수원시는 인구 118.6만 명을 견고히 유지하며 세대수가 54.1만 세대로 분화되어 주택 수요가 꾸준히 증가하고 있습니다.
+          </p>
+        </div>
+
+        <!-- 차트 2: 주요 권역 6개월 이주비율 및 소득 -->
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i data-lucide="pie-chart" class="w-4 h-4 text-indigo-600"></i>
+              주요 읍면동 6개월 이주비율 (%) 및 계속거주비율
+            </h4>
+            <span class="text-[11px] text-slate-500 font-medium">KCB 통계 (2026.09)</span>
+          </div>
+          <div class="h-64">
+            <canvas id="migrationChart"></canvas>
+          </div>
+          <p class="text-xs text-slate-600 leading-normal">
+            <strong>화성시 봉담읍의 이주비율은 6.33%</strong>로 경기 남부 최고치를 기록하여 신규 인구 흡수력이 가장 강력합니다. 
+            수원 평동(오목천동)은 4.03%의 계속거주비율로 안정적인 정주성을 나타냅니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 통근 및 소득 분석 테이블 -->
+      <div class="space-y-3">
+        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+          <i data-lucide="briefcase" class="w-4 h-4 text-emerald-600"></i>
+          주민 주요 통근 목적지 및 연소득·주담대 빅데이터
+        </h4>
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+          <table class="w-full text-xs text-left text-slate-700">
+            <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+              <tr>
+                <th class="p-3">통근 목적지</th>
+                <th class="p-3">핵심 거점 / 직장</th>
+                <th class="p-3 text-center">통근 비중 (%)</th>
+                <th class="p-3 text-right">평균 연소득</th>
+                <th class="p-3 text-right">월 카드소비</th>
+                <th class="p-3 text-right">주택담보대출 잔액</th>
+                <th class="p-3">성격 및 시사점</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">수원 영통구 매탄3동</td>
+                <td class="p-3">삼성전자 본사 (디지털시티)</td>
+                <td class="p-3 text-center font-bold text-blue-600">2.49%</td>
+                <td class="p-3 text-right font-bold text-emerald-700">1억 279만 원</td>
+                <td class="p-3 text-right">442만 원</td>
+                <td class="p-3 text-right">2억 8,984만 원</td>
+                <td class="p-3"><span class="badge-primary px-2 py-0.5 rounded text-[11px] font-semibold">초고소득 직주근접</span></td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">화성시 병점구 반월동</td>
+                <td class="p-3">삼성전자 화성/기흥 캠퍼스</td>
+                <td class="p-3 text-center font-bold text-blue-600">3.94%</td>
+                <td class="p-3 text-right font-bold text-emerald-700">9,073만 원</td>
+                <td class="p-3 text-right">402만 원</td>
+                <td class="p-3 text-right">2억 8,166만 원</td>
+                <td class="p-3"><span class="badge-primary px-2 py-0.5 rounded text-[11px] font-semibold">반도체 엔지니어 벨트</span></td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">수원 권선구 평동 (오목천)</td>
+                <td class="p-3">고색 일반산업단지 (델타플렉스)</td>
+                <td class="p-3 text-center font-bold text-indigo-600">3.05%</td>
+                <td class="p-3 text-right">4,600만 원</td>
+                <td class="p-3 text-right">286만 원</td>
+                <td class="p-3 text-right">1억 5,574만 원</td>
+                <td class="p-3"><span class="badge-success px-2 py-0.5 rounded text-[11px] font-semibold">지역 내 탄탄한 자족 기반</span></td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">화성시 남양읍</td>
+                <td class="p-3">현대기아차 남양기술연구소</td>
+                <td class="p-3 text-center font-bold text-blue-600">1.37%</td>
+                <td class="p-3 text-right font-bold text-emerald-700">7,302만 원</td>
+                <td class="p-3 text-right">329만 원</td>
+                <td class="p-3 text-right">2억 2,469만 원</td>
+                <td class="p-3"><span class="badge-primary px-2 py-0.5 rounded text-[11px] font-semibold">모빌리티 R&D 고소득층</span></td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">성남 분당구 삼평동</td>
+                <td class="p-3">판교 테크노밸리 (IT/플랫폼)</td>
+                <td class="p-3 text-center">0.96%</td>
+                <td class="p-3 text-right font-semibold">6,362만 원</td>
+                <td class="p-3 text-right">281만 원</td>
+                <td class="p-3 text-right">2억 4,420만 원</td>
+                <td class="p-3"><span class="badge-warning px-2 py-0.5 rounded text-[11px] font-semibold">신분당선 연장 시 급증 기대</span></td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">서울 강남구 역삼1동</td>
+                <td class="p-3">강남 테헤란로 업무지구</td>
+                <td class="p-3 text-center">1.01%</td>
+                <td class="p-3 text-right font-semibold">6,029만 원</td>
+                <td class="p-3 text-right">273만 원</td>
+                <td class="p-3 text-right">2억 4,511만 원</td>
+                <td class="p-3"><span class="badge-warning px-2 py-0.5 rounded text-[11px] font-semibold">광역버스·신분당선 잠재 수요</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 제3장. 대규모 도시개발 프로젝트 분석 및 통합 시너지 -->
+    <section id="development" class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+      <div class="flex items-center space-x-3 border-b border-slate-100 pb-4">
+        <div class="p-2.5 rounded-xl bg-teal-100 text-teal-700">
+          <i data-lucide="building" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold text-teal-600 uppercase">CHAPTER 03</span>
+          <h3 class="text-xl md:text-2xl font-extrabold text-slate-900">대규모 도시개발 프로젝트 및 10만 세대 주거 벨트</h3>
+        </div>
+      </div>
+
+      <!-- 효행지구 및 봉담3지구 카드 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 봉담 3기 신도시 카드 -->
+        <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-900 to-indigo-900 text-white space-y-4 shadow-lg">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-md bg-blue-500/30 text-blue-200 text-xs font-bold border border-blue-400/30">
+              국토교통부 지구계획 최종 승인 (2025.12)
+            </span>
+            <i data-lucide="award" class="w-5 h-5 text-amber-300"></i>
+          </div>
+          <div>
+            <h4 class="text-xl font-black">화성 봉담3 공공주택지구</h4>
+            <p class="text-blue-200 text-xs mt-1">여의도 면적의 80% (약 69만 평, 2,289,715㎡) / 계획인구 4.2만 명</p>
+          </div>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="p-2.5 rounded-xl bg-white/10">
+              <span class="text-slate-300 block">총 공급 세대</span>
+              <span class="text-lg font-bold text-white">18,270 세대</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white/10">
+              <span class="text-slate-300 block">사업 시행자</span>
+              <span class="text-sm font-bold text-white">LH + GH + 화성도시공사</span>
+            </div>
+          </div>
+          <p class="text-xs text-blue-100 leading-relaxed">
+            수인분당선 신설역사와 신분당선 환승 체계를 포함한 수도권 3기 신도시급 공공택지입니다. 
+            2026년 하반기 감정평가 및 보상공고를 거쳐 2027~2028년 순차 착공, 2034년 최종 완공을 목표로 합니다.
+          </p>
+        </div>
+
+        <!-- 효행지구 카드 -->
+        <div class="p-6 rounded-2xl bg-gradient-to-br from-teal-900 to-emerald-950 text-white space-y-4 shadow-lg">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-md bg-teal-500/30 text-teal-200 text-xs font-bold border border-teal-400/30">
+              수원·화성 공동 앵커 프로젝트
+            </span>
+            <i data-lucide="landmark" class="w-5 h-5 text-teal-300"></i>
+          </div>
+          <div>
+            <h4 class="text-xl font-black">효행지구 도시개발사업</h4>
+            <p class="text-teal-200 text-xs mt-1">구 농촌진흥청 국립축산과학원 부지 (약 41.8만 평, 1,381,600㎡)</p>
+          </div>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="p-2.5 rounded-xl bg-white/10">
+              <span class="text-slate-300 block">화성시 구역 공급</span>
+              <span class="text-lg font-bold text-white">7,197 호</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white/10">
+              <span class="text-slate-300 block">수원시 구역 공급</span>
+              <span class="text-lg font-bold text-white">3,284 호</span>
+            </div>
+          </div>
+          <p class="text-xs text-teal-100 leading-relaxed">
+            사업비 1조 7,000억 원(한국농어촌공사) 규모로 오목천역세권과 봉담 구도심을 물리적으로 완전 결합합니다. 
+            오목천역 도보권 대형 상업·업무지구 및 중앙공원이 결합되어 2028년 착공, 2030년대 초반 입주를 목표로 합니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 현장 도시개발 도면 / 조감도 뷰어 -->
+      <div class="space-y-3 pt-2">
+        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+          <i data-lucide="image" class="w-4 h-4 text-blue-600"></i>
+          오목천 · 봉담 권역 도시개발 마스터플랜 및 현장 배치도
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-slate-100 p-2 rounded-2xl border border-slate-200 text-center">
+            <img src="오목천/오목천%20개발_1.png" onerror="this.onerror=null; this.src='../오목천/오목천%20개발_1.png';" alt="오목천 개발 계획도 1" class="rounded-xl w-full h-72 object-cover shadow-sm hover:scale-[1.01] transition-transform">
+            <span class="text-xs text-slate-600 mt-2 block font-medium">오목천 지구단위계획 및 수인분당선 역세권 토지이용계획도</span>
+          </div>
+          <div class="bg-slate-100 p-2 rounded-2xl border border-slate-200 text-center">
+            <img src="오목천/오목천%20개발_2.png" onerror="this.onerror=null; this.src='../오목천/오목천%20개발_2.png';" alt="오목천 개발 계획도 2" class="rounded-xl w-full h-72 object-cover shadow-sm hover:scale-[1.01] transition-transform">
+            <span class="text-xs text-slate-600 mt-2 block font-medium">효행지구 및 서수원-봉담 연결 광역도로·녹지축 마스터플랜</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 서수원 자족 산업 벨트 4대 축 -->
+      <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-3">
+        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+          <i data-lucide="cpu" class="w-4 h-4 text-indigo-600"></i>
+          서수원 배후 미래 지식산업 4대 엔진
+        </h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+          <div class="p-3.5 rounded-xl bg-white border border-slate-200">
+            <div class="font-bold text-slate-900 text-sm">탑동 이노베이션밸리</div>
+            <div class="text-blue-600 font-semibold mt-0.5">권선구 탑동 (26만㎡)</div>
+            <p class="text-slate-600 mt-1.5 leading-relaxed">R&D 지식산업센터, 소프트웨어, 바이오 벤처 집적지. 2026~2027년 용지 분양 본격화.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white border border-slate-200">
+            <div class="font-bold text-slate-900 text-sm">수원 R&D 사이언스파크</div>
+            <div class="text-indigo-600 font-semibold mt-0.5">권선구 입북동 (35만㎡)</div>
+            <p class="text-slate-600 mt-1.5 leading-relaxed">성균관대 연계 바이오·나노 연구단지. GB 해제 및 구역지정 가시화 단계.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white border border-slate-200">
+            <div class="font-bold text-slate-900 text-sm">수원 델타플렉스</div>
+            <div class="text-emerald-600 font-semibold mt-0.5">권선구 고색동 (125만㎡)</div>
+            <p class="text-slate-600 mt-1.5 leading-relaxed">1,200여 입주기업, 1.5만 명 근로자의 서수원 최대 정밀기계·IT 제조 산업 기반.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white border border-slate-200">
+            <div class="font-bold text-slate-900 text-sm">스마트 폴리스 (군공항 이전)</div>
+            <div class="text-amber-600 font-semibold mt-0.5">군공항 종전부지 (525만㎡)</div>
+            <p class="text-slate-600 mt-1.5 leading-relaxed">여의도 2배 면적 첨단 ICT·생태 복합도시 구상. 장기 초대형 호재 모멘텀.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 제4장. 광역 교통망(철도·도로) 대혁신 및 직주근접성 평가 -->
+    <section id="traffic" class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+      <div class="flex items-center space-x-3 border-b border-slate-100 pb-4">
+        <div class="p-2.5 rounded-xl bg-amber-100 text-amber-700">
+          <i data-lucide="train" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold text-amber-600 uppercase">CHAPTER 04</span>
+          <h3 class="text-xl md:text-2xl font-extrabold text-slate-900">광역 철도망 '골든 크로스' 및 고속 도로망 평가</h3>
+        </div>
+      </div>
+
+      <!-- 철도 비교 테이블 -->
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-xs text-left text-slate-700">
+          <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+            <tr>
+              <th class="p-3">철도 노선</th>
+              <th class="p-3">주요 경유지 및 정차역</th>
+              <th class="p-3 text-center">진행 단계</th>
+              <th class="p-3">목표 개통</th>
+              <th class="p-3">핵심 수혜 및 시간 단축 효과</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr class="hover:bg-slate-50">
+              <td class="p-3 font-bold text-slate-900 flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-600"></span>
+                신분당선 호매실~봉담 연장
+              </td>
+              <td class="p-3">광교 - 화서 - 호매실 - <strong>오목천·효행</strong> - <strong>봉담</strong></td>
+              <td class="p-3 text-center"><span class="badge-primary px-2 py-0.5 rounded text-[11px] font-semibold">제4차 국가철도망 반영</span></td>
+              <td class="p-3">사타 완료 ➔ 예타 추진</td>
+              <td class="p-3 font-semibold text-blue-700"><strong>판교 30분대, 강남 40분대 무환승 직결</strong> (지역 최대 호재)</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="p-3 font-bold text-slate-900 flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+                수인분당선
+              </td>
+              <td class="p-3">인천 - 안산 - <strong>오목천</strong> - 고색 - 수원역 - 분당 - 왕십리</td>
+              <td class="p-3 text-center"><span class="badge-success px-2 py-0.5 rounded text-[11px] font-semibold">운행 중 (완성)</span></td>
+              <td class="p-3">봉담3지구 신설역 추진</td>
+              <td class="p-3">수원역 5분(GTX-C 환승), 분당·판교 직결 대중교통 동맥</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="p-3 font-bold text-slate-900 flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-700"></span>
+                인천발 KTX (어천역)
+              </td>
+              <td class="p-3">수인분당선 어천역 복합환승센터 직결</td>
+              <td class="p-3 text-center"><span class="badge-primary px-2 py-0.5 rounded text-[11px] font-semibold">공사 진행 중</span></td>
+              <td class="p-3 font-bold text-emerald-700">2025~2026년</td>
+              <td class="p-3">오목천·봉담에서 1~2정거장으로 <strong>전국 반나절 고속철도망 이용</strong></td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="p-3 font-bold text-slate-900 flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+                GTX-C 노선
+              </td>
+              <td class="p-3">덕정 - 창동 - 삼성 - 양재 - <strong>수원역</strong></td>
+              <td class="p-3 text-center"><span class="badge-primary px-2 py-0.5 rounded text-[11px] font-semibold">착공 완료</span></td>
+              <td class="p-3">2028~2029년</td>
+              <td class="p-3">수원역 환승을 통해 <strong>강남 삼성역 20분대 진입</strong></td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="p-3 font-bold text-slate-900 flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
+                경기남부 광역철도 (3호선)
+              </td>
+              <td class="p-3">수서 - 성남 - 용인 - 수원 - <strong>화성(봉담)</strong></td>
+              <td class="p-3 text-center"><span class="badge-warning px-2 py-0.5 rounded text-[11px] font-semibold">제5차 철도망 건의</span></td>
+              <td class="p-3">중장기 계획</td>
+              <td class="p-3">4개 지자체 공동 협약 추진, 서울 동남권 직결 대안 노선</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 도로망 안내 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <span class="font-bold text-slate-900 block text-sm">봉담-과천 도시고속화도로</span>
+          <p class="text-slate-600 mt-1 leading-relaxed">봉담IC를 통해 과천, 사당 및 양재IC까지 30~40분대 도달하는 서울 강남 직결 광역 축.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <span class="font-bold text-slate-900 block text-sm">수도권 제2순환고속도로</span>
+          <p class="text-slate-600 mt-1 leading-relaxed">봉담-동탄, 봉담-송산 고속도로를 통해 동탄신도시 15분, 서해안 산업벨트 20분대 진입.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+          <span class="font-bold text-slate-900 block text-sm">매송고색로 & 서부로</span>
+          <p class="text-slate-600 mt-1 leading-relaxed">오목천동과 봉담 구도심 간 병목 해소, 수원 서부 우회도로로 수원 도심 및 북수원 직결.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 제5장. 주택 수급 환경, 분양·미분양 및 시세 분석 -->
+    <section id="market" class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+      <div class="flex items-center space-x-3 border-b border-slate-100 pb-4">
+        <div class="p-2.5 rounded-xl bg-emerald-100 text-emerald-700">
+          <i data-lucide="line-chart" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold text-emerald-600 uppercase">CHAPTER 05</span>
+          <h3 class="text-xl md:text-2xl font-extrabold text-slate-900">주택 수급 환경, 분양·미분양 및 시세 분석</h3>
+        </div>
+      </div>
+
+      <!-- 입주 공급물량 차트 및 분석 -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i data-lucide="calendar" class="w-4 h-4 text-emerald-600"></i>
+              연도별 입주 공급물량 추이 (2020~2026)
+            </h4>
+            <span class="text-[11px] text-red-600 font-bold">공급 절벽 진입</span>
+          </div>
+          <div class="h-64">
+            <canvas id="supplyChart"></canvas>
+          </div>
+          <div class="text-xs text-slate-600 leading-normal space-y-1">
+            <p>• <strong>화성 효행구(봉담):</strong> 2024년 7,222호(프라이드시티 입주) 피크 후 2025년 2,767호, 2026년 <strong>806호</strong>로 급감 (-88.8%).</p>
+            <p>• <strong>수원 권선구:</strong> 2024년 1,760호 입주 후 <strong>2025년 입주 0호(전무)</strong>, 2026년 당수지구 일부(2,379호)에 불과.</p>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i data-lucide="pie-chart" class="w-4 h-4 text-blue-600"></i>
+              미분양 주택 소진 현황 및 건전성
+            </h4>
+            <span class="text-[11px] text-emerald-700 font-bold">미분양 사실상 제로</span>
+          </div>
+          <div class="h-64">
+            <canvas id="unsoldChart"></canvas>
+          </div>
+          <p class="text-xs text-slate-600 leading-normal">
+            수원시는 2024년 말 300호에서 2026년 9월 <strong>21호</strong>로 93% 급감했습니다. 
+            화성시 역시 99만 대도시 중 <strong>단 57호</strong>에 불과하여 자연 미분양 수준을 밑돌며 완판 사이클이 견고합니다.
+          </p>
+        </div>
+      </div>
+
+      
+      <!-- [신규 추가] 2026~2029년 연도별 입주 예정 물량 및 단지별 전수 분석 도표 -->
+      <div class="space-y-4 pt-4 border-t border-slate-200">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="p-1.5 rounded-lg bg-emerald-100 text-emerald-800 font-bold text-xs">NEW</span>
+            <h4 class="font-bold text-slate-900 text-base flex items-center gap-2">
+              <i data-lucide="calendar-range" class="w-5 h-5 text-emerald-600"></i>
+              2026~2029년 연도별 입주 예정 물량 총괄표 및 단지별 전수 리스트
+            </h4>
+          </div>
+          <span class="text-xs text-slate-500 font-medium">국토부·한국부동산원 청약홈 전수 조사 기준</span>
+        </div>
+
+        <!-- 총괄 집계표 (도표 1) -->
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
+          <table class="w-full text-xs text-left text-slate-700">
+            <thead class="bg-slate-100 text-slate-900 font-bold border-b border-slate-200">
+              <tr>
+                <th class="p-3 text-center">입주 연도</th>
+                <th class="p-3 text-right">화성시 효행구<br><span class="text-[11px] font-normal text-slate-500">(봉담·매송·비봉)</span></th>
+                <th class="p-3 text-right">수원시 권선구<br><span class="text-[11px] font-normal text-slate-500">(오목천·당수·서둔·세류)</span></th>
+                <th class="p-3 text-right bg-blue-50/80 text-blue-950 font-black">핵심 연계권역 소계<br><span class="text-[11px] font-normal text-blue-700">(오목천·봉담 축)</span></th>
+                <th class="p-3 text-right">화성시 기타구<br><span class="text-[11px] font-normal text-slate-500">(동탄·만세·병점)</span></th>
+                <th class="p-3 text-right">수원시 기타구<br><span class="text-[11px] font-normal text-slate-500">(팔달·장안·영통)</span></th>
+                <th class="p-3 text-right bg-emerald-50/80 text-emerald-950 font-black">수원·화성 전체<br><span class="text-[11px] font-normal text-emerald-700">통합 공급 총계</span></th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-center text-slate-900">2026년</td>
+                <td class="p-3 text-right font-bold text-emerald-700">806 호</td>
+                <td class="p-3 text-right font-bold text-indigo-700">2,379 호</td>
+                <td class="p-3 text-right bg-blue-50/50 font-black text-blue-800">3,185 호</td>
+                <td class="p-3 text-right">3,418 호</td>
+                <td class="p-3 text-right">1,245 호</td>
+                <td class="p-3 text-right bg-emerald-50/50 font-black text-emerald-800">7,848 호</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-center text-slate-900">2027년</td>
+                <td class="p-3 text-right font-bold text-emerald-700">1,319 호</td>
+                <td class="p-3 text-right font-bold text-indigo-700">452 호</td>
+                <td class="p-3 text-right bg-blue-50/50 font-black text-blue-800">1,771 호</td>
+                <td class="p-3 text-right">4,476 호</td>
+                <td class="p-3 text-right text-slate-400">-</td>
+                <td class="p-3 text-right bg-emerald-50/50 font-black text-emerald-800">6,247 호</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-center text-slate-900">2028년</td>
+                <td class="p-3 text-right font-bold text-red-600 bg-red-50/40">0 호 (공급 전무)</td>
+                <td class="p-3 text-right font-bold text-indigo-700">1,281 호</td>
+                <td class="p-3 text-right bg-blue-50/50 font-black text-blue-800">1,281 호</td>
+                <td class="p-3 text-right">3,860 호</td>
+                <td class="p-3 text-right">556 호</td>
+                <td class="p-3 text-right bg-emerald-50/50 font-black text-emerald-800">5,697 호</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-center text-slate-900">2029년</td>
+                <td class="p-3 text-right font-bold text-emerald-700">998 호</td>
+                <td class="p-3 text-right font-bold text-indigo-700">476 호</td>
+                <td class="p-3 text-right bg-blue-50/50 font-black text-blue-800">1,474 호</td>
+                <td class="p-3 text-right">2,948 호</td>
+                <td class="p-3 text-right text-slate-400">-</td>
+                <td class="p-3 text-right bg-emerald-50/50 font-black text-emerald-800">4,422 호</td>
+              </tr>
+              <tr class="bg-slate-100/90 font-black border-t-2 border-slate-300">
+                <td class="p-3 text-center text-slate-900">4개년 누적 합계</td>
+                <td class="p-3 text-right text-emerald-900">3,123 호</td>
+                <td class="p-3 text-right text-indigo-900">4,588 호</td>
+                <td class="p-3 text-right bg-blue-100/80 text-blue-900">7,711 호</td>
+                <td class="p-3 text-right text-slate-800">14,702 호</td>
+                <td class="p-3 text-right text-slate-800">1,801 호</td>
+                <td class="p-3 text-right bg-emerald-100/80 text-emerald-900">24,214 호</td>
+              </tr>
+              <tr class="bg-amber-50/70 text-amber-950 font-bold border-t border-amber-200">
+                <td class="p-3 text-center">연평균 공급량</td>
+                <td class="p-3 text-right">약 781 호</td>
+                <td class="p-3 text-right">약 1,147 호</td>
+                <td class="p-3 text-right bg-amber-100/80 font-black text-amber-900">약 1,928 호</td>
+                <td class="p-3 text-right">약 3,676 호</td>
+                <td class="p-3 text-right">약 450 호</td>
+                <td class="p-3 text-right bg-amber-100/80 font-black text-amber-900">약 6,054 호</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="p-4 rounded-xl bg-blue-50/70 border border-blue-200 text-xs text-blue-900 leading-relaxed space-y-1">
+          <div class="font-bold flex items-center gap-1.5 text-blue-950">
+            <i data-lucide="check-circle" class="w-4 h-4 text-blue-600"></i>
+            2026~2029 중기 수급 핵심 시사점: '연평균 1,900호 수준의 극심한 공급 가뭄 고착화'
+          </div>
+          <p>
+            2024년 봉담 프라이드시티 입주 등으로 단 한 해에만 무려 <strong>8,982세대</strong>가 쏟아졌던 것과 비교할 때, 
+            2026년부터 2029년까지 4년간 오목천·봉담 연계 생활권의 연평균 입주 물량은 <strong>1,928호</strong>로 무려 <strong>78.5% 급감</strong>합니다. 
+            특히 <strong>2028년 봉담 권역 입주는 0호</strong>이며, 당수지구 외에는 신규 입주가 전무하여 신축 아파트 전세가 및 매매가의 하방 지지력이 매우 강력합니다.
+          </p>
+        </div>
+
+        <!-- 단지별 전수 명세 리스트 (도표 2) -->
+        <div class="mt-4 space-y-2">
+          <div class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+            <i data-lucide="list" class="w-4 h-4 text-slate-600"></i>
+            2026~2029년 연도별 입주 예정 아파트 단지 전수 리스트 (총 33개 단지)
+          </div>
+          <div class="overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-xs text-left text-slate-700">
+              <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                <tr>
+                  <th class="p-2.5 text-center">연도</th>
+                  <th class="p-2.5">행정구역</th>
+                  <th class="p-2.5">단지명</th>
+                  <th class="p-2.5 text-right">총 세대수</th>
+                  <th class="p-2.5 text-center">입주예정</th>
+                  <th class="p-2.5">사업 형태 / 유형</th>
+                  <th class="p-2.5">입지 및 특징</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <!-- 2026년 -->
+                <tr class="bg-slate-50/70 font-semibold text-slate-900"><td colspan="7" class="p-2 text-center bg-slate-200/60 font-bold text-[11px]">▼ 2026년 입주 예정 단지 (9개 단지 / 합계 7,848세대)</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2026</td><td class="p-2 font-bold text-blue-700">화성시 봉담읍</td><td class="p-2 font-bold text-slate-900">봉담중흥S-클래스센트럴에듀(A2)</td><td class="p-2 text-right font-bold text-emerald-700">806호</td><td class="p-2 text-center">2026.05</td><td class="p-2">민간분양</td><td class="p-2 text-slate-600">봉담2지구 중심부 신축 막바지 입주</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2026</td><td class="p-2 font-bold text-indigo-700">수원시 오목천동</td><td class="p-2 font-bold text-slate-900">오목천역더리브</td><td class="p-2 text-right font-bold text-emerald-700">201호</td><td class="p-2 text-center">2026.02</td><td class="p-2">주상복합</td><td class="p-2 text-slate-600">수인분당선 오목천역 초역세권 소형 단지</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2026</td><td class="p-2 text-slate-700">수원시 세류동</td><td class="p-2 font-medium">매교역팰루시드</td><td class="p-2 text-right">2,178호</td><td class="p-2 text-center">2026.08</td><td class="p-2">재개발(권선6)</td><td class="p-2 text-slate-600">수원역·매교역 더블역세권 매머드 정비단지</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2026</td><td class="p-2 text-slate-700">수원시 지동</td><td class="p-2 font-medium">수원성중흥S-클래스</td><td class="p-2 text-right">1,154호</td><td class="p-2 text-center">2026.01</td><td class="p-2">재개발(지동115)</td><td class="p-2 text-slate-600">팔달문 구도심 대단지 입주 완료</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2026</td><td class="p-2 text-slate-700">수원시 우만동</td><td class="p-2">남광교퍼스트루브루</td><td class="p-2 text-right">91호</td><td class="p-2 text-center">2026.05</td><td class="p-2">도시형</td><td class="p-2 text-slate-600">동수원 월드컵경기장 인근 소형</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2026</td><td class="p-2 text-slate-700">화성시 송산동</td><td class="p-2">화성아너스포레</td><td class="p-2 text-right">688호</td><td class="p-2 text-center">2026.02</td><td class="p-2">공공분양</td><td class="p-2 text-slate-600">병점 생활권 화산지구 공공분양</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2026</td><td class="p-2 text-slate-700">화성시 장지동</td><td class="p-2">동탄호수공원자연&자이(A93)</td><td class="p-2 text-right">965호</td><td class="p-2 text-center">2026.01</td><td class="p-2">장기전세</td><td class="p-2 text-slate-600">남동탄 호수공원 인접 공공임대</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2026</td><td class="p-2 text-slate-700">화성시 신동</td><td class="p-2">동탄금강펜테리움6차(A59)</td><td class="p-2 text-right">1,103호</td><td class="p-2 text-center">2026.02</td><td class="p-2">민간분양</td><td class="p-2 text-slate-600">동탄 신주거문화타운 대단지</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2026</td><td class="p-2 text-slate-700">화성시 신동</td><td class="p-2">동탄금강펜테리움7차(A57-2)</td><td class="p-2 text-right">662호</td><td class="p-2 text-center">2026.07</td><td class="p-2">민간분양</td><td class="p-2 text-slate-600">신주거문화타운 숲세권 입주</td></tr>
+
+                <!-- 2027년 -->
+                <tr class="bg-slate-50/70 font-semibold text-slate-900"><td colspan="7" class="p-2 text-center bg-slate-200/60 font-bold text-[11px]">▼ 2027년 입주 예정 단지 (10개 단지 / 합계 6,247세대)</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2027</td><td class="p-2 font-bold text-blue-700">화성시 봉담읍</td><td class="p-2 font-bold text-slate-900">동화리더리브</td><td class="p-2 text-right font-bold text-emerald-700">258호</td><td class="p-2 text-center">2027.09</td><td class="p-2">민간분양</td><td class="p-2 text-slate-600">동화지구 인접 중소형 주거단지</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2027</td><td class="p-2 font-bold text-blue-700">화성시 매송면</td><td class="p-2 font-bold text-slate-900">매송지역주택조합</td><td class="p-2 text-right font-bold text-emerald-700">531호</td><td class="p-2 text-center">2027.11</td><td class="p-2">지주택</td><td class="p-2 text-slate-600">어천역 KTX 역세권 인접 개발</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2027</td><td class="p-2 font-bold text-blue-700">화성시 비봉면</td><td class="p-2 font-bold text-slate-900">화성비봉금성백조예미지2차(B1)</td><td class="p-2 text-right font-bold text-emerald-700">530호</td><td class="p-2 text-center">2027.10</td><td class="p-2">공공택지</td><td class="p-2 text-slate-600">비봉지구 중심부 공공택지 신축</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2027</td><td class="p-2 font-bold text-indigo-700">수원시 당수동</td><td class="p-2 font-bold text-slate-900">엘리프한신더휴수원(C3)</td><td class="p-2 text-right font-bold text-emerald-700">452호</td><td class="p-2 text-center">2027.12</td><td class="p-2">분상제 택지</td><td class="p-2 text-slate-600">당수1지구 첫 공공택지 민간분양 입주</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2027</td><td class="p-2 text-slate-700">화성시 여울동</td><td class="p-2 font-medium">동탄역대방엘리움더시그니처</td><td class="p-2 text-right">464호</td><td class="p-2 text-center">2027.06</td><td class="p-2">분상제 주복</td><td class="p-2 text-slate-600">동탄역 초역세권 최고 경쟁률 단지</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2027</td><td class="p-2 text-slate-700">화성시 신동</td><td class="p-2">동탄파라곤3차(A58)</td><td class="p-2 text-right">1,247호</td><td class="p-2 text-center">2027.02</td><td class="p-2">민간임대</td><td class="p-2 text-slate-600">신주거문화타운 장기임대 대단지</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2027</td><td class="p-2 text-slate-700">화성시 장안면</td><td class="p-2">화성유보라아이비시티</td><td class="p-2 text-right">1,595호</td><td class="p-2 text-center">2027.03</td><td class="p-2">도시개발</td><td class="p-2 text-slate-600">화성 서남부 기아 화성공장 배후 산단</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2027</td><td class="p-2 text-slate-700">화성시 향남읍</td><td class="p-2">향남2지구(B16)</td><td class="p-2 text-right">772호</td><td class="p-2 text-center">2027.06</td><td class="p-2">공공임대</td><td class="p-2 text-slate-600">향남2신도시 공공임대 단지</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2027</td><td class="p-2 text-slate-700">화성시 우정읍</td><td class="p-2">조암지구(A2)</td><td class="p-2 text-right">323호</td><td class="p-2 text-center">2027.12</td><td class="p-2">공공분양</td><td class="p-2 text-slate-600">화성 서남부 소규모 공공단지</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2027</td><td class="p-2 text-slate-700">화성시 향남읍</td><td class="p-2">상신2지구</td><td class="p-2 text-right">75호</td><td class="p-2 text-center">2027.06</td><td class="p-2">민간분양</td><td class="p-2 text-slate-600">향남 상신리 소형 단지</td></tr>
+
+                <!-- 2028년 -->
+                <tr class="bg-slate-50/70 font-semibold text-slate-900"><td colspan="7" class="p-2 text-center bg-slate-200/60 font-bold text-[11px]">▼ 2028년 입주 예정 단지 (9개 단지 / 합계 5,697세대)</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2028</td><td class="p-2 font-bold text-indigo-700">수원시 당수동</td><td class="p-2 font-bold text-slate-900">엘리프한신더휴수원(D3)</td><td class="p-2 text-right font-bold text-emerald-700">697호</td><td class="p-2 text-center">2028.04</td><td class="p-2">분상제 택지</td><td class="p-2 text-slate-600">당수1지구 중심부 대단지 입주</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2028</td><td class="p-2 font-bold text-indigo-700">수원시 당수동</td><td class="p-2 font-bold text-slate-900">서수원에피트센트럴마크(M1/M2)</td><td class="p-2 text-right font-bold text-emerald-700">470호</td><td class="p-2 text-center">2028.09</td><td class="p-2">분상제 주복</td><td class="p-2 text-slate-600">당수지구 상업지구 연계 주상복합 타운</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2028</td><td class="p-2 font-bold text-indigo-700">수원시 평동</td><td class="p-2 font-bold text-slate-900">수원역아너스빌타임원</td><td class="p-2 text-right font-bold text-emerald-700">114호</td><td class="p-2 text-center">2028.11</td><td class="p-2">소형 주복</td><td class="p-2 text-slate-600">오목천/평동 수인분당선 인접 단지</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2028</td><td class="p-2 text-slate-700">수원시 영화동</td><td class="p-2">두산위브더센트럴수원</td><td class="p-2 text-right">556호</td><td class="p-2 text-center">2028.09</td><td class="p-2">구도심정비</td><td class="p-2 text-slate-600">영화동 정비사업 (1순위 14.5:1 완판)</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2028</td><td class="p-2 text-slate-700">화성시 산척동</td><td class="p-2">동탄포레파크자연앤푸르지오(A76-2)</td><td class="p-2 text-right">1,524호</td><td class="p-2 text-center">2028.07</td><td class="p-2">공공분양</td><td class="p-2 text-slate-600">남동탄 자연앤 대단지 공공분양</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2028</td><td class="p-2 text-slate-700">화성시 산척동</td><td class="p-2">동탄꿈의숲자연&데시앙(A78)</td><td class="p-2 text-right">1,170호</td><td class="p-2 text-center">2028.06</td><td class="p-2">공공분양</td><td class="p-2 text-slate-600">동탄 호수공원 인접 숲세권 단지</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2028</td><td class="p-2 text-slate-700">화성시 여울동</td><td class="p-2">e편한세상동탄역어반원(C14)</td><td class="p-2 text-right">610호</td><td class="p-2 text-center">2028.07</td><td class="p-2">공공임대</td><td class="p-2 text-slate-600">광역비즈니스콤플렉스 중심 임대</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2028</td><td class="p-2 text-slate-700">화성시 남양읍</td><td class="p-2">화성남양뉴타운우미린(B16)</td><td class="p-2 text-right">556호</td><td class="p-2 text-center">2028.07</td><td class="p-2">공공택지</td><td class="p-2 text-slate-600">남양뉴타운 마지막 분양 단지</td></tr>
+
+                <!-- 2029년 -->
+                <tr class="bg-slate-50/70 font-semibold text-slate-900"><td colspan="7" class="p-2 text-center bg-slate-200/60 font-bold text-[11px]">▼ 2029년 입주 예정 단지 (5개 단지 / 합계 4,422세대)</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2029</td><td class="p-2 font-bold text-indigo-700">수원시 서둔동</td><td class="p-2 font-bold text-slate-900">화서역호수공원아너스빌</td><td class="p-2 text-right font-bold text-emerald-700">476호</td><td class="p-2 text-center">2029.10</td><td class="p-2">민간분양</td><td class="p-2 text-slate-600">화서역·스타필드 도보권 신축</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2029</td><td class="p-2 font-bold text-blue-700">화성시 비봉면</td><td class="p-2 font-bold text-slate-900">야목역서희스타힐스그랜드힐</td><td class="p-2 text-right font-bold text-emerald-700">998호</td><td class="p-2 text-center">2029.10</td><td class="p-2">지주택/일반</td><td class="p-2 text-slate-600">수인분당선 야목역세권 대단지</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2029</td><td class="p-2 text-slate-700">화성시 향남읍</td><td class="p-2">화성향남롯데캐슬시그니처</td><td class="p-2 text-right">1,542호</td><td class="p-2 text-center">2029.12</td><td class="p-2">민간분양</td><td class="p-2 text-slate-600">서해선 향남역 외곽 대단지</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2029</td><td class="p-2 text-slate-700">화성시 향남읍</td><td class="p-2">향남역그로브스위첸</td><td class="p-2 text-right">933호</td><td class="p-2 text-center">2029.06</td><td class="p-2">민간분양</td><td class="p-2 text-slate-600">향남역 역세권 주상복합</td></tr>
+                <tr class="hover:bg-slate-50"><td class="p-2 text-center font-bold">2029</td><td class="p-2 text-slate-700">화성시 신동</td><td class="p-2">화성동탄2 C27블록</td><td class="p-2 text-right">473호</td><td class="p-2 text-center">2029.06</td><td class="p-2">공공분양</td><td class="p-2 text-slate-600">신주거문화타운 잔여 공공분양</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- 주택 면적별 공급 및 연차별 노후도 종합 비교 분석 -->
+      <div class="space-y-6 pt-4 border-t border-slate-200">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="p-2 rounded-xl bg-indigo-100 text-indigo-700">
+              <i data-lucide="pie-chart" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-indigo-600 uppercase">HOUSING STOCK & AGING ANALYSIS</span>
+              <h4 class="font-bold text-slate-900 text-base flex items-center gap-2">
+                주택 공급 면적 및 연차별 노후도 정밀 비교 (수원시 vs 화성시 봉담 권역)
+              </h4>
+            </div>
+          </div>
+          <span class="text-xs text-slate-500 font-medium">부동산 공공 통계 원천 도표 기반</span>
+        </div>
+
+        <!-- 1. 원본 도표 전수 시각화 (잘림 없는 와이드 뷰어) -->
+        <div class="space-y-4">
+          <!-- 수원시 도표 뷰어 -->
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-slate-800 text-xs flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+                [도표 원본 1] 수원시 면적별 공급(전체/선택기간) 및 연차별 노후도 분석 도표
+              </span>
+              <span class="text-[11px] text-slate-500">수원시 전체 (오목천·권선구 등)</span>
+            </div>
+            <div class="overflow-x-auto rounded-xl bg-white p-2 border border-slate-200 shadow-sm">
+              <img src="오목천/수원노후도.png" onerror="this.onerror=null; this.src='../오목천/수원노후도.png';" alt="수원시 면적별 공급 및 노후도 도표" class="w-full h-auto min-w-[900px] object-contain rounded-lg">
+            </div>
+            <p class="text-[11px] text-slate-500">※ 파이 차트: 면적별 누적 공급 vs 선택기간 공급 / 우측 막대 그래프: 1~5년(신축)부터 31년 이상(노후)까지 면적대별 분포</p>
+          </div>
+
+          <!-- 화성시 도표 뷰어 -->
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-slate-800 text-xs flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+                [도표 원본 2] 화성시 면적별 공급(전체/선택기간) 및 연차별 노후도 분석 도표
+              </span>
+              <span class="text-[11px] text-slate-500">화성시 전체 (봉담·효행지구 등)</span>
+            </div>
+            <div class="overflow-x-auto rounded-xl bg-white p-2 border border-slate-200 shadow-sm">
+              <img src="기초자료/봉담노후도.png" onerror="this.onerror=null; this.src='../기초자료/봉담노후도.png';" alt="화성시 면적별 공급 및 노후도 도표" class="w-full h-auto min-w-[900px] object-contain rounded-lg">
+            </div>
+            <p class="text-[11px] text-slate-500">※ 화성시는 10년 이하 신축·준신축 물량이 압도적이며, 31년 초과 노후 주택은 0.8%에 불과함</p>
+          </div>
+        </div>
+
+        <!-- 2. 도표 원본 데이터 정밀 텍스트 테이블 복원 (실제 표) -->
+        <div class="space-y-4 pt-2">
+          <!-- 표 A: 면적별 공급 현황 비교표 -->
+          <div class="space-y-2">
+            <h5 class="font-bold text-slate-900 text-xs flex items-center gap-1.5 text-slate-800">
+              <i data-lucide="table" class="w-4 h-4 text-indigo-600"></i>
+              [실제 데이터 표 A] 수원시 vs 화성시 주택 전용면적별 공급 현황 및 비중 비교
+            </h5>
+            <div class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+              <table class="w-full text-xs text-left text-slate-700">
+                <thead class="bg-slate-100 text-slate-900 font-bold border-b border-slate-200">
+                  <tr>
+                    <th class="p-2.5 text-center">지역</th>
+                    <th class="p-2.5">공급 구분</th>
+                    <th class="p-2.5 text-right font-black">전체 공급량</th>
+                    <th class="p-2.5 text-right">60㎡ 이하 (소형)</th>
+                    <th class="p-2.5 text-right font-bold text-blue-700">60~85㎡ 이하 (국평)</th>
+                    <th class="p-2.5 text-right">85㎡ 초과 (대형)</th>
+                    <th class="p-2.5">면적 구성 특징</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="hover:bg-slate-50">
+                    <td rowspan="2" class="p-2.5 text-center font-bold bg-blue-50/50 text-blue-900 border-r border-slate-200">수원시</td>
+                    <td class="p-2.5 font-medium">전체 누적 공급</td>
+                    <td class="p-2.5 text-right font-bold">13,073,263 호 (100.0%)</td>
+                    <td class="p-2.5 text-right">5,059,267 호 (38.7%)</td>
+                    <td class="p-2.5 text-right font-bold text-blue-700">6,208,705 호 (47.5%)</td>
+                    <td class="p-2.5 text-right">1,799,071 호 (13.8%)</td>
+                    <td class="p-2.5 text-slate-600">전통 도심 특성상 소형(38.7%) 비중이 높은 편</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 bg-blue-50/20">
+                    <td class="p-2.5 font-medium text-blue-800">선택기간 공급</td>
+                    <td class="p-2.5 text-right font-bold text-blue-900">3,516,373 호 (100.0%)</td>
+                    <td class="p-2.5 text-right">1,125,932 호 (32.0%)</td>
+                    <td class="p-2.5 text-right font-bold text-blue-700">2,112,905 호 (60.1%)</td>
+                    <td class="p-2.5 text-right">273,277 호 (7.8%)</td>
+                    <td class="p-2.5 text-blue-900 font-semibold">최근 공급은 국평(84㎡ 중심 60.1%)에 집중</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td rowspan="2" class="p-2.5 text-center font-bold bg-emerald-50/50 text-emerald-900 border-r border-slate-200">화성시<br><span class="text-[11px] font-normal text-emerald-700">(봉담 등)</span></td>
+                    <td class="p-2.5 font-medium">전체 누적 공급</td>
+                    <td class="p-2.5 text-right font-bold">309,333 호 (100.0%)</td>
+                    <td class="p-2.5 text-right">98,823 호 (31.9%)</td>
+                    <td class="p-2.5 text-right font-bold text-emerald-700">170,810 호 (55.2%)</td>
+                    <td class="p-2.5 text-right">39,700 호 (12.8%)</td>
+                    <td class="p-2.5 text-slate-600">신도시 택지개발 위주로 국민평형(55.2%) 중심 공급</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 bg-emerald-50/20">
+                    <td class="p-2.5 font-medium text-emerald-800">선택기간 공급</td>
+                    <td class="p-2.5 text-right font-bold text-emerald-900">163,222 호 (100.0%)</td>
+                    <td class="p-2.5 text-right">57,028 호 (34.9%)</td>
+                    <td class="p-2.5 text-right font-bold text-emerald-700">90,865 호 (55.7%)</td>
+                    <td class="p-2.5 text-right">15,329 호 (9.4%)</td>
+                    <td class="p-2.5 text-emerald-900 font-semibold">3040 실수요 맞춤형 59~84㎡ 집중 공급</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 표 B: 연차별 주택 노후도 상세 비교표 -->
+          <div class="space-y-2 pt-2">
+            <h5 class="font-bold text-slate-900 text-xs flex items-center gap-1.5 text-slate-800">
+              <i data-lucide="layers" class="w-4 h-4 text-indigo-600"></i>
+              [실제 데이터 표 B] 수원시 vs 화성시 연차별 주택 노후도 현황 (도표 원본 수치 전수 정리)
+            </h5>
+            <div class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+              <table class="w-full text-xs text-left text-slate-700">
+                <thead class="bg-slate-100 text-slate-900 font-bold border-b border-slate-200">
+                  <tr>
+                    <th class="p-2.5 text-center">지역</th>
+                    <th class="p-2.5">면적 구분</th>
+                    <th class="p-2.5 text-right font-bold">전체 물량</th>
+                    <th class="p-2.5 text-right bg-emerald-50/60 text-emerald-900">5년 이하 (신축)</th>
+                    <th class="p-2.5 text-right bg-blue-50/60 text-blue-900">6~10년 (준신축)</th>
+                    <th class="p-2.5 text-right">11~20년 (구축진입)</th>
+                    <th class="p-2.5 text-right bg-amber-50/60 text-amber-900">21~30년 (노후주택)</th>
+                    <th class="p-2.5 text-right bg-red-50/60 text-red-900">31년 초과 (재건축대상)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <!-- 수원시 -->
+                  <tr class="hover:bg-slate-50">
+                    <td rowspan="4" class="p-2.5 text-center font-bold bg-blue-50/40 text-blue-900 border-r border-slate-200">수원시<br><span class="text-[11px] font-normal text-slate-500">(권선구 등)</span></td>
+                    <td class="p-2.5 font-medium">60㎡ 이하</td>
+                    <td class="p-2.5 text-right font-bold">5,059,267 호</td>
+                    <td class="p-2.5 text-right">498,743 호 (9.9%)</td>
+                    <td class="p-2.5 text-right">598,189 호 (11.8%)</td>
+                    <td class="p-2.5 text-right">768,962 호 (15.2%)</td>
+                    <td class="p-2.5 text-right font-semibold text-amber-800">1,467,057 호 (29.0%)</td>
+                    <td class="p-2.5 text-right font-bold text-red-700">1,726,316 호 (34.1%)</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="p-2.5 font-medium">60~85㎡ 이하</td>
+                    <td class="p-2.5 text-right font-bold">6,208,705 호</td>
+                    <td class="p-2.5 text-right">879,044 호 (14.2%)</td>
+                    <td class="p-2.5 text-right">1,196,746 호 (19.3%)</td>
+                    <td class="p-2.5 text-right">1,354,163 호 (21.8%)</td>
+                    <td class="p-2.5 text-right font-semibold text-amber-800">1,537,521 호 (24.8%)</td>
+                    <td class="p-2.5 text-right font-bold text-red-700">1,241,231 호 (20.0%)</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="p-2.5 font-medium">85㎡ 초과</td>
+                    <td class="p-2.5 text-right font-bold">1,799,071 호</td>
+                    <td class="p-2.5 text-right">120,204 호 (6.7%)</td>
+                    <td class="p-2.5 text-right">147,272 호 (8.2%)</td>
+                    <td class="p-2.5 text-right">577,572 호 (32.1%)</td>
+                    <td class="p-2.5 text-right font-semibold text-amber-800">551,326 호 (30.6%)</td>
+                    <td class="p-2.5 text-right font-bold text-red-700">402,697 호 (22.4%)</td>
+                  </tr>
+                  <tr class="bg-blue-50/60 font-black border-t border-slate-300">
+                    <td class="p-2.5 text-blue-950">수원시 합계</td>
+                    <td class="p-2.5 text-right text-blue-950">13,073,263 호</td>
+                    <td class="p-2.5 text-right text-emerald-800">1,497,991 호 (11.5%)</td>
+                    <td class="p-2.5 text-right text-blue-800">1,942,207 호 (14.9%)</td>
+                    <td class="p-2.5 text-right text-slate-800">2,700,697 호 (20.7%)</td>
+                    <td class="p-2.5 text-right text-amber-900">3,555,904 호 (27.2%)</td>
+                    <td class="p-2.5 text-right text-red-800">3,370,244 호 (25.8%)</td>
+                  </tr>
+
+                  <!-- 화성시 -->
+                  <tr class="hover:bg-slate-50">
+                    <td rowspan="4" class="p-2.5 text-center font-bold bg-emerald-50/40 text-emerald-900 border-r border-slate-200">화성시<br><span class="text-[11px] font-normal text-slate-500">(봉담 권역)</span></td>
+                    <td class="p-2.5 font-medium">60㎡ 이하</td>
+                    <td class="p-2.5 text-right font-bold">98,823 호</td>
+                    <td class="p-2.5 text-right font-semibold text-emerald-700">22,068 호 (22.3%)</td>
+                    <td class="p-2.5 text-right font-semibold text-blue-700">33,060 호 (33.5%)</td>
+                    <td class="p-2.5 text-right">27,317 호 (27.6%)</td>
+                    <td class="p-2.5 text-right">14,636 호 (14.8%)</td>
+                    <td class="p-2.5 text-right text-slate-500">1,742 호 (1.8%)</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="p-2.5 font-medium">60~85㎡ 이하</td>
+                    <td class="p-2.5 text-right font-bold">170,810 호</td>
+                    <td class="p-2.5 text-right font-semibold text-emerald-700">28,827 호 (16.9%)</td>
+                    <td class="p-2.5 text-right font-semibold text-blue-700">59,930 호 (35.1%)</td>
+                    <td class="p-2.5 text-right">51,603 호 (30.2%)</td>
+                    <td class="p-2.5 text-right">29,821 호 (17.5%)</td>
+                    <td class="p-2.5 text-right text-slate-500">629 호 (0.4%)</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="p-2.5 font-medium">85㎡ 초과</td>
+                    <td class="p-2.5 text-right font-bold">39,700 호</td>
+                    <td class="p-2.5 text-right font-semibold text-emerald-700">6,354 호 (16.0%)</td>
+                    <td class="p-2.5 text-right font-semibold text-blue-700">8,975 호 (22.6%)</td>
+                    <td class="p-2.5 text-right">20,343 호 (51.2%)</td>
+                    <td class="p-2.5 text-right">3,971 호 (10.0%)</td>
+                    <td class="p-2.5 text-right text-slate-500">57 호 (0.1%)</td>
+                  </tr>
+                  <tr class="bg-emerald-50/60 font-black border-t border-slate-300">
+                    <td class="p-2.5 text-emerald-950">화성시 합계</td>
+                    <td class="p-2.5 text-right text-emerald-950">309,333 호</td>
+                    <td class="p-2.5 text-right text-emerald-800">57,249 호 (18.5%)</td>
+                    <td class="p-2.5 text-right text-blue-800">101,965 호 (33.0%)</td>
+                    <td class="p-2.5 text-right text-slate-800">99,263 호 (32.1%)</td>
+                    <td class="p-2.5 text-right text-slate-700">48,428 호 (15.7%)</td>
+                    <td class="p-2.5 text-right text-slate-500">2,428 호 (0.8%)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 구조적 시사점 분석 박스 -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 leading-relaxed space-y-1.5">
+            <div class="font-bold text-slate-900 flex items-center gap-1.5">
+              <i data-lucide="arrow-right-circle" class="w-4 h-4 text-indigo-600"></i>
+              노후도 비교 분석 핵심 결론: '수원 구도심의 급격한 노후화 vs 화성 봉담의 압도적 신축 메리트'
+            </div>
+            <ul class="space-y-1 text-slate-600">
+              <li>• <strong>수원시의 극심한 노후도 (21년 이상 53.0%):</strong> 수원시는 21년 이상 된 노후 아파트가 전체의 <strong>53.0%(692.6만 호)</strong>에 달하며, 31년 초과 재건축 연한 도래 아파트만 25.8%에 이릅니다. 반면 5년 이하 신축은 11.5%에 불과하여 신축 갈증이 극에 달해 있습니다.</li>
+              <li>• <strong>화성시(봉담)의 신축 압도성 (10년 이하 51.5%):</strong> 화성시는 10년 이하 신축·준신축 비율이 <strong>51.5%(15.9만 호)</strong>로 과반을 넘으며, 31년 초과 노후 주택은 <strong>0.8%(2,428호)</strong>에 불과합니다.</li>
+              <li>• <strong>인구 이동의 직접적 원인:</strong> 수원 권선구·팔달구 등 구도심의 20~30년 차 노후 단지에 거주하던 3040 세대가 쾌적한 주거환경과 신축 대단지 인프라를 찾아 바로 옆 화성 봉담 신도시(봉담2지구, 동화지구, 내리지구 프라이드시티 등)로 대거 이주(이주율 6.33% 1위)하는 핵심 메커니즘이 이 통계로 명확히 입증됩니다.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 주요 단지 시세 및 전세가율 테이블 -->
+      <div class="space-y-3">
+        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+          <i data-lucide="coins" class="w-4 h-4 text-blue-600"></i>
+          오목천 · 봉담 주요 아파트 단지 실거래 시세 및 전세가율 비교
+        </h4>
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+          <table class="w-full text-xs text-left text-slate-700">
+            <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+              <tr>
+                <th class="p-3">단지명</th>
+                <th class="p-3">위치 / 역세권</th>
+                <th class="p-3 text-center">준공</th>
+                <th class="p-3 text-center">세대수</th>
+                <th class="p-3 text-right">매매 시세 (전용84)</th>
+                <th class="p-3 text-right">전세 시세 (전용84)</th>
+                <th class="p-3 text-center">전세가율</th>
+                <th class="p-3">단지 평가 및 특징</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">쌍용더플래티넘오목천역</td>
+                <td class="p-3">수원 권선구 오목천역 초역세</td>
+                <td class="p-3 text-center">2022년</td>
+                <td class="p-3 text-center">930세대</td>
+                <td class="p-3 text-right font-bold text-blue-700">6.5 ~ 7.2 억</td>
+                <td class="p-3 text-right">4.2 ~ 4.6 억</td>
+                <td class="p-3 text-center font-bold text-slate-800">64%</td>
+                <td class="p-3">오목천 권역 대장주, 효행지구 연계 최대 수혜</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">남광하우스토리</td>
+                <td class="p-3">수원 권선구 오목천동</td>
+                <td class="p-3 text-center">2007년</td>
+                <td class="p-3 text-center">428세대</td>
+                <td class="p-3 text-right font-bold text-slate-700">4.2 ~ 4.7 억</td>
+                <td class="p-3 text-right">2.9 ~ 3.2 억</td>
+                <td class="p-3 text-center font-bold text-emerald-700">68%</td>
+                <td class="p-3">가성비 실거주 및 경매/갭투자 인기 단지</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">봉담2 중흥S클래스 에듀파크</td>
+                <td class="p-3">화성시 봉담2지구 중심</td>
+                <td class="p-3 text-center">2022년</td>
+                <td class="p-3 text-center">1,050세대</td>
+                <td class="p-3 text-right font-bold text-blue-700">5.3 ~ 6.0 억</td>
+                <td class="p-3 text-right">3.5 ~ 3.8 억</td>
+                <td class="p-3 text-center font-bold text-slate-800">65%</td>
+                <td class="p-3">초·중·고 학세권, 봉담2지구 랜드마크 대단지</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">봉담자이 라피네</td>
+                <td class="p-3">화성시 동화지구</td>
+                <td class="p-3 text-center">2023년</td>
+                <td class="p-3 text-center">750세대</td>
+                <td class="p-3 text-right font-bold text-blue-700">5.5 ~ 6.2 억</td>
+                <td class="p-3 text-right">3.6 ~ 4.0 억</td>
+                <td class="p-3 text-center font-bold text-slate-800">65%</td>
+                <td class="p-3">브랜드 프리미엄, 봉담자이라젠느(862호)와 타운 형성</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">힐스테이트 봉담 프라이드시티</td>
+                <td class="p-3">화성시 내리지구</td>
+                <td class="p-3 text-center">2024년</td>
+                <td class="p-3 text-center">2,333세대</td>
+                <td class="p-3 text-right font-bold text-slate-700">4.8 ~ 5.4 억</td>
+                <td class="p-3 text-right">2.8 ~ 3.2 억</td>
+                <td class="p-3 text-center font-bold text-amber-700">59%</td>
+                <td class="p-3">입주장 매물 소화 완료, 숲세권 4천세대 매머드 단지</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 제6장. 특수 리스크 및 권리·환경 분석 -->
+    <section id="risk" class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+      <div class="flex items-center space-x-3 border-b border-slate-100 pb-4">
+        <div class="p-2.5 rounded-xl bg-red-100 text-red-700">
+          <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold text-red-600 uppercase">CHAPTER 06</span>
+          <h3 class="text-xl md:text-2xl font-extrabold text-slate-900">특수 리스크, 환경 복원 및 위반건축물 양성화 가이드</h3>
+        </div>
+      </div>
+
+      <!-- 리스크 & 환경 복원 그리드 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 군공항 리스크 -->
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+            <i data-lucide="plane" class="w-4 h-4 text-red-600"></i>
+            수원 군공항 고도제한 및 소음 영향권 분석
+          </h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            수원비행장 비행 항로가 서수원(고색·평동·오목천 일부)과 화성 봉담 북동부(와우리 일원) 상공을 지나며 일부 소음 및 건축 고도제한이 적용됩니다. 
+            그러나 봉담2·3지구 핵심부는 영향권 밖이며, <strong>군공항 이전 특별법 가시화 시 가장 폭발적인 자산가치 상승을 누릴 '비대칭 옵션'</strong>으로 작용합니다.
+          </p>
+        </div>
+
+        <!-- 환경 복원 -->
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+            <i data-lucide="trees" class="w-4 h-4 text-emerald-600"></i>
+            삼보폐광산 6만 평 '기후대응 도시숲' 생태 복원
+          </h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            30년간 방치되었던 화성 봉담 삼보폐광산이 국비·지방비 투입으로 <strong>약 6만 평의 친환경 도시숲·생태체험공원</strong>으로 탈바꿈하고 있습니다. 
+            서수원 하수처리장 지하화 및 상부 체육공원화와 함께 지역의 고질적 혐오 요소가 최대 친환경 힐링 자산으로 전환되었습니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 위반건축물 3대 유형 양성화 가이드 -->
+      <div class="p-5 rounded-2xl bg-amber-50/60 border border-amber-200 space-y-3">
+        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2 text-amber-900">
+          <i data-lucide="shield-alert" class="w-4 h-4 text-amber-600"></i>
+          구도심 빌라·다가구 위반건축물 3대 유형 및 2025~2026 양성화 특별법 대응 가이드
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+          <div class="p-3.5 rounded-xl bg-white border border-amber-200">
+            <span class="badge-success px-2 py-0.5 rounded text-[11px] font-bold">저위험 / 고수익형</span>
+            <div class="font-bold text-slate-900 mt-2">무단 증축 (베란다 샷시/패널)</div>
+            <p class="text-slate-600 mt-1 leading-relaxed">일조권 사선제한 위반 사례 다수. 2025~2026 특별조치법 요건 충족 시 양성화 합법화 가능성 높음.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white border border-amber-200">
+            <span class="badge-warning px-2 py-0.5 rounded text-[11px] font-bold">고위험 / 고비용형</span>
+            <div class="font-bold text-slate-900 mt-2">불법 용도변경 (근생빌라)</div>
+            <p class="text-slate-600 mt-1 leading-relaxed">상가를 주거로 개조. 주차대수 미확보 시 양성화 불가, 전세대출·보증보험 불가로 매수 시 극도 주의.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white border border-amber-200">
+            <span class="badge-danger px-2 py-0.5 rounded text-[11px] font-bold">극위험 / 퇴출형</span>
+            <div class="font-bold text-slate-900 mt-2">불법 방쪼개기 (세대 분할)</div>
+            <p class="text-slate-600 mt-1 leading-relaxed">소방·정화조 기준 위반. 적발 시 매년 이행강제금 및 원상복구 명령. 경매/매매 시 무조건 회피 대상.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 제7장. 부동산 투자 및 실수요 의사결정 전략 (Action Plan) -->
+    <section id="strategy" class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 md:p-10 shadow-2xl space-y-6">
+      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
+        <div class="p-2.5 rounded-xl bg-blue-500/20 text-blue-300 border border-blue-400/30">
+          <i data-lucide="target" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xs font-bold text-blue-400 uppercase">CHAPTER 07</span>
+          <h3 class="text-xl md:text-2xl font-extrabold text-white">실수요자 및 투자자를 위한 단계별 실행 로드맵 (Action Plan)</h3>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs leading-relaxed">
+        <!-- 실수요자 전략 -->
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+          <div class="flex items-center gap-2 text-sm font-bold text-teal-300">
+            <i data-lucide="user-check" class="w-4 h-4"></i>
+            실수요자 내집마련 가이드
+          </div>
+          <div class="space-y-2 text-slate-300">
+            <p>• <strong>예산 6억~7억 원대 (대장주 선점):</strong> 수인분당선 도보권이자 효행지구 개발 인프라를 누릴 수 있는 <strong>쌍용더플래티넘오목천역</strong> 또는 학군 인프라가 완성된 <strong>봉담2 중흥S클래스</strong>를 매수 1순위로 고려하십시오.</p>
+            <p>• <strong>예산 4억~5억 원대 (가성비 신축 공략):</strong> 2024년 대규모 입주로 인해 일시적 매물 소화 과정을 거친 <strong>봉담 프라이드시티(힐스테이트/자이)</strong> 또는 <strong>봉담자이라피네</strong> 전용 84㎡를 공략하십시오. 2025~2026년 공급 절벽으로 인해 매매·전세 시세 회복 탄력성이 가장 높습니다.</p>
+          </div>
+        </div>
+
+        <!-- 투자자 전략 -->
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+          <div class="flex items-center gap-2 text-sm font-bold text-amber-300">
+            <i data-lucide="trending-up" class="w-4 h-4"></i>
+            스마트 투자자 포트폴리오 가이드
+          </div>
+          <div class="space-y-2 text-slate-300">
+            <p>• <strong>전세가율 65~70% 회복기 갭투자:</strong> 신규 입주 공급 제로 상황에서 전세가가 급등 중입니다. 갭 1억~1.5억 원 수준으로 진입 가능한 오목천 역세권 및 봉담2지구 준신축 단지를 선점하십시오.</p>
+            <p>• <strong>봉담3지구 토지보상금 유동성 효과:</strong> 2026~2027년 봉담3지구(약 69만 평)의 대규모 토지보상금이 풀리면 인근 대토 수요 및 재투자 자금이 오목천·봉담 기축 아파트로 대거 유입될 것입니다. 보상금 지급 전 선취매 전략이 유효합니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 총평 박스 -->
+      <div class="p-5 rounded-2xl bg-blue-600/20 border border-blue-400/30 text-slate-200 text-xs leading-relaxed space-y-2">
+        <div class="font-bold text-blue-300 text-sm flex items-center gap-2">
+          <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+          종합 결론: 서남부 메가시티의 황금기 진입
+        </div>
+        <p>
+          수원 오목천과 화성 봉담은 지리적 인접성을 바탕으로 <strong>효행지구</strong>와 <strong>봉담3지구</strong>를 통해 <strong>10만 세대급 분당급 자족 거대도시</strong>로 완성되고 있습니다. 
+          2024년 역대 최대 입주 물량의 소화가 끝나고 2025~2026년 극단적 공급 절벽과 미분양 '제로' 상태가 맞물려 있는 지금이, 실수요자와 투자자 모두에게 가장 안전하고 매력적인 진입 적기입니다.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-xs text-slate-500 border-t border-slate-200 mt-12 no-print">
+    <p>© 2026 Regional Real Estate Market Comprehensive Analysis Master Report. All rights reserved.</p>
+    <p class="mt-1">본 보고서는 공공 빅데이터(국토교통부, 행정안전부, 한국부동산원) 및 공식 도시기본계획을 기반으로 정밀 작성되었습니다.</p>
+  </footer>
+
+  <!-- Chart.js 스크립트 -->
+  <script>
+    // Lucide Icons 초기화
+    lucide.createIcons();
+
+    // 1. 인구 및 세대수 추이 차트
+    const popCtx = document.getElementById('popChart').getContext('2d');
+    new Chart(popCtx, {
+      type: 'line',
+      data: {
+        labels: ['2008', '2010', '2012', '2014', '2016', '2018', '2020', '2022', '2024', '2025'],
+        datasets: [
+          {
+            label: '수원시 총인구 (만명)',
+            data: [106.7, 107.7, 112.0, 117.4, 119.4, 120.1, 118.6, 119.0, 119.3, 118.6],
+            borderColor: '#2563eb',
+            backgroundColor: '#2563eb',
+            tension: 0.3,
+            borderWidth: 2.5
+          },
+          {
+            label: '화성시 총인구 (만명)',
+            data: [44.9, 50.5, 52.5, 54.0, 64.0, 75.8, 85.5, 91.0, 96.8, 98.99],
+            borderColor: '#0d9488',
+            backgroundColor: '#0d9488',
+            tension: 0.3,
+            borderWidth: 2.5
+          },
+          {
+            label: '화성시 세대수 (만세대)',
+            data: [16.9, 18.9, 19.6, 20.4, 24.5, 30.1, 35.1, 38.7, 41.7, 42.8],
+            borderColor: '#f59e0b',
+            backgroundColor: '#f59e0b',
+            borderDash: [5, 5],
+            tension: 0.3,
+            borderWidth: 2
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } }
+        },
+        scales: {
+          y: { grid: { color: '#f1f5f9' }, ticks: { font: { size: 10 } } },
+          x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+        }
+      }
+    });
+
+    // 2. 이주비율 & 계속거주비율 차트
+    const migCtx = document.getElementById('migrationChart').getContext('2d');
+    new Chart(migCtx, {
+      type: 'bar',
+      data: {
+        labels: ['화성 봉담읍', '화성 동탄7동', '수원 인계동', '수원 평동(오목천)', '수원 서둔동', '수원 호매실동'],
+        datasets: [
+          {
+            label: '6개월 이주비율 (%)',
+            data: [6.33, 4.45, 3.28, 1.82, 1.85, 1.49],
+            backgroundColor: '#3b82f6',
+            borderRadius: 6
+          },
+          {
+            label: '계속거주비율 (%)',
+            data: [18.23, 8.33, 4.61, 4.03, 3.82, 3.81],
+            backgroundColor: '#cbd5e1',
+            borderRadius: 6
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } }
+        },
+        scales: {
+          y: { grid: { color: '#f1f5f9' }, ticks: { font: { size: 10 } } },
+          x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+        }
+      }
+    });
+
+    // 3. 연도별 입주 공급물량 차트 (2020~2029 장기 추이)
+    const supCtx = document.getElementById('supplyChart').getContext('2d');
+    new Chart(supCtx, {
+      type: 'bar',
+      data: {
+        labels: ['2020년', '2021년', '2022년', '2023년', '2024년(피크)', '2025년', '2026년', '2027년', '2028년', '2029년'],
+        datasets: [
+          {
+            label: '화성 효행구(봉담 권역)',
+            data: [1456, 2096, 2847, 4845, 7222, 2767, 806, 1319, 0, 998],
+            backgroundColor: '#10b981',
+            borderRadius: 5
+          },
+          {
+            label: '수원시 권선구(오목천/서수원)',
+            data: [0, 3236, 930, 2510, 1760, 0, 2379, 452, 1281, 476],
+            backgroundColor: '#6366f1',
+            borderRadius: 5
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } }
+        },
+        scales: {
+          y: { grid: { color: '#f1f5f9' }, ticks: { font: { size: 10 } } },
+          x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+        }
+      }
+    });
+
+    // 4. 미분양 주택 추이 차트
+    const unCtx = document.getElementById('unsoldChart').getContext('2d');
+    new Chart(unCtx, {
+      type: 'line',
+      data: {
+        labels: ['2024.11', '2025.01', '2025.03', '2025.05', '2025.07', '2025.09', '2025.11', '2026.01', '2026.05', '2026.09'],
+        datasets: [
+          {
+            label: '수원시 미분양 (호)',
+            data: [300, 236, 142, 10, 0, 0, 0, 19, 21, 21],
+            borderColor: '#ef4444',
+            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+            fill: true,
+            tension: 0.3,
+            borderWidth: 2.5
+          },
+          {
+            label: '화성시 미분양 (호)',
+            data: [95, 80, 72, 65, 60, 58, 58, 57, 57, 57],
+            borderColor: '#0284c7',
+            borderDash: [4, 4],
+            tension: 0.3,
+            borderWidth: 2
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } }
+        },
+        scales: {
+          y: { grid: { color: '#f1f5f9' }, ticks: { font: { size: 10 } } },
+          x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

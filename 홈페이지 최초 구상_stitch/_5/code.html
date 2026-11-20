@@ -1,0 +1,459 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-dim":"#d1dbed","on-primary-fixed":"#001a42","on-secondary":"#ffffff","secondary-fixed":"#d7e3fa","surface-container-lowest":"#ffffff","tertiary-fixed-dim":"#57df92","tertiary-container":"#00864e","on-tertiary-fixed-variant":"#00522d","primary-container":"#006fee","on-primary-container":"#fefcff","on-primary":"#ffffff","background":"#f8f9ff","surface-tint":"#005ac3","outline-variant":"#c1c6d7","on-tertiary-container":"#f6fff5","secondary-container":"#d4e0f7","primary":"#0058be","on-primary-fixed-variant":"#004395","error-container":"#ffdad6","secondary":"#535f72","on-secondary-container":"#576377","inverse-on-surface":"#eaf1ff","on-secondary-fixed-variant":"#3b475a","tertiary":"#006a3c","surface-container-high":"#dfe9fb","inverse-surface":"#27313f","on-error":"#ffffff","secondary-fixed-dim":"#bbc7dd","outline":"#717786","on-surface":"#121c29","surface-variant":"#d9e3f5","surface-container":"#e6eeff","on-tertiary-fixed":"#00210f","surface":"#f8f9ff","surface-container-low":"#eff4ff","primary-fixed-dim":"#aec6ff","on-surface-variant":"#414755","on-secondary-fixed":"#101c2c","error":"#ba1a1a","tertiary-fixed":"#76fcac","on-background":"#121c29","surface-container-highest":"#d9e3f5","inverse-primary":"#aec6ff","on-tertiary":"#ffffff","surface-bright":"#f8f9ff","on-error-container":"#93000a","primary-fixed":"#d8e2ff"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{margin:"1rem","space-lg":"1.25rem","space-xs":"0.25rem","gutter-desktop":"1.5rem","space-md":"0.875rem",gutter:"1rem","margin-desktop":"2.5rem","space-xl":"2rem","space-sm":"0.5rem"},fontFamily:{"label-md":["Inter"],"headline-md":["Inter"],"label-sm":["Inter"],"body-lg":["Inter"],"headline-lg":["Inter"],"headline-sm":["Inter"],"body-md":["Inter"],"body-sm":["Inter"]},fontSize:{"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.01em",fontWeight:"600"}],"headline-md":["22px",{lineHeight:"30px",letterSpacing:"-0.015em",fontWeight:"700"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.02em",fontWeight:"500"}],"body-lg":["15px",{lineHeight:"22px",letterSpacing:"-0.005em",fontWeight:"500"}],"headline-lg":["26px",{lineHeight:"34px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-sm":["16px",{lineHeight:"24px",letterSpacing:"-0.01em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",letterSpacing:"0em",fontWeight:"400"}],"body-sm":["13px",{lineHeight:"18px",letterSpacing:"0em",fontWeight:"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-fixed"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 max-w-7xl mx-auto px-6 flex items-center justify-between"><div class="flex items-center gap-space-md"><a class="font-headline-sm text-headline-sm text-on-surface tracking-tight flex items-center gap-space-xs" data-path="auction-dashboard" href="#">AUCTION BRIEF</a><span class="px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/40">v1.0 Local</span></div><nav class="hidden md:flex items-center gap-space-sm" data-active-classes="bg-surface-container-high text-on-surface font-headline-sm rounded-lg"><a class="px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-md text-body-md transition-colors" data-path="auction-dashboard" href="#">매물 대시보드</a><a class="px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-md text-body-md transition-colors" data-path="investment-analyzer" href="#">투자 분석기</a><a aria-current="page" class="px-3 py-2 transition-colors bg-surface-container-high text-on-surface font-headline-sm rounded-lg" data-path="client-briefing" href="#">매물 상세분석</a></nav><div class="flex items-center gap-space-sm"><button class="px-3.5 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" type="button">데이터 백업/복원</button><button class="px-4 py-2 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md shadow-[0_4px_16px_rgba(53,65,83,0.08)] flex items-center gap-1 transition-all" type="button"><span class="material-symbols-outlined text-[16px]">add</span>새 경매 물건 등록</button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface"><div class="max-w-7xl mx-auto px-6 py-8"><div class="flex flex-col w-full gap-6 print:gap-4 print:p-0">
+<!-- Top Control Bar -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4 print:hidden"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">edit_note</span></div><div class="flex flex-col"><span class="font-label-md text-label-md font-bold text-on-surface">내 분석 메모 &amp; 관리 기록</span><span class="font-label-sm text-label-sm text-secondary">개인 목표가 15.6억 기준 자금 집행 검토 완료 · 필요 시 2차 현장 임장 및 관리비 내역 재확인 예정</span></div></div><div class="flex items-center gap-2"><span class="font-label-sm text-label-sm text-secondary">마지막 업데이트: 2026.05.28</span><span class="px-2.5 py-1 rounded-md bg-tertiary-container/15 text-tertiary text-label-sm font-semibold">검토 완료</span></div></div>
+<!-- Document Header for Print & On-screen Briefing Title -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-3 pb-2 border-b border-outline-variant/30">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Property Investment Briefing</span>
+<span class="text-secondary text-label-sm">• 서울서부지방법원 경매 3계</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">
+        마포 래미안 푸르지오 112동 1502호 <span class="font-body-lg text-body-lg text-secondary font-medium">(84.9㎡ / 34평형)</span>
+</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">자가 매입 및 투자 출구전략 시뮬레이션 심층 분석 보고서</p>
+</div>
+<div class="flex items-center gap-2 self-start md:self-auto bg-surface-container-low px-3 py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-primary text-[18px]">calendar_today</span>
+<span class="font-label-md text-label-md text-on-surface">매각기일: <strong class="text-primary font-bold">2026.06.18 (목) 10:00</strong></span>
+</div>
+</div>
+<!-- Two-Column Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Left Column (섹션 A: 물건 개요 및 개발 호재 요약) -->
+<div class="lg:col-span-6 flex flex-col gap-5">
+<!-- Valuation Differential Card -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm flex flex-col gap-4 relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">analytics</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">가격 평가 및 입찰 가이드라인</span>
+</div>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-error-container/40 text-error font-semibold">1회 유찰 (80%)</span>
+</div>
+<div class="grid grid-cols-3 gap-2 py-2">
+<div class="p-3 bg-surface-container-low rounded-lg flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-secondary">감정평가액</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">18억 5,000<span class="text-body-sm font-normal">만</span></span>
+<span class="font-label-sm text-label-sm text-secondary">2023.11 기준</span>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-secondary">최저입찰가 (80%)</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">14억 8,000<span class="text-body-sm font-normal">만</span></span>
+<span class="font-label-sm text-label-sm text-error font-medium">-3.7억 하회</span>
+</div>
+<div class="p-3 bg-primary/10 rounded-lg flex flex-col gap-1 ring-1 ring-primary/30">
+<span class="font-label-sm text-label-sm text-primary font-semibold">추천 목표입찰가</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">15억 6,000<span class="text-body-sm font-normal">만</span></span>
+<span class="font-label-sm text-label-sm text-primary">감정가 대비 84.3%</span>
+</div>
+</div>
+<!-- Valuation Differential Gauge Bar -->
+<div class="flex flex-col gap-1.5 pt-1">
+<div class="flex justify-between font-label-sm text-label-sm text-secondary">
+<span>최저가 14.8억</span>
+<span class="text-primary font-semibold">목표 15.6억 (+8,000만)</span>
+<span>감정가 18.5억</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-secondary-fixed-dim" style="width: 25%"></div>
+<div class="h-full bg-primary" style="width: 22%"></div>
+<div class="h-full bg-surface-variant" style="width: 53%"></div>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-tertiary font-medium">인근 실거래 최고가(20.2억) 대비 안전마진 약 4.6억 확보</span>
+</div>
+</div>
+</div>
+<!-- Property Spec Card -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm flex flex-col gap-3">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">apartment</span>
+          기본 제원 및 물리적 현황
+        </span>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary">전용면적</span>
+<span class="font-body-lg text-body-lg font-semibold text-on-surface">84.9㎡ (25.7평)</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary">공급면적</span>
+<span class="font-body-lg text-body-lg font-semibold text-on-surface">114.2㎡ (34.5평)</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary">내부 구조</span>
+<span class="font-body-lg text-body-lg font-semibold text-on-surface">방 3 / 욕실 2</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary">향 및 층수</span>
+<span class="font-body-lg text-body-lg font-semibold text-on-surface">남향 · 15층/24층</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-sm text-secondary px-1 pt-1 border-t border-outline-variant/20">
+<span>준공: 2014년 9월 (3,885세대 대단지)</span>
+<span>시공사: 대우건설 · GS건설</span>
+</div>
+</div>
+<!-- Infrastructure & Upside Analysis Box -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">explore</span>
+            핵심 개발 호재 및 입지 분석
+          </span>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary/10 text-primary">S급 입지</span>
+</div>
+<div class="flex flex-col gap-2.5">
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-container-low">
+<div class="w-6 h-6 rounded-full bg-primary/15 text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[15px]">directions_subway</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">서부선 경전철 신촌역 직결 예정 (2028년 착공 목표)</span>
+<p class="font-body-sm text-body-sm text-secondary">여의도 및 서울대입구선 환승망 연결로 마포-영등포 간 대중교통 이동소요시간 30% 단축 기대.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-container-low">
+<div class="w-6 h-6 rounded-full bg-primary/15 text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[15px]">location_city</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">아현2구역 입주 완료에 따른 대규모 주거단지 인프라 시너지</span>
+<p class="font-body-sm text-body-sm text-secondary">마포센트럴자이 등과 연계된 1만 세대급 메머드 뉴타운 상권 및 조경 프리미엄 클러스터 구축.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-container-low">
+<div class="w-6 h-6 rounded-full bg-primary/15 text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[15px]">school</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">아현초·중 도보 3분 '초품아' 안심 학군 및 마포 학원가 인접</span>
+<p class="font-body-sm text-body-sm text-secondary">단지 내 통학로 직결로 유자녀 실수요 전세 및 매매 대기수요가 지속적으로 유입되는 학군지.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-container-low">
+<div class="w-6 h-6 rounded-full bg-primary/15 text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[15px]">corporate_fare</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">광화문·여의도 CBD/YBD 20분 내 직주근접 대장 아파트</span>
+<p class="font-body-sm text-body-sm text-secondary">지하철 2호선 아현역 및 5호선 애오개역 더블 역세권으로 주요 업무권역 직주근접성 극상위권.</p>
+</div>
+</div>
+<div class="mt-2 pt-3 border-t border-outline-variant/30 flex flex-col gap-3"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">map</span><span class="font-label-md text-label-md font-bold text-on-surface">개발 호재 및 인프라 심층 분석</span><span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary/10 text-primary font-medium">GIS 공간분석</span></div><div class="flex items-center gap-1.5"><button class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm flex items-center gap-0.5 transition-colors" type="button"><span class="material-symbols-outlined text-[14px]">zoom_in</span>확대보기</button><button class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm flex items-center gap-0.5 transition-colors" type="button"><span class="material-symbols-outlined text-[14px]">open_in_new</span>고화질 원본 열람</button></div></div><div class="grid grid-cols-1 gap-3"><div class="relative rounded-xl overflow-hidden border border-outline-variant/30 group shadow-sm bg-surface-container"><img alt="마포·아현 뉴타운 및 서부선 경전철 예정 입지 분석도" class="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida/ALJJyrDKhNjS8dGmv921Cg2G2Uza2KIt0mrNsuEuQgxPXqwhvYUc7eSJ-dMEN0Hvz5X_D5EyjYXJrMlJ6lgPAiYTYsvOtWysweKdxn625P3ErGcwpnyCHoTmcl992lDQ4MqEJTNFqfMUXEpYoN8Iquu1DX1IYUpdCZB5dM1AkPkxTtCYey7CWB4R1n5IYw1cG2Lun5X5Ly444VZJ16uoxEc1Uy61s74fmflJKhX_UJi5xaclxA"><div class="absolute top-2.5 left-2.5 bg-inverse-surface/85 text-inverse-on-surface px-2.5 py-1 rounded-md text-label-sm font-label-sm flex items-center gap-1 shadow-sm backdrop-blur-sm"><span class="material-symbols-outlined text-[14px] text-tertiary-fixed">share_location</span>마포·아현 뉴타운 및 서부선 경전철 예정 입지 분석도</div><div class="absolute bottom-2.5 right-2.5 bg-inverse-surface/85 text-inverse-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm backdrop-blur-sm">2024 GIS Analysis</div></div><div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 pt-0.5"><div class="p-2 rounded-lg bg-surface-container-low flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[16px]">directions_walk</span><div class="flex flex-col"><span class="font-label-sm text-label-sm text-secondary">신촌역(2호선)</span><span class="font-body-sm text-body-sm font-bold text-on-surface">도보 6분</span></div></div><div class="p-2 rounded-lg bg-surface-container-low flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[16px]">subway</span><div class="flex flex-col"><span class="font-label-sm text-label-sm text-secondary">애오개역(5호선)</span><span class="font-body-sm text-body-sm font-bold text-on-surface">직선 450m</span></div></div><div class="p-2 rounded-lg bg-surface-container-low flex items-center gap-1.5"><span class="material-symbols-outlined text-tertiary text-[16px]">train</span><div class="flex flex-col"><span class="font-label-sm text-label-sm text-secondary">서부선 신설역</span><span class="font-body-sm text-body-sm font-bold text-tertiary">예정 300m</span></div></div><div class="p-2 rounded-lg bg-surface-container-low flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[16px]">school</span><div class="flex flex-col"><span class="font-label-sm text-label-sm text-secondary">아현초·중 학군</span><span class="font-body-sm text-body-sm font-bold text-on-surface">도보 3분 안심</span></div></div></div><div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 flex flex-col gap-2.5"><div class="flex items-center justify-between pb-1 border-b border-outline-variant/20"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">timeline</span><span class="font-label-md text-label-md font-bold text-on-surface">입지 및 교통 호재 상세 타임라인 &amp; 개발 영향도</span></div><span class="font-label-sm text-label-sm text-tertiary font-semibold">수혜 직접권</span></div><div class="flex flex-col gap-2 text-body-sm"><div class="flex items-start gap-2"><span class="px-1.5 py-0.5 rounded bg-primary/10 text-primary text-label-sm font-bold shrink-0 mt-0.5">2025~28</span><div class="flex flex-col"><span class="font-semibold text-on-surface">서부선 경전철 신촌역 착공 &amp; 개통 연계</span><span class="text-label-sm text-secondary">2025년 착공 목표, 2028년 완공 시 여의도 금융업무지구(YBD) 환승 10분대 진입</span></div></div><div class="flex items-start gap-2"><span class="px-1.5 py-0.5 rounded bg-tertiary-container/15 text-tertiary text-label-sm font-bold shrink-0 mt-0.5">뉴타운</span><div class="flex flex-col"><span class="font-semibold text-on-surface">아현 2구역 등 1.5만 세대 메머드 주거벨트 시너지</span><span class="text-label-sm text-secondary">마포센트럴자이 입주 및 연계 상권 확장으로 인프라 집약 및 프리미엄 단지화</span></div></div><div class="flex items-start gap-2"><span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant text-label-sm font-bold shrink-0 mt-0.5">학군인프라</span><div class="flex flex-col"><span class="font-semibold text-on-surface">아현초·중 안심 통학로 및 마포 대흥동 학원가 인접</span><span class="text-label-sm text-secondary">단지 직결 초품아 프리미엄과 제2의 대치동이라 불리는 대흥동 명문 학원가 셔틀권</span></div></div></div></div><div class="p-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col gap-2.5 shadow-sm"><div class="flex items-center justify-between pb-1 border-b border-outline-variant/20"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">compare_arrows</span><span class="font-label-md text-label-md font-bold text-on-surface">인근 실거래가 및 호가 갭 비교</span></div><span class="text-label-sm font-label-sm text-primary font-bold">안전마진 +4.6억</span></div><div class="grid grid-cols-3 gap-2"><div class="p-2 rounded-lg bg-surface-container-low flex flex-col gap-0.5"><span class="font-label-sm text-label-sm text-secondary">최고 실거래가</span><span class="font-headline-sm text-headline-sm font-bold text-on-surface">20.2억</span><span class="font-label-sm text-label-sm text-secondary">최근 신고가 기준</span></div><div class="p-2 rounded-lg bg-primary/10 rounded-lg flex flex-col gap-0.5 ring-1 ring-primary/30"><span class="font-label-sm text-label-sm text-primary font-semibold">추천 입찰가</span><span class="font-headline-sm text-headline-sm font-extrabold text-primary">15.6억</span><span class="font-label-sm text-label-sm text-primary font-medium">평당 4,588만</span></div><div class="p-2 rounded-lg bg-surface-container-low flex flex-col gap-0.5"><span class="font-label-sm text-label-sm text-secondary">전세가율 현황</span><span class="font-headline-sm text-headline-sm font-bold text-tertiary">74%</span><span class="font-label-sm text-label-sm text-secondary">풍부한 임대수요</span></div></div><div class="flex flex-wrap items-center gap-1.5 pt-1"><span class="px-2 py-1 rounded bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center gap-1"><span class="material-symbols-outlined text-primary text-[14px]">verified</span>여의도/광화문 직주근접 S급</span><span class="px-2 py-1 rounded bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center gap-1"><span class="material-symbols-outlined text-primary text-[14px]">apartment</span>마포 대표 랜드마크 (3,885세대)</span><span class="px-2 py-1 rounded bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center gap-1"><span class="material-symbols-outlined text-tertiary text-[14px]">check_circle</span>환금성·임대수요 안정권</span></div></div></div></div></div>
+</div>
+</div>
+<!-- Right Column (섹션 B: 4분할 핵심 재무·투자 시뮬레이션 카드) -->
+<div class="lg:col-span-6 flex flex-col gap-4">
+<div class="flex items-center justify-between pb-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[22px]">payments</span>
+          재무 · 투자 시뮬레이션 (목표가 15.6억 기준)
+        </span>
+<span class="font-label-sm text-label-sm text-secondary">자금 조달 및 투자 계획</span>
+</div>
+<!-- 4분할 Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- 카드 1: 경락잔금대출 분석 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Plan 01</span>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container-high text-on-surface">경락잔금대출</span>
+</div>
+<div>
+<span class="font-body-sm text-body-sm text-secondary">LTV 70% 적용 대출금</span>
+<div class="font-headline-md text-headline-md font-extrabold text-on-surface mt-0.5">
+              10억 9,200<span class="text-body-md font-normal text-secondary">만 원</span>
+</div>
+</div>
+<div class="pt-2 border-t border-outline-variant/30 flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-secondary">기준 금리 (연 4.2%)</span>
+<span class="font-semibold text-on-surface">월 382만 원</span>
+</div>
+<span class="text-label-sm text-secondary">원금 균등/원리금 균등 옵션 선택 가능</span>
+</div>
+</div>
+<!-- 카드 2: 세금 및 필요 부대비용 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Plan 02</span>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container-high text-on-surface">필요 부대비용</span>
+</div>
+<div>
+<span class="font-body-sm text-body-sm text-secondary">총 부대비용 합계</span>
+<div class="font-headline-md text-headline-md font-extrabold text-on-surface mt-0.5">
+              6,498<span class="text-body-md font-normal text-secondary">만 원</span>
+</div>
+</div>
+<div class="pt-2 border-t border-outline-variant/30 flex flex-col gap-1 text-label-sm text-secondary">
+<div class="flex justify-between items-center">
+<span>취득세율 (1주택 3.3%)</span>
+<span class="font-medium text-on-surface">약 5,148만 원</span>
+</div>
+<div class="flex justify-between items-center">
+<span>법무사/명도/채권할인</span>
+<span class="font-medium text-on-surface">약 1,350만 원</span>
+</div>
+</div>
+</div>
+<!-- 카드 3: 갭투자 (전세 세팅) 실투자금 분석 - 강력한 하이라이트 카드 -->
+<div class="bg-primary text-on-primary rounded-xl p-4 shadow-md flex flex-col justify-between gap-3 relative overflow-hidden sm:col-span-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-on-primary text-[18px]">verified</span>
+<span class="font-label-md text-label-md text-on-primary/90 font-semibold tracking-wide">추천 전략 A · 갭투자 (전세 세팅)</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-on-primary/20 text-on-primary font-label-sm text-label-sm font-bold">최소 자본 투입</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 my-1">
+<div class="bg-on-primary/10 rounded-lg p-3">
+<span class="font-label-sm text-label-sm text-on-primary/80">예상 전세 보증금</span>
+<div class="font-headline-md text-headline-md font-bold text-on-primary">11억 5,000<span class="text-body-sm font-normal">만</span></div>
+<span class="font-label-sm text-label-sm text-on-primary/70">인근 동일평형 전세가율 74%</span>
+</div>
+<div class="bg-on-primary/10 rounded-lg p-3">
+<span class="font-label-sm text-label-sm text-on-primary/80">취득 총 소요비용</span>
+<div class="font-headline-md text-headline-md font-bold text-on-primary">16억 2,498<span class="text-body-sm font-normal">만</span></div>
+<span class="font-label-sm text-label-sm text-on-primary/70">목표가(15.6억) + 부대비용</span>
+</div>
+<div class="bg-on-primary/20 rounded-lg p-3 flex flex-col justify-center">
+<span class="font-label-sm text-label-sm text-on-primary/90 font-semibold">최종 필요 실투자금 (Cash)</span>
+<div class="font-headline-lg text-headline-lg font-black text-on-primary tracking-tight">4억 7,498<span class="text-body-sm font-normal">만 원</span></div>
+</div>
+</div>
+<div class="text-label-sm text-on-primary/80 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">info</span>
+<span>전세 세팅 완료 시 자본금 4억 7천만 원대로 마포 대장 84㎡ 보유 가능 (레버리지 3.4배)</span>
+</div>
+</div>
+<!-- 카드 4: 월세 수익률 & 현금흐름 분석 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3 sm:col-span-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-[18px]">trending_up</span>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">추천 전략 B · 월세 수익형 포트폴리오</span>
+</div>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-tertiary-container/15 text-tertiary font-bold">연 순수익률 7.8%</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+<div class="p-2.5 rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-secondary">예상 임대조건</span>
+<div class="font-body-lg text-body-lg font-bold text-on-surface">보증금 1억 / 월 360만</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-secondary">대출 이자 (월)</span>
+<div class="font-body-lg text-body-lg font-bold text-error">- 242만 원 <span class="text-label-sm font-normal text-secondary">(7억 대출)</span></div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-secondary">월 순 현금흐름</span>
+<div class="font-body-lg text-body-lg font-bold text-tertiary">+ 118만 원 / 월</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-secondary">실투자금 대비 수익</span>
+<div class="font-body-lg text-body-lg font-bold text-primary">연 1,416만 원 (7.8%)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: 상세 권리분석 및 임장 체크리스트 요약 & 인터랙티브 시뮬레이터 -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start mt-2">
+<!-- 섹션 C: 상세 권리분석 및 임장 체크리스트 -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-5 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/30">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5 font-bold">
+<span class="material-symbols-outlined text-primary text-[22px]">gavel</span>
+          권리분석 · 임장 핵심 체크리스트 요약
+        </span>
+<span class="px-2.5 py-0.5 rounded-full bg-tertiary-container/15 text-tertiary font-label-sm text-label-sm font-semibold">인수 권리 없음 (안전)</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- 등기부 권리 요약 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="font-label-md text-label-md font-bold">등기부 권리관계 분석</span>
+</div>
+<div class="flex flex-col gap-1.5 text-body-sm text-on-surface">
+<div class="flex justify-between">
+<span class="text-secondary">말소기준권리</span>
+<span class="font-semibold">2021.04.12 근저당권 (국민은행)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-secondary">후순위 채권</span>
+<span>가압류 2건, 근저당 1건</span>
+</div>
+<p class="text-label-sm text-secondary mt-1 bg-surface-container-lowest p-2 rounded">
+              ✓ 경락대금 완납 시 말소기준권리를 포함한 모든 후순위 권리는 민사집행법에 의해 <strong class="text-on-surface">완전 소멸</strong>되어 낙찰자 인수 금액 없음.
+            </p>
+</div>
+</div>
+<!-- 점유 및 임차인 현황 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center gap-1.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">real_estate_agent</span>
+<span class="font-label-md text-label-md font-bold">임차인 현황 및 명도 난이도</span>
+</div>
+<div class="flex flex-col gap-1.5 text-body-sm text-on-surface">
+<div class="flex justify-between">
+<span class="text-secondary">점유자 구분</span>
+<span class="font-semibold">후순위 소액임차인 1명 거주</span>
+</div>
+<div class="flex justify-between">
+<span class="text-secondary">대항력 여부</span>
+<span class="font-semibold text-tertiary">대항력 없음 (배당요구 완료)</span>
+</div>
+<p class="text-label-sm text-secondary mt-1 bg-surface-container-lowest p-2 rounded">
+              ✓ 보증금 중 최우선변제금(5,500만 원)을 전액 법원 배당 받으므로 명도확인서 발급 필요로 인한 <strong class="text-on-surface">원만한 명도 합의 예상 (명도비 약 350만 원 책정)</strong>.
+            </p>
+</div>
+</div>
+</div>
+<!-- 현장 임장 소견 Note -->
+<div class="p-3 rounded-lg bg-surface-container flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">assignment</span>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md font-semibold text-on-surface">현장 조사관 임장 특이사항 (2024.05 실사)</span>
+<p class="font-body-sm text-body-sm text-secondary">
+            관리사무소 확인 결과 공용관리비 연체 약 24만 원(소액) 확인. 남향 15층 로열동으로 단지 내 중앙공원 조망이 우수하며, 엘리베이터 접근성 및 지하주차장 연결 상태 양호함.
+          </p>
+</div>
+</div>
+</div>
+<!-- 즉석 수익률 시뮬레이터 (Interactive Slider Panel) -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-xl p-5 shadow-sm flex flex-col gap-4 print:hidden">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/30">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[22px]">tune</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">인터랙티브 파라미터 시뮬레이터</span>
+</div>
+<button class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" onclick="resetSimulator()" type="button">기본값 복원</button>
+</div>
+<div class="flex flex-col gap-4">
+<!-- 슬라이더 1: 목표 입찰가 -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-secondary" for="bid-price-slider">목표 낙찰가</label>
+<span class="font-headline-sm text-headline-sm text-primary font-bold"><span id="bid-price-display">15.60</span>억 원</span>
+</div>
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" id="bid-price-slider" max="17.5" min="14.8" oninput="updateCalculations()" step="0.05" type="range" value="15.6">
+<div class="flex justify-between text-label-sm text-secondary">
+<span>최저가 14.8억</span>
+<span>감정가 18.5억</span>
+</div>
+</div>
+<!-- 슬라이더 2: 대출 금리 -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-secondary" for="interest-rate-slider">경락잔금 대출 금리</label>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold"><span id="interest-rate-display">4.2</span>%</span>
+</div>
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" id="interest-rate-slider" max="6.0" min="3.5" oninput="updateCalculations()" step="0.1" type="range" value="4.2">
+<div class="flex justify-between text-label-sm text-secondary">
+<span>최저 3.5%</span>
+<span>최고 6.0%</span>
+</div>
+</div>
+<!-- 슬라이더 3: 전세가 세팅 -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-secondary" for="jeonse-price-slider">예상 임대 전세가</label>
+<span class="font-headline-sm text-headline-sm text-tertiary font-bold"><span id="jeonse-price-display">11.5</span>억 원</span>
+</div>
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" id="jeonse-price-slider" max="13.0" min="10.0" oninput="updateCalculations()" step="0.1" type="range" value="11.5">
+<div class="flex justify-between text-label-sm text-secondary">
+<span>보수적 10.0억</span>
+<span>공격적 13.0억</span>
+</div>
+</div>
+<!-- 결과 요약 박스 -->
+<div class="p-3.5 rounded-xl bg-surface-container-high/60 flex flex-col gap-2 mt-1">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-secondary">재계산된 필요 실투자금 (전세)</span>
+<span class="font-headline-sm text-headline-sm font-extrabold text-primary" id="calc-net-investment">4억 7,498만 원</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-secondary">월 예상 대출이자 (LTV 70% 시)</span>
+<span class="font-semibold text-on-surface" id="calc-monthly-interest">382만 원 / 월</span>
+</div>
+<div class="flex justify-between items-center text-body-sm border-t border-outline-variant/30 pt-1.5">
+<span class="text-secondary">취득세 및 부대비용 추정치</span>
+<span class="font-medium text-on-surface" id="calc-costs">6,498만 원</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Briefing Expert Footer Card -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-5 shadow-sm flex flex-col gap-4"><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-outline-variant/30"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[22px]">folder_shared</span><div class="flex items-center gap-2"><h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">경매 관련 서류 및 공부 열람</h2><span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary/10 text-primary font-medium">법원·행정 공적서류 5건 완비</span></div></div><div class="flex items-center gap-2"><button class="px-3 py-1.5 rounded-lg border border-outline-variant/40 hover:bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center gap-1 transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">download</span>전체 서류 일괄 다운로드 (ZIP)</button><button class="px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm flex items-center gap-1 shadow-sm transition-all" type="button"><span class="material-symbols-outlined text-[16px]">add</span>+ 관련 서류/사진 첨부</button></div></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"><div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between gap-3 hover:border-primary/40 transition-colors"><div class="flex items-start justify-between gap-2"><div class="flex items-start gap-2.5"><div class="w-8 h-8 rounded-lg bg-error-container/40 text-error flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[18px]">picture_as_pdf</span></div><div class="flex flex-col"><span class="font-body-md text-body-md font-bold text-on-surface">등기부등본 (말소기준 확인)</span><span class="font-label-sm text-label-sm text-secondary">국민은행 근저당 확인 · 2024.05.20 열람</span></div></div><span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-tertiary-container/15 text-tertiary font-semibold shrink-0">검토완료</span></div><div class="flex items-center justify-between pt-2 border-t border-outline-variant/20 text-label-sm text-secondary"><span>PDF · 1.4 MB</span><button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-primary font-semibold flex items-center gap-0.5 transition-colors" type="button"><span class="material-symbols-outlined text-[14px]">visibility</span>열람하기 PDF</button></div></div><div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between gap-3 hover:border-primary/40 transition-colors"><div class="flex items-start justify-between gap-2"><div class="flex items-start gap-2.5"><div class="w-8 h-8 rounded-lg bg-error-container/40 text-error flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[18px]">picture_as_pdf</span></div><div class="flex flex-col"><span class="font-body-md text-body-md font-bold text-on-surface">법원 감정평가서</span><span class="font-label-sm text-label-sm text-secondary">감정가 18.5억원 산출 내역 및 현황도면 수록</span></div></div><span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-tertiary-container/15 text-tertiary font-semibold shrink-0">이상없음</span></div><div class="flex items-center justify-between pt-2 border-t border-outline-variant/20 text-label-sm text-secondary"><span>PDF · 8.2 MB</span><button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-primary font-semibold flex items-center gap-0.5 transition-colors" type="button"><span class="material-symbols-outlined text-[14px]">visibility</span>열람하기 PDF</button></div></div><div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between gap-3 hover:border-primary/40 transition-colors"><div class="flex items-start justify-between gap-2"><div class="flex items-start gap-2.5"><div class="w-8 h-8 rounded-lg bg-error-container/40 text-error flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[18px]">picture_as_pdf</span></div><div class="flex flex-col"><span class="font-body-md text-body-md font-bold text-on-surface">매각물건명세서</span><span class="font-label-sm text-label-sm text-secondary">소액임차인 1명 배당요구 및 대항력 없음 확인</span></div></div><span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-tertiary-container/15 text-tertiary font-semibold shrink-0">인수권리 없음</span></div><div class="flex items-center justify-between pt-2 border-t border-outline-variant/20 text-label-sm text-secondary"><span>PDF · 640 KB</span><button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-primary font-semibold flex items-center gap-0.5 transition-colors" type="button"><span class="material-symbols-outlined text-[14px]">visibility</span>열람하기 PDF</button></div></div><div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between gap-3 hover:border-primary/40 transition-colors"><div class="flex items-start justify-between gap-2"><div class="flex items-start gap-2.5"><div class="w-8 h-8 rounded-lg bg-error-container/40 text-error flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[18px]">picture_as_pdf</span></div><div class="flex flex-col"><span class="font-body-md text-body-md font-bold text-on-surface">현황조사서</span><span class="font-label-sm text-label-sm text-secondary">집행관 현장 방문 및 점유관계 조사 보고서</span></div></div><span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-tertiary-container/15 text-tertiary font-semibold shrink-0">검토완료</span></div><div class="flex items-center justify-between pt-2 border-t border-outline-variant/20 text-label-sm text-secondary"><span>PDF · 1.1 MB</span><button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-primary font-semibold flex items-center gap-0.5 transition-colors" type="button"><span class="material-symbols-outlined text-[14px]">visibility</span>열람하기 PDF</button></div></div><div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between gap-3 hover:border-primary/40 transition-colors sm:col-span-2 lg:col-span-2"><div class="flex items-start justify-between gap-2"><div class="flex items-start gap-2.5"><div class="w-8 h-8 rounded-lg bg-error-container/40 text-error flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[18px]">picture_as_pdf</span></div><div class="flex flex-col"><span class="font-body-md text-body-md font-bold text-on-surface">전입세대확인서 &amp; 건축물대장</span><span class="font-label-sm text-label-sm text-secondary">위반건축물 미등재 확인 · 1세대 전입 내역 및 공용부분 정상 등재 확인</span></div></div><span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-tertiary-container/15 text-tertiary font-semibold shrink-0">클린 물건</span></div><div class="flex items-center justify-between pt-2 border-t border-outline-variant/20 text-label-sm text-secondary"><span>PDF · 2.3 MB</span><button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-primary font-semibold flex items-center gap-0.5 transition-colors" type="button"><span class="material-symbols-outlined text-[14px]">visibility</span>열람하기 PDF</button></div></div></div></div><div class="w-full bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-secondary"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">edit_note</span></div><div class="flex flex-col"><span class="font-label-md text-label-md font-bold text-on-surface">내 분석 메모 &amp; 관리 기록</span><span class="font-label-sm text-label-sm text-secondary">개인 목표가 15.6억 기준 자금 집행 검토 완료 · 필요 시 2차 현장 임장 및 관리비 내역 재확인 예정</span></div></div><div class="flex items-center gap-2"><span class="font-label-sm text-label-sm text-secondary">마지막 업데이트: 2026.05.28</span><span class="px-2.5 py-1 rounded-md bg-tertiary-container/15 text-tertiary text-label-sm font-semibold">검토 완료</span></div></div>
+</div>
+<script>
+  function togglePresentationMode() {
+    const btn = document.getElementById('presentation-mode-toggle');
+    const isChecked = btn.getAttribute('aria-checked') === 'true';
+    btn.setAttribute('aria-checked', (!isChecked).toString());
+    
+    const dot = btn.querySelector('.dot');
+    if (!isChecked) {
+      btn.classList.remove('bg-outline-variant/60');
+      btn.classList.add('bg-primary');
+      dot.classList.add('translate-x-4');
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+    } else {
+      btn.classList.add('bg-outline-variant/60');
+      btn.classList.remove('bg-primary');
+      dot.classList.remove('translate-x-4');
+      if (document.exitFullscreen && document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+  }
+
+  function updateCalculations() {
+    const bidPrice = parseFloat(document.getElementById('bid-price-slider').value);
+    const rate = parseFloat(document.getElementById('interest-rate-slider').value);
+    const jeonse = parseFloat(document.getElementById('jeonse-price-slider').value);
+
+    document.getElementById('bid-price-display').innerText = bidPrice.toFixed(2);
+    document.getElementById('interest-rate-display').innerText = rate.toFixed(1);
+    document.getElementById('jeonse-price-display').innerText = jeonse.toFixed(1);
+
+    // 취득세(3.3%) + 법무/명도 등 1350만원
+    const taxAndFees = (bidPrice * 0.033) + 0.135; // 억 원 단위
+    const totalRequired = bidPrice + taxAndFees;
+    const netInvestment = totalRequired - jeonse;
+
+    // 대출금 (LTV 70%) & 월이자
+    const loanAmount = bidPrice * 0.7; // 억 원
+    const monthlyInterest = (loanAmount * 100000000 * (rate / 100)) / 12;
+
+    const netInvestmentWon = Math.round(netInvestment * 10000); // 만 원 단위
+    const netBillion = Math.floor(netInvestmentWon / 10000);
+    const netMillion = Math.abs(netInvestmentWon % 10000);
+
+    document.getElementById('calc-net-investment').innerText = 
+      netBillion + '억 ' + netMillion.toLocaleString() + '만 원';
+
+    document.getElementById('calc-monthly-interest').innerText = 
+      Math.round(monthlyInterest / 10000).toLocaleString() + '만 원 / 월';
+
+    const costsWon = Math.round(taxAndFees * 10000);
+    document.getElementById('calc-costs').innerText = costsWon.toLocaleString() + '만 원';
+  }
+
+  function resetSimulator() {
+    document.getElementById('bid-price-slider').value = 15.6;
+    document.getElementById('interest-rate-slider').value = 4.2;
+    document.getElementById('jeonse-price-slider').value = 11.5;
+    updateCalculations();
+  }
+</script></div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-8"><div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4"><div class="flex flex-col gap-1 text-center md:text-left"><p class="font-body-sm text-body-sm text-on-surface-variant">AUCTION BRIEF 프라이빗 자산 분석 도구</p><p class="font-label-sm text-label-sm text-secondary">로컬 브라우저 단일 파일 실행 환경 (localStorage 연동) · 외부 클라우드 통신 없는 오프라인 전용 아키텍처</p></div><div class="flex items-center gap-space-md"><span class="font-label-sm text-label-sm text-secondary">© 2024 AUCTION BRIEF. All rights reserved.</span></div></div></footer>
+
+
+</body></html>

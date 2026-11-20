@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>PropIntelligence</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-container": "#00864e", "on-tertiary-container": "#f6fff5", "surface-dim": "#d1dbed", "outline": "#717786", "surface-bright": "#f8f9ff", "on-tertiary": "#ffffff", "on-secondary-fixed-variant": "#3b475a", "surface-container": "#e6eeff", "on-tertiary-fixed": "#00210f", "on-surface": "#121c29", "inverse-on-surface": "#eaf1ff", "on-primary": "#ffffff", "on-surface-variant": "#414755", "secondary-fixed-dim": "#bbc7dd", "on-error-container": "#93000a", "tertiary-fixed-dim": "#57df92", "on-primary-fixed-variant": "#004395", "surface": "#f8f9ff", "error": "#ba1a1a", "surface-variant": "#d9e3f5", "primary": "#0058be", "outline-variant": "#c1c6d7", "inverse-surface": "#27313f", "on-secondary-fixed": "#101c2c", "surface-container-highest": "#d9e3f5", "primary-fixed-dim": "#aec6ff", "secondary-container": "#d4e0f7", "surface-tint": "#005ac3", "surface-container-low": "#eff4ff", "on-background": "#121c29", "secondary-fixed": "#d7e3fa", "on-tertiary-fixed-variant": "#00522d", "background": "#f8f9ff", "secondary": "#535f72", "on-secondary-container": "#576377", "inverse-primary": "#aec6ff", "on-secondary": "#ffffff", "surface-container-high": "#dfe9fb", "on-error": "#ffffff", "error-container": "#ffdad6", "on-primary-container": "#fefcff", "tertiary": "#006a3c", "surface-container-lowest": "#ffffff", "primary-container": "#006fee", "on-primary-fixed": "#001a42", "tertiary-fixed": "#76fcac", "primary-fixed": "#d8e2ff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "2rem", "space-sm": "0.5rem", "margin-desktop": "2.5rem", "space-md": "0.875rem", "space-lg": "1.25rem", "gutter-desktop": "1.5rem", "gutter": "1rem", "margin": "1rem", "space-xs": "0.25rem" }, "fontFamily": { "body-lg": ["Inter"], "body-sm": ["Inter"], "body-md": ["Inter"], "headline-lg": ["Inter"], "label-sm": ["Inter"], "headline-sm": ["Inter"], "label-md": ["Inter"], "headline-md": ["Inter"] }, "fontSize": { "body-lg": ["15px", { "lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "500" }], "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-md": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter-desktop flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-lg flex-shrink-0"><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">PropIntelligence</span><div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm"><span class="w-1.5 h-1.5 rounded-full bg-tertiary-container animate-pulse"></span>실전 투자 인텔리전스</div></div><div class="hidden xl:inline-flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container-low text-on-surface-variant font-label-md text-label-md"><span class="font-semibold text-on-surface">기준금리 3.50%</span><span class="text-outline-variant">|</span><span>환율 1,385원</span></div></div><nav class="hidden lg:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a aria-current="page" class="px-3 py-2 transition-colors bg-primary-container text-on-primary-container font-semibold rounded-lg" data-path="yield-calculator" href="#">투자수익률 계산기</a><a class="px-3 py-2 font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors" data-path="auction-simulator" href="#">경매 분석 시뮬레이터</a><a class="px-3 py-2 font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors" data-path="reits-quant-comparison" href="#">리츠·배당 퀀트 비교</a><a class="px-3 py-2 font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors" data-path="market-reports" href="#">시장동향 리포트 뷰어</a><a class="px-3 py-2 font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors" data-path="history-vault" href="#">히스토리 보관함</a></nav><div class="flex items-center gap-space-sm flex-shrink-0"><button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors flex items-center justify-center" title="단독 락(Quick Lock)" type="button"><span class="material-symbols-outlined text-[20px]">lock</span></button><button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">picture_as_pdf</span><span class="hidden sm:inline">PDF 내보내기</span></button><div class="relative"><button class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">database</span><span class="hidden sm:inline">백업/복구</span><span class="material-symbols-outlined text-[16px]">expand_more</span></button></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive Investment Yield Engine Container -->
+<div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6" id="yieldCalculatorApp">
+<!-- Top Action & Market Benchmark Bar -->
+<div class="bg-surface-container-lowest rounded-xl p-4 sm:p-5 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+<div class="flex flex-col sm:flex-row sm:items-center gap-3">
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></div>
+<span class="font-label-md text-label-md text-primary tracking-wide uppercase font-semibold">시뮬레이션 프리셋</span>
+</div>
+<div class="flex flex-wrap items-center gap-1.5" id="presetButtonGroup">
+<button class="preset-btn px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md font-semibold" data-preset="800m" type="button">
+            수도권 8억 국평
+          </button>
+<button class="preset-btn px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md" data-preset="250m" type="button">
+            역세권 오피스텔 2.5억
+          </button>
+<button class="preset-btn px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md" data-preset="150m" type="button">
+            소액 빌라 1.5억
+          </button>
+<button class="preset-btn px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md" data-preset="1500m" type="button">
+            고가 아파트 15억
+          </button>
+</div>
+</div>
+<!-- Quick Metrics Strip -->
+<div class="flex items-center gap-4 text-on-surface-variant font-label-sm text-label-sm border-t xl:border-t-0 pt-2 xl:pt-0">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>소비자물가 2.6%</span>
+<span class="text-outline-variant">•</span>
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>국고채 3년 3.28%</span>
+<span class="text-outline-variant">•</span>
+<span class="text-on-surface font-semibold">부동산 취득세율 기준: 2025 개정안 반영</span>
+</div>
+</div>
+<!-- Main Grid: Left Control Panel (7 cols) + Right Analytics Rail (5 cols) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- LEFT COLUMN: Parameter Input Control Panel (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col space-y-6">
+<!-- 1. 매물 기본 정보 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 sm:p-6 shadow-sm space-y-5">
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">apartment</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">1. 매물 기본 정보 및 조세 설정</h2>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono">STEP 01</span>
+</div>
+<!-- 매매가 Slider & Exact Input -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface-variant" for="priceSlider">취득 희망 매매가</label>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-sm text-headline-sm font-bold text-primary" id="priceDisplayWon">600,000,000</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">원 (<span id="priceDisplayMan">60,000</span>만원)</span>
+</div>
+</div>
+<input class="w-full h-2 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-primary" id="priceSlider" max="2500000000" min="50000000" step="10000000" type="range" value="600000000"/>
+<div class="flex justify-between font-label-sm text-label-sm text-outline">
+<span>5,000만</span>
+<span>5억</span>
+<span>10억</span>
+<span>15억</span>
+<span>25억</span>
+</div>
+</div>
+<!-- 물건 유형 라디오 세그먼트 -->
+<div class="space-y-2">
+<span class="font-label-md text-label-md text-on-surface-variant">물건 유형</span>
+<div class="grid grid-cols-3 gap-2 p-1 bg-surface-container-low rounded-lg">
+<button class="prop-type-btn py-2 text-center rounded-md font-label-md text-label-md font-semibold bg-surface-container-lowest text-primary shadow-sm transition-all" data-prop-type="house" type="button">
+                주택 (아파트/빌라)
+              </button>
+<button class="prop-type-btn py-2 text-center rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-prop-type="officetel" type="button">
+                주거·업무용 오피스텔
+              </button>
+<button class="prop-type-btn py-2 text-center rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-prop-type="commercial" type="button">
+                상가 · 근린 · 토지
+              </button>
+</div>
+</div>
+<!-- 보유 주택수 & 전용면적 옵션 -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant" for="houseHoldCount">취득 시 보유 주택수</label>
+<div class="relative">
+<select class="w-full h-11 px-3 py-2 bg-surface-container-low text-on-surface rounded-lg font-body-sm text-body-sm focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary appearance-none outline-none" id="houseHoldCount">
+<option value="1_non">1주택 (비조정 대상지역 / 표준 1~3%)</option>
+<option value="2_non">2주택 (비조정 대상지역 1~3%)</option>
+<option value="2_adj">2주택 (조정대상지역 8.0% 중과)</option>
+<option value="3_multi">3주택 이상 다주택자 (최고 12.0% 중과)</option>
+<option value="corp">법인 취득 (단일 12.0% 적용)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col justify-end">
+<label class="flex items-center gap-2.5 h-11 px-3 rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors">
+<input class="w-4 h-4 text-primary rounded accent-primary cursor-pointer" id="taxExceed85" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">전용 85㎡ 초과 면적</span>
+<span class="font-label-sm text-label-sm text-outline">농어촌특별세(0.2%) 추가 과세</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- 2. 자금 조달 & 레버리지 (Financing) -->
+<div class="bg-surface-container-lowest rounded-xl p-5 sm:p-6 shadow-sm space-y-5">
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">2. 자금 조달 &amp; 레버리지 (타인자본 설계)</h2>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono">STEP 02</span>
+</div>
+<!-- LTV Quick Presets -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">담보인정비율 (LTV) 설정</span>
+<span class="font-label-md text-label-md font-semibold text-primary" id="ltvIndicatorLabel">LTV 60.0% (36,000만원)</span>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="ltv-btn py-2 bg-surface-container-low text-on-surface-variant hover:bg-surface-container rounded-lg font-label-md text-label-md font-medium transition-colors" data-ltv="40" type="button">40%</button>
+<button class="ltv-btn py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md font-semibold shadow-sm transition-colors" data-ltv="60" type="button">60%</button>
+<button class="ltv-btn py-2 bg-surface-container-low text-on-surface-variant hover:bg-surface-container rounded-lg font-label-md text-label-md font-medium transition-colors" data-ltv="70" type="button">70%</button>
+<button class="ltv-btn py-2 bg-surface-container-low text-on-surface-variant hover:bg-surface-container rounded-lg font-label-md text-label-md font-medium transition-colors" data-ltv="80" type="button">80%</button>
+</div>
+</div>
+<!-- Loan Amount & Interest Rate Inputs -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant" for="loanAmountInput">담보 대출 원금</label>
+<div class="relative">
+<input class="w-full h-11 px-3 pr-10 py-2 bg-surface-container-low text-on-surface rounded-lg font-body-sm text-body-sm focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary outline-none text-right font-mono font-semibold" id="loanAmountInput" type="text" value="360,000,000"/>
+<span class="absolute right-3 top-2.5 font-label-md text-label-md text-outline">원</span>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant" for="loanRateInput">적용 대출 금리 (연이율)</label>
+<div class="relative">
+<input class="w-full h-11 px-3 pr-8 py-2 bg-surface-container-low text-on-surface rounded-lg font-body-sm text-body-sm focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary outline-none text-right font-mono font-semibold" id="loanRateInput" max="15.0" min="1.0" step="0.05" type="number" value="4.20"/>
+<span class="absolute right-3 top-2.5 font-label-md text-label-md text-outline">%</span>
+</div>
+</div>
+</div>
+<!-- Rent Deposit & Monthly Rent -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant" for="depositInput">임대 보증금 (회수자본)</label>
+<div class="relative">
+<input class="w-full h-11 px-3 pr-10 py-2 bg-surface-container-low text-on-surface rounded-lg font-body-sm text-body-sm focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary outline-none text-right font-mono font-semibold" id="depositInput" step="500" type="number" value="5000"/>
+<span class="absolute right-3 top-2.5 font-label-md text-label-md text-outline">만원</span>
+</div>
+<p class="font-label-sm text-label-sm text-outline">5,000만원</p>
+</div>
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant" for="monthlyRentInput">월 임대료 수입</label>
+<div class="relative">
+<input class="w-full h-11 px-3 pr-10 py-2 bg-surface-container-low text-on-surface rounded-lg font-body-sm text-body-sm focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary outline-none text-right font-mono font-semibold" id="monthlyRentInput" step="5" type="number" value="150"/>
+<span class="absolute right-3 top-2.5 font-label-md text-label-md text-outline">만원</span>
+</div>
+<p class="font-label-sm text-label-sm text-outline">연간 환산액: <span id="annualRentDisplay">1,800</span>만원</p>
+</div>
+</div>
+</div>
+<!-- 3. 취득 부대비용 정밀 옵션 (Incidental Costs) -->
+<div class="bg-surface-container-lowest rounded-xl p-5 sm:p-6 shadow-sm space-y-4">
+<div class="flex items-center justify-between pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">receipt_long</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">3. 취득 부대비용 및 공과금 세부 설정</h2>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono">STEP 03</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+<!-- 중개보수 부가세 토글 -->
+<label class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg cursor-pointer hover:bg-surface-container transition-colors">
+<input checked="" class="w-4 h-4 text-primary rounded accent-primary" id="brokerVatToggle" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">중개보수 부가세 10% 가산</span>
+<span class="font-label-sm text-label-sm text-outline">일반과세 공인중개사 세금계산서</span>
+</div>
+</label>
+<!-- 국민주택채권 할인율 Slider/Input -->
+<div class="p-3 bg-surface-container-low rounded-lg space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface">국민주택채권 할인율</span>
+<span class="font-label-md text-label-md font-mono font-bold text-primary" id="bondDiscountDisplay">7.50%</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-primary" id="bondRateSlider" max="15.0" min="2.0" step="0.25" type="range" value="7.50"/>
+</div>
+</div>
+</div>
+<!-- Action Callouts -->
+<div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+<button class="w-full sm:flex-1 h-12 bg-primary text-on-primary font-headline-sm text-headline-sm rounded-xl flex items-center justify-center gap-2 hover:bg-primary/90 transition-all shadow-sm" id="saveHistoryBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">save</span>
+            계산 결과 히스토리에 저장하기
+          </button>
+<button class="w-full sm:w-auto h-12 px-5 bg-surface-container-high text-on-surface hover:bg-surface-container rounded-xl font-label-md text-label-md font-semibold flex items-center justify-center gap-2 transition-colors" id="pdfExportBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+            PDF 리포트 출력
+          </button>
+</div>
+</div>
+<!-- RIGHT COLUMN: Sticky Real-time Analytics & Decision Support (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col space-y-6 lg:sticky lg:top-20">
+<!-- Leverage Health Status Alert Badge -->
+<div class="p-4 rounded-xl bg-error-container text-on-error-container flex items-start gap-3 shadow-sm transition-all" id="leverageAlertBox">
+<span class="material-symbols-outlined text-error text-[24px] flex-shrink-0 mt-0.5">warning</span>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-bold tracking-tight text-error">[지렛대 효과 판정] 🔴 역마진 주의</span>
+<span class="px-1.5 py-0.5 rounded bg-error/10 text-error font-label-sm text-label-sm font-semibold">Negative Carry</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-error-container/90" id="leverageDetailText">
+              총 임대수익률(<span class="font-bold">3.00%</span>)이 대출이자율(<span class="font-bold">4.20%</span>)보다 낮습니다. 차입금 비중이 커질수록 자기자본수익률(ROE)이 잠식됩니다.
+            </p>
+</div>
+</div>
+<!-- 4-Quadrant Large KPI Card Cluster -->
+<div class="bg-surface-container-lowest rounded-xl p-5 sm:p-6 shadow-sm space-y-4">
+<div class="flex items-center justify-between border-b border-surface-container pb-3">
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Executive Summary</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">핵심 투자 성과 지표 (KPI)</h3>
+</div>
+<span class="material-symbols-outlined text-primary text-[22px]">monitoring</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<!-- 1. 순자본 (Equity) -->
+<div class="p-4 rounded-xl bg-surface-container-low space-y-1">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-sm text-label-sm">실투자금 (순자본 Equity)</span>
+<span class="material-symbols-outlined text-[16px]">payments</span>
+</div>
+<div class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight" id="kpiNetEquity">
+                19,250<span class="font-body-sm text-body-sm font-normal text-on-surface-variant ml-0.5">만원</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span>총소요액 - 대출 - 보증금</span>
+</div>
+</div>
+<!-- 2. 월 순현금흐름 (Cash Flow) -->
+<div class="p-4 rounded-xl bg-surface-container-low space-y-1">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-sm text-label-sm">월 순현금흐름 (NCF)</span>
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+</div>
+<div class="font-headline-md text-headline-md font-bold text-primary tracking-tight" id="kpiMonthlyCashFlow">
+                +24.0<span class="font-body-sm text-body-sm font-normal text-on-surface-variant ml-0.5">만원</span>
+</div>
+<div class="font-label-sm text-label-sm text-tertiary font-semibold flex items-center gap-0.5">
+<span>연 +288만원</span>
+</div>
+</div>
+<!-- 3. 자기자본수익률 (ROE) -->
+<div class="p-4 rounded-xl bg-surface-container-low space-y-1">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-sm text-label-sm">자기자본수익률 (ROE)</span>
+<span class="material-symbols-outlined text-[16px]">donut_large</span>
+</div>
+<div class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight" id="kpiRoe">
+                1.50<span class="font-body-sm text-body-sm font-normal text-on-surface-variant ml-0.5">%</span>
+</div>
+<div class="font-label-sm text-label-sm text-error flex items-center gap-0.5">
+<span>지렛대 역효과 발생중</span>
+</div>
+</div>
+<!-- 4. 단순수익률 (Cap Rate) -->
+<div class="p-4 rounded-xl bg-surface-container-low space-y-1">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-sm text-label-sm">총비용 단순수익률 (Cap Rate)</span>
+<span class="material-symbols-outlined text-[16px]">analytics</span>
+</div>
+<div class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight" id="kpiCapRate">
+                3.00<span class="font-body-sm text-body-sm font-normal text-on-surface-variant ml-0.5">%</span>
+</div>
+<div class="font-label-sm text-label-sm text-outline flex items-center gap-1">
+<span>무차입 자산 본원수익률</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 취득 부대비용 내역 (Detailed Closing Costs) -->
+<div class="bg-surface-container-lowest rounded-xl p-5 sm:p-6 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">총 취득 부대비용 산출 명세</h3>
+<span class="font-headline-sm text-headline-sm font-bold text-primary" id="totalIncidentalCostSummary">1,050만원</span>
+</div>
+<div class="space-y-2.5 font-body-sm text-body-sm">
+<div class="flex items-center justify-between py-1.5 px-3 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-on-surface font-medium">취득세 (1.0%) + 지방교육세 (0.1%)</span>
+</div>
+<span class="font-mono font-semibold text-on-surface" id="costTaxBreakdown">660만원</span>
+</div>
+<div class="flex items-center justify-between py-1.5 px-3 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-on-surface font-medium">중개보수 (법정상한 0.4% + 부가세 10%)</span>
+</div>
+<span class="font-mono font-semibold text-on-surface" id="costBrokerage">264만원</span>
+</div>
+<div class="flex items-center justify-between py-1.5 px-3 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="text-on-surface font-medium">채권할인손료 · 법무대행 · 수입인지</span>
+</div>
+<span class="font-mono font-semibold text-on-surface" id="costBondLegal">126만원</span>
+</div>
+</div>
+<div class="pt-2 flex items-center justify-between text-on-surface font-label-md text-label-md bg-surface-container p-3 rounded-lg">
+<span class="font-semibold">취득 총 필요자금 (매매가 + 부대비용)</span>
+<span class="font-bold text-primary font-mono text-[14px]" id="totalOutlayRequired">61,050만원</span>
+</div>
+</div>
+<!-- 월별 현금 수지표 (Monthly Cash Flow Balance Sheet) -->
+<div class="bg-surface-container-lowest rounded-xl p-5 sm:p-6 shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">월별 수지 대차대조표</h3>
+<span class="font-label-sm text-label-sm text-tertiary bg-secondary-container px-2 py-0.5 rounded font-semibold">순이익 흑자</span>
+</div>
+<div class="overflow-hidden rounded-lg">
+<table class="w-full text-left font-body-sm text-body-sm">
+<tbody class="divide-y divide-surface-container">
+<tr class="bg-surface-container-low">
+<td class="py-2.5 px-3 text-on-surface-variant font-medium">월 임대 수입 (+)</td>
+<td class="py-2.5 px-3 text-right font-mono font-bold text-primary" id="tableRentIn">+150.0만원</td>
+</tr>
+<tr class="bg-surface-container-lowest">
+<td class="py-2.5 px-3 text-on-surface-variant font-medium">월 대출 금융비용 (-)</td>
+<td class="py-2.5 px-3 text-right font-mono font-semibold text-error" id="tableInterestOut">-126.0만원</td>
+</tr>
+<tr class="bg-surface-container font-semibold">
+<td class="py-2.5 px-3 text-on-surface">최종 월 순현금흐름 (=)</td>
+<td class="py-2.5 px-3 text-right font-mono font-bold text-primary text-[15px]" id="tableNetCashFlow">+24.0만원</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="font-label-sm text-label-sm text-outline text-right">※ 재산세, 종부세 및 세부 장기수선충당금은 별도 산출 대상</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive State Engine -->
+<script>
+    (function initCalculatorEngine() {
+      // DOM Selectors
+      const priceSlider = document.getElementById('priceSlider');
+      const priceDisplayWon = document.getElementById('priceDisplayWon');
+      const priceDisplayMan = document.getElementById('priceDisplayMan');
+      const propTypeBtns = document.querySelectorAll('.prop-type-btn');
+      const houseHoldCount = document.getElementById('houseHoldCount');
+      const taxExceed85 = document.getElementById('taxExceed85');
+      const ltvBtns = document.querySelectorAll('.ltv-btn');
+      const ltvIndicatorLabel = document.getElementById('ltvIndicatorLabel');
+      const loanAmountInput = document.getElementById('loanAmountInput');
+      const loanRateInput = document.getElementById('loanRateInput');
+      const depositInput = document.getElementById('depositInput');
+      const monthlyRentInput = document.getElementById('monthlyRentInput');
+      const annualRentDisplay = document.getElementById('annualRentDisplay');
+      const brokerVatToggle = document.getElementById('brokerVatToggle');
+      const bondRateSlider = document.getElementById('bondRateSlider');
+      const bondDiscountDisplay = document.getElementById('bondDiscountDisplay');
+      const presetBtns = document.querySelectorAll('.preset-btn');
+
+      // Output Elements
+      const kpiNetEquity = document.getElementById('kpiNetEquity');
+      const kpiMonthlyCashFlow = document.getElementById('kpiMonthlyCashFlow');
+      const kpiRoe = document.getElementById('kpiRoe');
+      const kpiCapRate = document.getElementById('kpiCapRate');
+      const leverageAlertBox = document.getElementById('leverageAlertBox');
+      const leverageDetailText = document.getElementById('leverageDetailText');
+      const totalIncidentalCostSummary = document.getElementById('totalIncidentalCostSummary');
+      const costTaxBreakdown = document.getElementById('costTaxBreakdown');
+      const costBrokerage = document.getElementById('costBrokerage');
+      const costBondLegal = document.getElementById('costBondLegal');
+      const totalOutlayRequired = document.getElementById('totalOutlayRequired');
+      const tableRentIn = document.getElementById('tableRentIn');
+      const tableInterestOut = document.getElementById('tableInterestOut');
+      const tableNetCashFlow = document.getElementById('tableNetCashFlow');
+      const saveHistoryBtn = document.getElementById('saveHistoryBtn');
+      const pdfExportBtn = document.getElementById('pdfExportBtn');
+
+      // State
+      let currentPrice = 600000000;
+      let currentPropType = 'house';
+      let currentLtvPercent = 60.0;
+
+      // Presets Dictionary
+      const PRESETS = {
+        '800m': { price: 800000000, ltv: 60, deposit: 10000, rent: 220, rate: 4.10, type: 'house', exceed: false },
+        '250m': { price: 250000000, ltv: 70, deposit: 1000, rent: 95, rate: 4.40, type: 'officetel', exceed: false },
+        '150m': { price: 150000000, ltv: 60, deposit: 1000, rent: 60, rate: 4.50, type: 'house', exceed: false },
+        '1500m': { price: 1500000000, ltv: 50, deposit: 20000, rent: 380, rate: 4.05, type: 'house', exceed: true }
+      };
+
+      function formatNumber(num) {
+        return Math.round(num).toLocaleString('ko-KR');
+      }
+
+      function calculateTaxRate(price, type, countKey, isExceed85) {
+        let baseRate = 0.01;
+        let eduRate = 0.001;
+        let specialRuralRate = isExceed85 ? 0.002 : 0;
+
+        if (type === 'officetel') {
+          return 0.04 + 0.004 + 0.002; // 4.6% 단일
+        }
+        if (type === 'commercial') {
+          return 0.04 + 0.004 + 0.002; // 4.6% 단일
+        }
+
+        // Residential logic
+        if (countKey === 'corp' || countKey === '3_multi') {
+          baseRate = 0.12;
+          eduRate = 0.004;
+        } else if (countKey === '2_adj') {
+          baseRate = 0.08;
+          eduRate = 0.004;
+        } else {
+          // 1주택 or 2주택 비조정: 6억 이하 1%, 6~9억 슬라이딩(1~3%), 9억 초과 3%
+          if (price <= 600000000) {
+            baseRate = 0.01;
+            eduRate = 0.001;
+          } else if (price <= 900000000) {
+            baseRate = ((price * 2 / 300000000) - 3) / 100;
+            eduRate = baseRate * 0.1;
+          } else {
+            baseRate = 0.03;
+            eduRate = 0.003;
+          }
+        }
+        return baseRate + eduRate + specialRuralRate;
+      }
+
+      function computeBrokerage(price, type, includeVat) {
+        let rate = 0.004;
+        if (type === 'officetel') rate = 0.005;
+        if (type === 'commercial') rate = 0.009;
+        
+        if (type === 'house') {
+          if (price < 50000000) rate = 0.006;
+          else if (price < 200000000) rate = 0.005;
+          else if (price < 900000000) rate = 0.004;
+          else if (price < 1200000000) rate = 0.005;
+          else rate = 0.007;
+        }
+        let fee = price * rate;
+        if (includeVat) fee *= 1.1;
+        return fee;
+      }
+
+      function recalculate() {
+        const price = parseFloat(priceSlider.value);
+        const ltv = currentLtvPercent;
+        const loan = price * (ltv / 100);
+        loanAmountInput.value = formatNumber(loan);
+        ltvIndicatorLabel.textContent = `LTV ${ltv.toFixed(1)}% (${formatNumber(loan / 10000)}만원)`;
+
+        const loanRate = parseFloat(loanRateInput.value) || 0;
+        const depositMan = parseFloat(depositInput.value) || 0;
+        const depositWon = depositMan * 10000;
+        const monthlyRentMan = parseFloat(monthlyRentInput.value) || 0;
+        const monthlyRentWon = monthlyRentMan * 10000;
+        annualRentDisplay.textContent = formatNumber(monthlyRentMan * 12);
+
+        // Taxes & Closing costs
+        const taxRate = calculateTaxRate(price, currentPropType, houseHoldCount.value, taxExceed85.checked);
+        const taxes = price * taxRate;
+        const brokerage = computeBrokerage(price, currentPropType, brokerVatToggle.checked);
+        const bondRate = parseFloat(bondRateSlider.value) / 100;
+        const bondLegal = (price * 0.0021 * bondRate) + 850000; // Formula for bond discount + legal deed fees
+        const totalIncidental = taxes + brokerage + bondLegal;
+
+        // Investment Outlays
+        const totalAcquisitionCost = price + totalIncidental;
+        const netEquity = totalAcquisitionCost - loan - depositWon; // Real Equity
+
+        // Monthly Financials
+        const monthlyInterest = (loan * (loanRate / 100)) / 12;
+        const netMonthlyCashFlow = monthlyRentWon - monthlyInterest;
+        const annualNetProfit = netMonthlyCashFlow * 12;
+
+        // Metrics
+        const capRate = ((monthlyRentWon * 12) / price) * 100;
+        const roe = netEquity > 0 ? (annualNetProfit / netEquity) * 100 : 0;
+
+        // Update UI
+        priceDisplayWon.textContent = formatNumber(price);
+        priceDisplayMan.textContent = formatNumber(price / 10000);
+        bondDiscountDisplay.textContent = `${parseFloat(bondRateSlider.value).toFixed(2)}%`;
+
+        kpiNetEquity.innerHTML = `${formatNumber(netEquity / 10000)}<span class="font-body-sm text-body-sm font-normal text-on-surface-variant ml-0.5">만원</span>`;
+        
+        const sign = netMonthlyCashFlow >= 0 ? '+' : '';
+        kpiMonthlyCashFlow.innerHTML = `${sign}${(netMonthlyCashFlow / 10000).toFixed(1)}<span class="font-body-sm text-body-sm font-normal text-on-surface-variant ml-0.5">만원</span>`;
+        kpiRoe.innerHTML = `${roe.toFixed(2)}<span class="font-body-sm text-body-sm font-normal text-on-surface-variant ml-0.5">%</span>`;
+        kpiCapRate.innerHTML = `${capRate.toFixed(2)}<span class="font-body-sm text-body-sm font-normal text-on-surface-variant ml-0.5">%</span>`;
+
+        totalIncidentalCostSummary.textContent = `${formatNumber(totalIncidental / 10000)}만원`;
+        costTaxBreakdown.textContent = `${formatNumber(taxes / 10000)}만원`;
+        costBrokerage.textContent = `${formatNumber(brokerage / 10000)}만원`;
+        costBondLegal.textContent = `${formatNumber(bondLegal / 10000)}만원`;
+        totalOutlayRequired.textContent = `${formatNumber(totalAcquisitionCost / 10000)}만원`;
+
+        tableRentIn.textContent = `+${monthlyRentMan.toFixed(1)}만원`;
+        tableInterestOut.textContent = `-${formatNumber(monthlyInterest / 10000)}만원`;
+        tableNetCashFlow.textContent = `${sign}${(netMonthlyCashFlow / 10000).toFixed(1)}만원`;
+
+        // Negative Carry & Leverage Health Diagnosis
+        if (capRate < loanRate) {
+          leverageAlertBox.className = "p-4 rounded-xl bg-error-container text-on-error-container flex items-start gap-3 shadow-sm transition-all";
+          leverageDetailText.innerHTML = `총 임대수익률(<span class="font-bold">${capRate.toFixed(2)}%</span>)이 대출이자율(<span class="font-bold">${loanRate.toFixed(2)}%</span>)보다 낮습니다. 차입금 비중이 커질수록 자기자본수익률(ROE)이 잠식됩니다.`;
+          leverageAlertBox.querySelector('span.material-symbols-outlined').textContent = 'warning';
+          leverageAlertBox.querySelector('span.material-symbols-outlined').className = 'material-symbols-outlined text-error text-[24px] flex-shrink-0 mt-0.5';
+          leverageAlertBox.querySelector('span.font-label-md').className = 'font-label-md text-label-md font-bold tracking-tight text-error';
+          leverageAlertBox.querySelector('span.font-label-md').textContent = '[지렛대 효과 판정] 🔴 역마진 주의';
+        } else {
+          leverageAlertBox.className = "p-4 rounded-xl bg-surface-container-high text-on-surface flex items-start gap-3 shadow-sm transition-all";
+          leverageDetailText.innerHTML = `총 임대수익률(<span class="font-bold text-tertiary">${capRate.toFixed(2)}%</span>)이 조달금리(<span class="font-bold">${loanRate.toFixed(2)}%</span>)를 상회합니다. 정(Positive)의 레버리지 효과로 자본수익률이 극대화됩니다.`;
+          leverageAlertBox.querySelector('span.material-symbols-outlined').textContent = 'check_circle';
+          leverageAlertBox.querySelector('span.material-symbols-outlined').className = 'material-symbols-outlined text-tertiary text-[24px] flex-shrink-0 mt-0.5';
+          leverageAlertBox.querySelector('span.font-label-md').className = 'font-label-md text-label-md font-bold tracking-tight text-tertiary';
+          leverageAlertBox.querySelector('span.font-label-md').textContent = '[지렛대 효과 판정] 🟢 건전한 정(Positive) 레버리지';
+        }
+      }
+
+      // Event Listeners
+      priceSlider.addEventListener('input', recalculate);
+      houseHoldCount.addEventListener('change', recalculate);
+      taxExceed85.addEventListener('change', recalculate);
+      loanRateInput.addEventListener('input', recalculate);
+      depositInput.addEventListener('input', recalculate);
+      monthlyRentInput.addEventListener('input', recalculate);
+      brokerVatToggle.addEventListener('change', recalculate);
+      bondRateSlider.addEventListener('input', recalculate);
+
+      // Property Type Switcher
+      propTypeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          propTypeBtns.forEach(b => {
+            b.className = "prop-type-btn py-2 text-center rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all";
+          });
+          btn.className = "prop-type-btn py-2 text-center rounded-md font-label-md text-label-md font-semibold bg-surface-container-lowest text-primary shadow-sm transition-all";
+          currentPropType = btn.dataset.propType;
+          recalculate();
+        });
+      });
+
+      // LTV Buttons Switcher
+      ltvBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          ltvBtns.forEach(b => {
+            b.className = "ltv-btn py-2 bg-surface-container-low text-on-surface-variant hover:bg-surface-container rounded-lg font-label-md text-label-md font-medium transition-colors";
+          });
+          btn.className = "ltv-btn py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md font-semibold shadow-sm transition-colors";
+          currentLtvPercent = parseFloat(btn.dataset.ltv);
+          recalculate();
+        });
+      });
+
+      // Presets Click Handler
+      presetBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          presetBtns.forEach(b => {
+            b.className = "preset-btn px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md";
+          });
+          btn.className = "preset-btn px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-semibold hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md";
+
+          const preset = PRESETS[btn.dataset.preset];
+          if (!preset) return;
+
+          priceSlider.value = preset.price;
+          loanRateInput.value = preset.rate;
+          depositInput.value = preset.deposit;
+          monthlyRentInput.value = preset.rent;
+          taxExceed85.checked = preset.exceed;
+          currentLtvPercent = preset.ltv;
+
+          // Select matching LTV button
+          ltvBtns.forEach(b => {
+            if (parseFloat(b.dataset.ltv) === preset.ltv) {
+              b.className = "ltv-btn py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md font-semibold shadow-sm transition-colors";
+            } else {
+              b.className = "ltv-btn py-2 bg-surface-container-low text-on-surface-variant hover:bg-surface-container rounded-lg font-label-md text-label-md font-medium transition-colors";
+            }
+          });
+
+          // Select matching Property Type button
+          propTypeBtns.forEach(b => {
+            if (b.dataset.propType === preset.type) {
+              b.className = "prop-type-btn py-2 text-center rounded-md font-label-md text-label-md font-semibold bg-surface-container-lowest text-primary shadow-sm transition-all";
+            } else {
+              b.className = "prop-type-btn py-2 text-center rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all";
+            }
+          });
+          currentPropType = preset.type;
+
+          recalculate();
+        });
+      });
+
+      // Quick Toast Micro-Interactions
+      saveHistoryBtn.addEventListener('click', () => {
+        const originalContent = saveHistoryBtn.innerHTML;
+        saveHistoryBtn.innerHTML = `<span class="material-symbols-outlined text-[20px]">check</span> IndexedDB 보관함 저장 완료`;
+        saveHistoryBtn.classList.replace('bg-primary', 'bg-tertiary');
+        setTimeout(() => {
+          saveHistoryBtn.innerHTML = originalContent;
+          saveHistoryBtn.classList.replace('bg-tertiary', 'bg-primary');
+        }, 1800);
+      });
+
+      pdfExportBtn.addEventListener('click', () => {
+        const originalContent = pdfExportBtn.innerHTML;
+        pdfExportBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">download_done</span> 브리핑 PDF 생성중...`;
+        setTimeout(() => {
+          pdfExportBtn.innerHTML = originalContent;
+        }, 1600);
+      });
+
+      // Initial execution
+      recalculate();
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-low py-space-lg"><div class="w-full px-gutter-desktop flex flex-col md:flex-row items-center justify-between gap-space-sm font-label-sm text-label-sm text-on-surface-variant"><div class="flex items-center gap-2"><span>PropIntelligence Terminal © 2025</span><span class="text-outline-variant">•</span><span>Private Autonomous Investor Node</span></div><div class="flex items-center gap-space-md font-mono"><span>DB: Local Encrypted IndexedDB</span><span>STATUS: CONNECTED (KOR_REIT_01)</span></div></div></footer></body></html>

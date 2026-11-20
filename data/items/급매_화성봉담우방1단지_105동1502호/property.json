@@ -1,0 +1,63 @@
+{
+  "id": "sale-bongdam-105",
+  "caseNumber": "급매-화성우방1단지",
+  "category": "일반급매",
+  "status": "추천",
+  "court": "일반 부동산 중개 (대박공인 031-299-1234)",
+  "auctionDate": "2026-12-30",
+  "propertyName": "화성 봉담 우방아이유쉘1단지 105동 1502호",
+  "address": "경기도 화성시 봉담읍 수영리 674",
+  "buildingType": "아파트",
+  "exclusiveAreaM2": 84.99,
+  "exclusiveAreaPyung": 25.71,
+  "floorInfo": "15 / 23층 (로얄동 고층 뻥뷰)",
+  "buildYear": 2017,
+  "totalUnits": 888,
+  "appraisedValue": 360000000,
+  "minimumBidPrice": 340000000,
+  "minimumBidRate": 94.4,
+  "recommendedBidPrice": 340000000,
+  "marketPrice": 420000000,
+  "safetyMargin": 72080000,
+  "expenses": {
+    "acquisitionTax": 3740000,
+    "legalFee": 800000,
+    "evictionFee": 0,
+    "repairFee": 1500000,
+    "unpaidManagementFee": 0,
+    "brokerageFee": 1360000,
+    "loanInterest": 2380000,
+    "totalExpenses": 7920000
+  },
+  "financing": {
+    "ltvPercent": 70,
+    "loanAmount": 238000000,
+    "interestRate": 4.0,
+    "monthlyInterest": 793000
+  },
+  "rental": {
+    "rentalType": "전세",
+    "deposit": 280000000,
+    "monthlyRent": 0,
+    "expectedSalePrice": 420000000
+  },
+  "netInvestment": 67920000,
+  "expectedNetMonthlyProfit": 0,
+  "annualNetCashflow": 0,
+  "roePercent": 17.8,
+  "roiCapitalGainPercent": 17.8,
+  "rights": {
+    "malsoStandard": "정상 소유권 이전 등기 (말소 대상 근저당 잔금시 상환말소)",
+    "occupantStatus": "소유자 직접 거주 (잔금일 정상 인도 협의)",
+    "isSafe": true,
+    "takeoverAmount": 0,
+    "evictionDifficulty": "하",
+    "riskNotes": "명도 리스크 전혀 없음. 잔금 일정(최대 3개월) 협의 가능하며 내부 인테리어 상태 사전 확인 완료."
+  },
+  "locationHighlights": [
+    "105동 고층(15층)으로 단지 내 가장 선호되는 막힘없는 조망권 및 일조권 확보",
+    "신분당선 봉담 연장 계획 호재 및 수원역 20분 생활권",
+    "단지 내 커뮤니티, 어린이집 및 수영초등학교 근접동"
+  ],
+  "strategyBrief": "소유자의 해외 이사로 급처분 희망 물건. 경매 매물(102동 1301호)의 추천 낙찰가(3.3억)와 실질 매입단가 차이가 약 1,000만원에 불과합니다. 경매의 강제집행/명도 리스크와 잔금 압박을 회피하고 싶다면, 본 급매물을 3.4억원 이하로 네고 매수하는 것이 훨씬 안전하고 합리적인 선택입니다."
+}

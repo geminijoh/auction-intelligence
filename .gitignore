@@ -1,0 +1,21 @@
+# OS / System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# IDE & Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Python Cache & Temp
+__pycache__/
+*.py[cod]
+*$py.class
+*.tmp
+*.log
+
+# Windows Shortcuts
+*.lnk

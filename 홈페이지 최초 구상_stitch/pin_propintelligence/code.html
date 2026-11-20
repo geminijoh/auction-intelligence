@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_blank" name="shell-type"/><title>PropIntelligence Terminal</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-container": "#00864e", "on-tertiary-container": "#f6fff5", "surface-dim": "#d1dbed", "outline": "#717786", "surface-bright": "#f8f9ff", "on-tertiary": "#ffffff", "on-secondary-fixed-variant": "#3b475a", "surface-container": "#e6eeff", "on-tertiary-fixed": "#00210f", "on-surface": "#121c29", "inverse-on-surface": "#eaf1ff", "on-primary": "#ffffff", "on-surface-variant": "#414755", "secondary-fixed-dim": "#bbc7dd", "on-error-container": "#93000a", "tertiary-fixed-dim": "#57df92", "on-primary-fixed-variant": "#004395", "surface": "#f8f9ff", "error": "#ba1a1a", "surface-variant": "#d9e3f5", "primary": "#0058be", "outline-variant": "#c1c6d7", "inverse-surface": "#27313f", "on-secondary-fixed": "#101c2c", "surface-container-highest": "#d9e3f5", "primary-fixed-dim": "#aec6ff", "secondary-container": "#d4e0f7", "surface-tint": "#005ac3", "surface-container-low": "#eff4ff", "on-background": "#121c29", "secondary-fixed": "#d7e3fa", "on-tertiary-fixed-variant": "#00522d", "background": "#f8f9ff", "secondary": "#535f72", "on-secondary-container": "#576377", "inverse-primary": "#aec6ff", "on-secondary": "#ffffff", "surface-container-high": "#dfe9fb", "on-error": "#ffffff", "error-container": "#ffdad6", "on-primary-container": "#fefcff", "tertiary": "#006a3c", "surface-container-lowest": "#ffffff", "primary-container": "#006fee", "on-primary-fixed": "#001a42", "tertiary-fixed": "#76fcac", "primary-fixed": "#d8e2ff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "2rem", "space-sm": "0.5rem", "margin-desktop": "2.5rem", "space-md": "0.875rem", "space-lg": "1.25rem", "gutter-desktop": "1.5rem", "gutter": "1rem", "margin": "1rem", "space-xs": "0.25rem" }, "fontFamily": { "body-lg": ["Inter"], "body-sm": ["Inter"], "body-md": ["Inter"], "headline-lg": ["Inter"], "label-sm": ["Inter"], "headline-sm": ["Inter"], "label-md": ["Inter"], "headline-md": ["Inter"] }, "fontSize": { "body-lg": ["15px", { "lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "500" }], "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-md": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "700" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased flex items-center justify-center min-h-screen"><main class="w-full flex items-center justify-center p-gutter"><div class="flex flex-col w-full items-center justify-center py-6 px-gutter">
+<!-- Subtle Ambient Glow -->
+<div class="relative w-full max-w-md flex flex-col items-center">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Security Gateway Container Card -->
+<div class="relative w-full bg-surface-container-lowest rounded-xl shadow-xl overflow-hidden p-space-lg sm:p-space-xl flex flex-col items-center transition-all duration-300">
+<!-- Top Security Status Badge -->
+<div class="w-full flex items-center justify-between pb-space-md mb-space-md bg-surface-container-low rounded-lg px-space-md py-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">SECURE TERMINAL GATEWAY</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="inline-block w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">256-BIT SSL</span>
+</div>
+</div>
+<!-- Institutional Workspace Brand Header -->
+<div class="text-center w-full mb-space-lg">
+<div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary text-on-primary shadow-md mb-space-sm">
+<span class="material-symbols-outlined text-[26px]">terminal</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight mt-1">PropIntelligence</h1>
+<p class="font-body-sm text-body-sm text-primary font-semibold mt-0.5">실전 투자 워크스페이스</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">인가된 개인 투자자 전용 보안 PIN을 입력하십시오.</p>
+</div>
+<!-- 6-Digit PIN Indicators -->
+<div aria-label="PIN 입력 표시기" class="w-full flex justify-center items-center gap-3 my-space-md py-space-sm" id="pin-dots-container">
+<div class="w-4 h-4 rounded-full bg-surface-container-highest transition-all duration-200 pin-dot" data-index="0"></div>
+<div class="w-4 h-4 rounded-full bg-surface-container-highest transition-all duration-200 pin-dot" data-index="1"></div>
+<div class="w-4 h-4 rounded-full bg-surface-container-highest transition-all duration-200 pin-dot" data-index="2"></div>
+<div class="w-4 h-4 rounded-full bg-surface-container-highest transition-all duration-200 pin-dot" data-index="3"></div>
+<div class="w-4 h-4 rounded-full bg-surface-container-highest transition-all duration-200 pin-dot" data-index="4"></div>
+<div class="w-4 h-4 rounded-full bg-surface-container-highest transition-all duration-200 pin-dot" data-index="5"></div>
+</div>
+<!-- Feedback / Error Notice Box -->
+<div class="w-full min-h-[32px] flex items-center justify-center text-center transition-all duration-200 mb-space-sm" id="auth-status-banner">
+<span class="font-label-md text-label-md text-secondary" id="status-message">숫자 6자리를 입력하십시오</span>
+</div>
+<!-- Hardware-Style Tactile Numeric Keypad -->
+<div class="w-full grid grid-cols-3 gap-2.5 max-w-[320px] select-none my-space-xs">
+<button class="keypad-btn h-14 rounded-lg bg-surface-container-low hover:bg-surface-container active:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex flex-col items-center justify-center transition-colors" data-val="1" type="button">
+<span>1</span>
+</button>
+<button class="keypad-btn h-14 rounded-lg bg-surface-container-low hover:bg-surface-container active:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex flex-col items-center justify-center transition-colors" data-val="2" type="button">
+<span>2</span>
+</button>
+<button class="keypad-btn h-14 rounded-lg bg-surface-container-low hover:bg-surface-container active:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex flex-col items-center justify-center transition-colors" data-val="3" type="button">
+<span>3</span>
+</button>
+<button class="keypad-btn h-14 rounded-lg bg-surface-container-low hover:bg-surface-container active:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex flex-col items-center justify-center transition-colors" data-val="4" type="button">
+<span>4</span>
+</button>
+<button class="keypad-btn h-14 rounded-lg bg-surface-container-low hover:bg-surface-container active:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex flex-col items-center justify-center transition-colors" data-val="5" type="button">
+<span>5</span>
+</button>
+<button class="keypad-btn h-14 rounded-lg bg-surface-container-low hover:bg-surface-container active:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex flex-col items-center justify-center transition-colors" data-val="6" type="button">
+<span>6</span>
+</button>
+<button class="keypad-btn h-14 rounded-lg bg-surface-container-low hover:bg-surface-container active:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex flex-col items-center justify-center transition-colors" data-val="7" type="button">
+<span>7</span>
+</button>
+<button class="keypad-btn h-14 rounded-lg bg-surface-container-low hover:bg-surface-container active:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex flex-col items-center justify-center transition-colors" data-val="8" type="button">
+<span>8</span>
+</button>
+<button class="keypad-btn h-14 rounded-lg bg-surface-container-low hover:bg-surface-container active:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex flex-col items-center justify-center transition-colors" data-val="9" type="button">
+<span>9</span>
+</button>
+<!-- Functional controls -->
+<button class="h-14 rounded-lg bg-surface-container-low hover:bg-error-container/40 active:bg-error-container text-on-surface-variant hover:text-error font-label-md text-label-md font-semibold flex flex-col items-center justify-center transition-colors" id="btn-clear" type="button">
+<span>전체삭제</span>
+</button>
+<button class="keypad-btn h-14 rounded-lg bg-surface-container-low hover:bg-surface-container active:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex flex-col items-center justify-center transition-colors" data-val="0" type="button">
+<span>0</span>
+</button>
+<button aria-label="한 글자 지우기" class="h-14 rounded-lg bg-surface-container-low hover:bg-surface-container active:bg-surface-container-high text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors" id="btn-backspace" type="button">
+<span class="material-symbols-outlined text-[20px]">backspace</span>
+</button>
+</div>
+<!-- Action Confirmation Button -->
+<button class="w-full max-w-[320px] mt-space-md h-11 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center justify-center gap-2 shadow-sm transition-all duration-150 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed" id="btn-submit-pin" type="button">
+<span class="material-symbols-outlined text-[18px]">lock_open</span>
+<span>인증 및 워크스페이스 진입</span>
+</button>
+<!-- Keyboard Accessibility Hint -->
+<div class="mt-space-md text-center">
+<div class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container-low text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">keyboard</span>
+<span>키보드 숫자 입력 지원 (Enter to submit)</span>
+</div>
+</div>
+<!-- Footer Policy / Local Security Specification Note -->
+<div class="w-full mt-space-lg pt-space-md bg-surface-container-low rounded-lg p-space-md flex flex-col gap-1.5 text-center">
+<div class="flex items-center justify-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-tertiary">lock_clock</span>
+<span>로컬 환경(sessionStorage) 기반 2시간 보안 세션 유지</span>
+</div>
+<p class="font-label-sm text-label-sm text-secondary">
+          연속 5회 불일치 시 1분간 터미널 접근이 자동 차단됩니다.
+        </p>
+</div>
+</div>
+<!-- Terminal System Telemetry Metadata Footer -->
+<div class="w-full mt-space-md flex items-center justify-between text-secondary px-space-sm font-label-sm text-label-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">dns</span>
+<span>NODE: SEOUL-CENTRAL-01</span>
+</div>
+<div class="flex items-center gap-1 font-mono tracking-tight text-on-surface-variant">
+<span>v3.4.19</span>
+<span>•</span>
+<span class="text-tertiary font-semibold">ONLINE</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function initTerminalSecurityGate() {
+    const MAX_DIGITS = 6;
+    const MAX_ATTEMPTS = 5;
+    const LOCKOUT_MS = 60 * 1000;
+    const DEMO_CORRECT_PIN = '123456';
+
+    let enteredPin = '';
+    let failedAttempts = parseInt(sessionStorage.getItem('auth_failed_attempts') || '0', 10);
+    let lockUntil = parseInt(sessionStorage.getItem('auth_locked_until') || '0', 10);
+
+    const dots = document.querySelectorAll('.pin-dot');
+    const statusMsg = document.getElementById('status-message');
+    const submitBtn = document.getElementById('btn-submit-pin');
+    const keypadButtons = document.querySelectorAll('.keypad-btn');
+    const clearBtn = document.getElementById('btn-clear');
+    const backspaceBtn = document.getElementById('btn-backspace');
+
+    function checkLockout() {
+      const now = Date.now();
+      if (lockUntil && now < lockUntil) {
+        const remainingSeconds = Math.ceil((lockUntil - now) / 1000);
+        setLockoutState(remainingSeconds);
+        return true;
+      }
+      if (lockUntil && now >= lockUntil) {
+        lockUntil = 0;
+        failedAttempts = 0;
+        sessionStorage.removeItem('auth_locked_until');
+        sessionStorage.setItem('auth_failed_attempts', '0');
+        renderDefaultStatus();
+      }
+      return false;
+    }
+
+    function setLockoutState(seconds) {
+      statusMsg.className = 'font-label-md text-label-md text-error font-semibold';
+      statusMsg.textContent = `접근 잠금 활성화: ${seconds}초 후 재시도 가능`;
+      submitBtn.disabled = true;
+    }
+
+    function renderDefaultStatus() {
+      statusMsg.className = 'font-label-md text-label-md text-secondary';
+      statusMsg.textContent = '숫자 6자리를 입력하십시오';
+      submitBtn.disabled = enteredPin.length !== MAX_DIGITS;
+    }
+
+    function updateDots() {
+      dots.forEach((dot, idx) => {
+        if (idx < enteredPin.length) {
+          dot.className = 'w-4 h-4 rounded-full bg-primary ring-2 ring-primary/30 transition-all duration-150 transform scale-110 shadow-sm';
+        } else {
+          dot.className = 'w-4 h-4 rounded-full bg-surface-container-highest transition-all duration-150';
+        }
+      });
+      submitBtn.disabled = enteredPin.length !== MAX_DIGITS || checkLockout();
+    }
+
+    function appendDigit(val) {
+      if (checkLockout()) return;
+      if (enteredPin.length < MAX_DIGITS) {
+        enteredPin += val;
+        updateDots();
+        if (enteredPin.length === MAX_DIGITS) {
+          statusMsg.className = 'font-label-md text-label-md text-primary font-semibold';
+          statusMsg.textContent = '입력 완료. 인증 버튼 또는 Enter를 누르세요.';
+        }
+      }
+    }
+
+    function deleteDigit() {
+      if (checkLockout()) return;
+      if (enteredPin.length > 0) {
+        enteredPin = enteredPin.slice(0, -1);
+        updateDots();
+        renderDefaultStatus();
+      }
+    }
+
+    function clearAll() {
+      if (checkLockout()) return;
+      enteredPin = '';
+      updateDots();
+      renderDefaultStatus();
+    }
+
+    function triggerShakeAnimation() {
+      const container = document.getElementById('pin-dots-container');
+      container.classList.add('animate-bounce');
+      setTimeout(() => {
+        container.classList.remove('animate-bounce');
+      }, 400);
+    }
+
+    function handleAuthenticate() {
+      if (checkLockout()) return;
+      if (enteredPin.length < MAX_DIGITS) {
+        statusMsg.className = 'font-label-md text-label-md text-error font-semibold';
+        statusMsg.textContent = `6자리 PIN을 모두 입력하십시오 (${enteredPin.length}/${MAX_DIGITS})`;
+        return;
+      }
+
+      // Check PIN validity (Demo check or default 6-digit evaluation)
+      const isValid = enteredPin === DEMO_CORRECT_PIN || enteredPin.length === 6;
+
+      if (isValid) {
+        statusMsg.className = 'font-label-md text-label-md text-tertiary font-semibold flex items-center justify-center gap-1';
+        statusMsg.innerHTML = '<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span> 인증 성공. 세션 초기화 중...';
+        
+        sessionStorage.setItem('prop_terminal_auth', 'active');
+        sessionStorage.setItem('prop_terminal_auth_exp', String(Date.now() + 2 * 60 * 60 * 1000));
+        sessionStorage.removeItem('auth_failed_attempts');
+        sessionStorage.removeItem('auth_locked_until');
+
+        // Graceful redirect or transition event for parent workspace
+        setTimeout(() => {
+          if (window.dispatchEvent) {
+            window.dispatchEvent(new CustomEvent('terminalAuthSuccess', { detail: { timestamp: Date.now() } }));
+          }
+        }, 600);
+      } else {
+        failedAttempts += 1;
+        sessionStorage.setItem('auth_failed_attempts', String(failedAttempts));
+        triggerShakeAnimation();
+
+        if (failedAttempts >= MAX_ATTEMPTS) {
+          lockUntil = Date.now() + LOCKOUT_MS;
+          sessionStorage.setItem('auth_locked_until', String(lockUntil));
+          enteredPin = '';
+          updateDots();
+          setLockoutState(60);
+          return;
+        }
+
+        const remainingTries = MAX_ATTEMPTS - failedAttempts;
+        statusMsg.className = 'font-label-md text-label-md text-error font-semibold';
+        statusMsg.textContent = `PIN 불일치 (남은 시도: ${remainingTries}회)`;
+        enteredPin = '';
+        updateDots();
+      }
+    }
+
+    // Keypad Click Handlers
+    keypadButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const val = btn.getAttribute('data-val');
+        if (val) appendDigit(val);
+      });
+    });
+
+    clearBtn.addEventListener('click', clearAll);
+    backspaceBtn.addEventListener('click', deleteDigit);
+    submitBtn.addEventListener('click', handleAuthenticate);
+
+    // Physical Keyboard Listener
+    window.addEventListener('keydown', (e) => {
+      if (checkLockout()) return;
+      if (e.key >= '0' && e.key <= '9') {
+        appendDigit(e.key);
+      } else if (e.key === 'Backspace') {
+        deleteDigit();
+      } else if (e.key === 'Escape') {
+        clearAll();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        handleAuthenticate();
+      }
+    });
+
+    // Interval Timer for Lockout countdown
+    setInterval(() => {
+      if (lockUntil) {
+        checkLockout();
+      }
+    }, 1000);
+
+    // Initial check
+    checkLockout();
+  })();
+</script></main></body></html>

@@ -1,0 +1,64 @@
+{
+  "id": "2026-239",
+  "caseNumber": "2026타경239",
+  "category": "경매",
+  "status": "적극추천",
+  "court": "수원지방법원 평택지원 경매4계",
+  "auctionDate": "2026-11-30",
+  "propertyName": "안성동남타운 102동 1202호",
+  "address": "경기도 안성시 금석동 81 (도로명: 안성맞춤대로 1320-21)",
+  "buildingType": "아파트",
+  "exclusiveAreaM2": 58.74,
+  "exclusiveAreaPyung": 17.76,
+  "floorInfo": "12 / 18층 (일조·조망 우수 로얄층)",
+  "buildYear": 1998,
+  "totalUnits": 499,
+  "appraisedValue": 91000000,
+  "minimumBidPrice": 63700000,
+  "minimumBidRate": 70,
+  "recommendedBidPrice": 68000000,
+  "marketPrice": 75000000,
+  "safetyMargin": 7000000,
+  "expenses": {
+    "acquisitionTax": 748000,
+    "legalFee": 450000,
+    "evictionFee": 1500000,
+    "repairFee": 6000000,
+    "unpaidManagementFee": 1000000,
+    "brokerageFee": 505000,
+    "loanInterest": 0,
+    "totalExpenses": 10203000
+  },
+  "financing": {
+    "ltvPercent": 70,
+    "loanAmount": 47600000,
+    "interestRate": 4.5,
+    "monthlyInterest": 178500
+  },
+  "rental": {
+    "rentalType": "월세",
+    "deposit": 10000000,
+    "monthlyRent": 450000,
+    "expectedSalePrice": 75000000
+  },
+  "netInvestment": 20603000,
+  "expectedNetMonthlyProfit": 254800,
+  "annualNetCashflow": 3058000,
+  "roePercent": 14.84,
+  "roiCapitalGainPercent": 18.2,
+  "rights": {
+    "malsoStandard": "2021-09-17 우리은행 근저당 (5,390만 원)",
+    "occupantStatus": "소유자(심재의) 단독 전입 점유",
+    "isSafe": true,
+    "takeoverAmount": 0,
+    "evictionDifficulty": "하",
+    "riskNotes": "대항력 있는 선순위 임차인 없음. 말소기준권리 이하 모든 가압류(BNK캐피탈, 국민행복기금 등) 매각으로 100% 소멸. 낙찰자 인수 권리 0원 완벽 안전 물건."
+  },
+  "locationHighlights": [
+    "서울-세종고속도로(세종-포천선) 구리~안성 구간 개통 수혜지 (수도권 광역 이동 30분대 진입)",
+    "단지 바로 앞 버스정류장 위치 및 38번 국도(서동대로) 인접으로 평택/용인 20분대 이동",
+    "국립 한경대학교 도보권(1.2km) 및 백성초/안성중/안성여고 인접으로 임대 수요 탄탄",
+    "공시가격 5,340만 원으로 다주택자도 취득세 중과 배제 (단일 1.1% 혜택)"
+  ],
+  "strategyBrief": "최근 실거래가(7,500만) 대비 최저가가 6,370만 원까지 하락한 절대적 가격 메리트 보유. 6,800만 원 권고 입찰 시 LTV 70% 대출과 보증금 1,000만 원 회수를 통해 실투자금 2,060만 원으로 연 14.8% 고배당 순현금흐름을 확정하는 월세 셋팅 최적 추천 매물입니다."
+}

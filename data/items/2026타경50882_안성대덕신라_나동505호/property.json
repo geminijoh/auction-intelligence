@@ -1,0 +1,62 @@
+{
+  "id": "2026-50882",
+  "caseNumber": "2026타경50882",
+  "category": "경매",
+  "status": "보류/유찰대기",
+  "court": "수원지방법원 평택지원 경매3계",
+  "auctionDate": "2026-11-23",
+  "propertyName": "안성 대덕 신라아파트 나동 505호",
+  "address": "경기도 안성시 대덕면 내리 675",
+  "buildingType": "아파트",
+  "exclusiveAreaM2": 35.28,
+  "exclusiveAreaPyung": 10.67,
+  "floorInfo": "5 / 15층",
+  "buildYear": 1996,
+  "totalUnits": 588,
+  "appraisedValue": 85000000,
+  "minimumBidPrice": 85000000,
+  "minimumBidRate": 100,
+  "recommendedBidPrice": 55000000,
+  "marketPrice": 74500000,
+  "safetyMargin": -10500000,
+  "expenses": {
+    "acquisitionTax": 935000,
+    "legalFee": 600000,
+    "evictionFee": 2000000,
+    "repairFee": 4000000,
+    "unpaidManagementFee": 500000,
+    "brokerageFee": 400000,
+    "loanInterest": 669000,
+    "totalExpenses": 8504000
+  },
+  "financing": {
+    "ltvPercent": 70,
+    "loanAmount": 38500000,
+    "interestRate": 4.5,
+    "monthlyInterest": 144375
+  },
+  "rental": {
+    "rentalType": "월세",
+    "deposit": 10000000,
+    "monthlyRent": 400000,
+    "expectedSalePrice": 72000000
+  },
+  "netInvestment": 16500000,
+  "expectedNetMonthlyProfit": 255625,
+  "annualNetCashflow": 3067500,
+  "roePercent": 18.5,
+  "rights": {
+    "malsoStandard": "2019-06-28 가압류 (안성축협 7,150만 원)",
+    "occupantStatus": "외국인 2명 전입 (대항력 없는 후순위 전입자)",
+    "isSafe": true,
+    "takeoverAmount": 0,
+    "evictionDifficulty": "중",
+    "riskNotes": "외국인 점유자로 의사소통 및 송달 난이도 중상급. 감정평가액(8,500만원)이 실제 거래시세(7,450만원)보다 약 1,000만원 이상 비싸게 책정됨."
+  },
+  "locationHighlights": [
+    "중앙대학교 다빈치캠퍼스 인근으로 대학생 및 외국인 근로자 소형 원룸/투룸 수요 풍부",
+    "38번 국도변에 위치하여 안성 시내 및 평택 고덕 방면 대중교통 이용 용이",
+    "소액 투자(실투자 1천만원대)로 월세 셋팅 가능한 전형적인 고수익 원룸형 아파트"
+  ],
+  "strategyBrief": "★주의 경고: 현재 1차 신건(8,500만원)은 실거래 시세(7,450만원)보다 1,000만원 이상 비싸므로 절대 입찰 금지! 최소 1회 유찰(최저가 5,950만원) 이후 또는 2회 유찰(4,165만원) 시점에 5,000만~5,500만원 선에 낙찰받아 보증금 1,000/월 40만원 월세 세팅으로 공략해야 하는 물건입니다."
+}

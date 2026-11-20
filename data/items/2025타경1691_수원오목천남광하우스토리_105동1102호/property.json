@@ -1,0 +1,62 @@
+{
+  "id": "2025-1691",
+  "caseNumber": "2025타경1691",
+  "category": "경매",
+  "status": "관심",
+  "court": "수원지방법원 본원 경매",
+  "auctionDate": "2026-12-15",
+  "propertyName": "수원 오목천동 남광하우스토리 105동 1102호",
+  "address": "경기도 수원시 권선구 오목천동 962",
+  "buildingType": "아파트",
+  "exclusiveAreaM2": 84.92,
+  "exclusiveAreaPyung": 25.68,
+  "floorInfo": "11 / 15층",
+  "buildYear": 2007,
+  "totalUnits": 420,
+  "appraisedValue": 380000000,
+  "minimumBidPrice": 266000000,
+  "minimumBidRate": 70,
+  "recommendedBidPrice": 305000000,
+  "marketPrice": 370000000,
+  "safetyMargin": 55000000,
+  "expenses": {
+    "acquisitionTax": 3355000,
+    "legalFee": 700000,
+    "evictionFee": 1500000,
+    "repairFee": 2000000,
+    "unpaidManagementFee": 0,
+    "brokerageFee": 1220000,
+    "loanInterest": 1800000,
+    "totalExpenses": 7075000
+  },
+  "financing": {
+    "ltvPercent": 70,
+    "loanAmount": 213500000,
+    "interestRate": 4.2,
+    "monthlyInterest": 747250
+  },
+  "rental": {
+    "rentalType": "전세",
+    "deposit": 250000000,
+    "monthlyRent": 0,
+    "expectedSalePrice": 370000000
+  },
+  "netInvestment": 62075000,
+  "expectedNetMonthlyProfit": 0,
+  "annualNetCashflow": 0,
+  "roePercent": 19.3,
+  "rights": {
+    "malsoStandard": "근저당권 (말소기준등기)",
+    "occupantStatus": "소유자 점유 추정",
+    "isSafe": true,
+    "takeoverAmount": 0,
+    "evictionDifficulty": "하",
+    "riskNotes": "권리분석상 특이사항 없음. 감정평가액 대비 1회 유찰되어 가격적 진입 매력 발생."
+  },
+  "locationHighlights": [
+    "수인분당선 오목천역 도보 10분 역세권 아파트",
+    "수원 R&D 사이언스파크 개발 및 인근 고색동 인프라 공유",
+    "오목초, 영신중, 영신여고 인접 학군 양호"
+  ],
+  "strategyBrief": "화성 봉담 우방아이유쉘과 함께 서수원-봉담 벨트의 핵심 비교 대상 물건. 3억원 초반 낙찰 시 갭 6천만원 전세 셋팅 또는 실거주 갈아타기로 최적."
+}

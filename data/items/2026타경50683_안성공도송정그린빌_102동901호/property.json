@@ -1,0 +1,62 @@
+{
+  "id": "2026-50683",
+  "caseNumber": "2026타경50683",
+  "category": "경매",
+  "status": "관심",
+  "court": "수원지방법원 평택지원 경매",
+  "auctionDate": "2026-12-08",
+  "propertyName": "안성 공도 송정그린빌 102동 901호",
+  "address": "경기도 안성시 공도읍 양기리 567",
+  "buildingType": "아파트",
+  "exclusiveAreaM2": 59.85,
+  "exclusiveAreaPyung": 18.1,
+  "floorInfo": "9 / 15층",
+  "buildYear": 2002,
+  "totalUnits": 720,
+  "appraisedValue": 125000000,
+  "minimumBidPrice": 87500000,
+  "minimumBidRate": 70,
+  "recommendedBidPrice": 98000000,
+  "marketPrice": 118000000,
+  "safetyMargin": 12000000,
+  "expenses": {
+    "acquisitionTax": 1078000,
+    "legalFee": 500000,
+    "evictionFee": 1500000,
+    "repairFee": 3000000,
+    "unpaidManagementFee": 0,
+    "brokerageFee": 472000,
+    "loanInterest": 700000,
+    "totalExpenses": 6550000
+  },
+  "financing": {
+    "ltvPercent": 70,
+    "loanAmount": 68600000,
+    "interestRate": 4.5,
+    "monthlyInterest": 257250
+  },
+  "rental": {
+    "rentalType": "월세",
+    "deposit": 15000000,
+    "monthlyRent": 500000,
+    "expectedSalePrice": 118000000
+  },
+  "netInvestment": 20950000,
+  "expectedNetMonthlyProfit": 242750,
+  "annualNetCashflow": 2913000,
+  "roePercent": 13.9,
+  "rights": {
+    "malsoStandard": "근저당권 (말소기준등기)",
+    "occupantStatus": "임차인 조사 중",
+    "isSafe": true,
+    "takeoverAmount": 0,
+    "evictionDifficulty": "하",
+    "riskNotes": "안성 공도 대단지 소형 평형. 권리상 인수금액 0원 예상."
+  },
+  "locationHighlights": [
+    "안성 공도 스타필드 안성 및 평택 용이지구 인접 생활권",
+    "안성 제4일반산업단지 등 풍부한 배후 일자리 수요",
+    "공시지가 1억 이하 구간 소액 갭/월세 셋팅 가능"
+  ],
+  "strategyBrief": "안성 동남타운과 함께 안성권 소액 월세 파이프라인 구축 후보군. 1억원 언더로 낙찰받아 실투자 2,000만원에 월 순수익 24만원 이상 확정 가능."
+}
