@@ -1,0 +1,366 @@
+<!-- Interactive Investment Yield Engine Container (V6 with Dual Strategy for Jeonse & Monthly Rent) -->
+<div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6" id="yieldCalculatorApp">
+  
+  <!-- Top Real Auction Property Selector Bar (2줄 구조: 정확한 사건번호 + 경매 이름) -->
+  <div class="bg-surface-container-lowest rounded-2xl p-4 sm:p-5 shadow-sm border border-outline-variant/30 space-y-3">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary text-[20px]">account_tree</span>
+        <span class="font-label-md text-label-md font-bold text-on-surface uppercase tracking-wide">실전 분석 대상 매물 선택 (원클릭 전환)</span>
+      </div>
+      <span class="text-xs text-secondary font-medium">선택 즉시 투자수익률 및 대출/세금 시뮬레이션 자동 동기화</span>
+    </div>
+    
+    <!-- 6개 매물 2줄 카드형 선택기 -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2" id="calc-property-selector">
+      <!-- JavaScript로 2줄 정밀 사건번호 + 물건명 동적 렌더링 -->
+    </div>
+  </div>
+    
+    <!-- Quick Macro Metrics Strip -->
+    <div class="flex flex-wrap items-center gap-3 text-on-surface-variant font-label-sm text-label-sm border-t xl:border-t-0 pt-2 xl:pt-0">
+      <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>소비자물가 2.6%</span>
+      <span class="text-outline-variant">•</span>
+      <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>국고채 3년 3.28%</span>
+      <span class="text-outline-variant">•</span>
+      <span class="text-on-surface font-semibold">2025~2026 개정 취득세율 반영</span>
+    </div>
+  </div>
+
+  <!-- Main Grid: Left Control Panel (7 cols) + Right Analytics Rail (5 cols) -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+    
+    <!-- LEFT COLUMN: Parameter Input Control Panel (7 Cols) -->
+    <div class="lg:col-span-7 flex flex-col space-y-6">
+      
+      <!-- 1. 매물 기본 정보 및 조세 설정 (직접 금액 입력 지원) -->
+      <div class="bg-surface-container-lowest rounded-2xl p-5 sm:p-6 shadow-sm border border-outline-variant/30 space-y-5">
+        <div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">apartment</span>
+            <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">1. 매물 기본 정보 및 조세 설정</h2>
+          </div>
+          <span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-md bg-surface-container text-primary font-mono font-bold">STEP 01</span>
+        </div>
+
+        <!-- 취득 희망 매매가: 슬라이더 + 직접 금액 입력창 완벽 연동 -->
+        <div class="space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <label class="font-label-md text-label-md font-bold text-on-surface" for="priceInput">
+              취득 희망 매매가 (원 단위 직접 입력 가능)
+            </label>
+            <div class="flex items-center gap-2">
+              <div class="relative w-48 sm:w-56">
+                <input id="priceInput" oninput="handlePriceInputChange()" class="w-full h-10 px-3 pr-8 bg-surface-container-low focus:bg-surface-container-lowest text-primary font-headline-sm text-headline-sm font-bold rounded-lg border border-outline-variant/40 text-right outline-none focus:ring-2 focus:ring-primary" step="1000000" type="number" value="330000000"/>
+                <span class="absolute right-2.5 top-2.5 text-xs text-secondary font-bold">원</span>
+              </div>
+              <span class="text-xs text-secondary font-semibold shrink-0">(<span id="priceDisplayMan">33,000</span>만원)</span>
+            </div>
+          </div>
+          
+          <input class="w-full h-2 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-primary" id="priceSlider" max="1500000000" min="30000000" oninput="handlePriceSliderChange()" step="1000000" type="range" value="330000000"/>
+          
+          <div class="flex justify-between font-label-sm text-label-sm text-outline">
+            <span>3,000만</span>
+            <span>1억</span>
+            <span>3.3억 (봉담우방)</span>
+            <span>5억</span>
+            <span>10억</span>
+            <span>15억</span>
+          </div>
+        </div>
+
+        <!-- 물건 유형 선택 -->
+        <div class="space-y-2">
+          <span class="font-label-md text-label-md font-bold text-on-surface">물건 유형</span>
+          <div class="grid grid-cols-3 gap-2 p-1 bg-surface-container-low rounded-lg">
+            <button onclick="handlePropTypeChange('house')" class="prop-type-btn py-2 text-center rounded-md font-label-md text-label-md font-semibold bg-surface-container-lowest text-primary shadow-sm transition-all" data-prop-type="house" type="button">
+              주택 (아파트/빌라)
+            </button>
+            <button onclick="handlePropTypeChange('officetel')" class="prop-type-btn py-2 text-center rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all font-medium" data-prop-type="officetel" type="button">
+              주거·오피스텔
+            </button>
+            <button onclick="handlePropTypeChange('commercial')" class="prop-type-btn py-2 text-center rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all font-medium" data-prop-type="commercial" type="button">
+              상가 · 근린
+            </button>
+          </div>
+        </div>
+
+        <!-- 보유 주택수 선택 -->
+        <div class="space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="font-label-md text-label-md font-bold text-on-surface">취득 시 보유 주택수</span>
+            <span class="font-label-sm text-label-sm text-primary font-bold" id="taxRateIndicator">기본세율 1.1% 적용 (비조정 1주택)</span>
+          </div>
+          <div class="grid grid-cols-4 gap-2">
+            <button onclick="handleHousingCountChange('1house')" class="housing-btn py-2 text-center rounded-lg font-label-md text-label-md font-semibold bg-primary text-on-primary shadow-sm transition-all" data-house="1house" type="button">1주택</button>
+            <button onclick="handleHousingCountChange('2house')" class="housing-btn py-2 text-center rounded-lg font-label-md text-label-md font-medium bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-all" data-house="2house" type="button">2주택</button>
+            <button onclick="handleHousingCountChange('3house')" class="housing-btn py-2 text-center rounded-lg font-label-md text-label-md font-medium bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-all" data-house="3house" type="button">3주택</button>
+            <button onclick="handleHousingCountChange('4house')" class="housing-btn py-2 text-center rounded-lg font-label-md text-label-md font-medium bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-all" data-house="4house" type="button">4주택 이상</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1-B. 경매 특화 인텔리전스 패널 (경매 물건 전용 데이터 분석) -->
+      <div class="bg-surface-container-lowest rounded-2xl p-5 sm:p-6 shadow-sm border border-primary/30 space-y-4">
+        <div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">gavel</span>
+            <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">경매 특화 실무 인텔리전스</h3>
+          </div>
+          <span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-bold">경매 실전 분석</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+          <!-- 1. 낙찰가율 -->
+          <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between">
+            <span class="text-secondary font-semibold">감정가 대비 낙찰가율</span>
+            <div class="mt-1">
+              <span id="calc-bid-ratio" class="text-base font-black text-primary">81.5%</span>
+            </div>
+            <span class="text-[11px] text-secondary mt-0.5" id="calc-appraised-comp">감정가 4억 500만 기준</span>
+          </div>
+
+          <!-- 2. 입찰보증금 10% -->
+          <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between">
+            <span class="text-secondary font-semibold">입찰 당일 보증금 (10%)</span>
+            <div class="mt-1">
+              <span id="calc-deposit-check" class="text-base font-black text-on-surface">2,835만 원</span>
+            </div>
+            <span class="text-[11px] text-secondary mt-0.5">최저가의 10% (수표1매)</span>
+          </div>
+
+          <!-- 3. 경락잔금대출 가용액 -->
+          <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between">
+            <span class="text-secondary font-semibold">경락잔금대출 가용액</span>
+            <div class="mt-1">
+              <span id="calc-auction-loan-limit" class="text-base font-black text-tertiary">2억 3,100만 원</span>
+            </div>
+            <span class="text-[11px] text-secondary mt-0.5">낙찰가 70% 추산 기준</span>
+          </div>
+
+          <!-- 4. 명도 및 촉탁비 예비비 -->
+          <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between">
+            <span class="text-secondary font-semibold">경매 특수 부대비용</span>
+            <div class="mt-1">
+              <span id="calc-auction-special-fees" class="text-base font-black text-error">230만 원</span>
+            </div>
+            <span class="text-[11px] text-secondary mt-0.5">촉탁등기+명도예비비</span>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-primary-container/10 border border-primary/20 flex items-start gap-2.5 text-xs text-on-surface">
+          <span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">info</span>
+          <p class="leading-relaxed">
+            <strong>경매 실무 조언:</strong> 본 매물은 2016-12-01 한국주택금융공사 근저당 이후 후순위 권리가 전액 소멸되는 100% 무하자 매물입니다. 소유자 장OO 세대 전입으로 매수인 인수 보증금이 전혀 없으며, 잔금 납부 시 소유권이전 촉탁등기와 동시에 <strong>법원 인도명령을 즉시 신청</strong>하십시오.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2. 자금 조달 & 레버리지 (LTV 0% 및 연속 레인지 슬라이더 탑재) -->
+      <div class="bg-surface-container-lowest rounded-2xl p-5 sm:p-6 shadow-sm border border-outline-variant/30 space-y-5">
+        <div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">account_balance</span>
+            <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">2. 자금 조달 &amp; 레버리지 (타인자본 설계)</h2>
+          </div>
+          <span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-md bg-surface-container text-primary font-mono font-bold">STEP 02</span>
+        </div>
+
+        <!-- LTV 0% ~ 80% Range Slider & Presets -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <label class="font-label-md text-label-md font-bold text-on-surface" for="ltvSlider">
+              담보인정비율 (LTV) 설정
+            </label>
+            <span class="font-label-md text-label-md font-bold text-primary" id="ltvIndicatorLabel">LTV 70.0% (2억 3,100만원)</span>
+          </div>
+
+          <!-- LTV Range 슬라이더 바 (0% ~ 80%) -->
+          <input class="w-full h-2 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-primary" id="ltvSlider" max="80" min="0" oninput="handleLtvSliderChange(this.value)" step="5" type="range" value="70"/>
+          
+          <div class="flex justify-between font-label-sm text-label-sm text-outline">
+            <span>0% (전액 자부담)</span>
+            <span>20%</span>
+            <span>40%</span>
+            <span>60%</span>
+            <span>70% (기준)</span>
+            <span>80%</span>
+          </div>
+
+          <!-- LTV Quick Presets Buttons (0% 포함 5종) -->
+          <div class="grid grid-cols-5 gap-1.5 pt-1">
+            <button onclick="handleLtvSliderChange(0)" class="ltv-btn py-2 bg-surface-container-low text-on-surface-variant hover:bg-surface-container rounded-lg font-label-md text-label-md font-medium transition-colors text-center" data-ltv="0" type="button">0% (자부담)</button>
+            <button onclick="handleLtvSliderChange(40)" class="ltv-btn py-2 bg-surface-container-low text-on-surface-variant hover:bg-surface-container rounded-lg font-label-md text-label-md font-medium transition-colors text-center" data-ltv="40" type="button">40%</button>
+            <button onclick="handleLtvSliderChange(60)" class="ltv-btn py-2 bg-surface-container-low text-on-surface-variant hover:bg-surface-container rounded-lg font-label-md text-label-md font-medium transition-colors text-center" data-ltv="60" type="button">60%</button>
+            <button onclick="handleLtvSliderChange(70)" class="ltv-btn py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md font-semibold shadow-sm transition-colors text-center" data-ltv="70" type="button">70%</button>
+            <button onclick="handleLtvSliderChange(80)" class="ltv-btn py-2 bg-surface-container-low text-on-surface-variant hover:bg-surface-container rounded-lg font-label-md text-label-md font-medium transition-colors text-center" data-ltv="80" type="button">80%</button>
+          </div>
+        </div>
+
+        <!-- Loan Amount & Interest Rate Inputs -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-1.5">
+            <label class="font-label-md text-label-md font-bold text-on-surface" for="loanAmountInput">담보 대출 원금</label>
+            <div class="relative">
+              <input class="w-full h-11 px-3 pr-10 py-2 bg-surface-container-low text-on-surface rounded-lg font-body-sm text-body-sm focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary outline-none text-right font-mono font-bold border border-outline-variant/30" id="loanAmountInput" type="text" value="231,000,000"/>
+              <span class="absolute right-3 top-2.5 font-label-md text-label-md text-outline">원</span>
+            </div>
+          </div>
+          <div class="space-y-1.5">
+            <label class="font-label-md text-label-md font-bold text-on-surface" for="loanRateInput">적용 대출 금리 (연이율)</label>
+            <div class="relative">
+              <input class="w-full h-11 px-3 pr-8 py-2 bg-surface-container-low text-on-surface rounded-lg font-body-sm text-body-sm focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary outline-none text-right font-mono font-bold border border-outline-variant/30" id="loanRateInput" max="15.0" min="0.0" step="0.05" type="number" value="4.00"/>
+              <span class="absolute right-3 top-2.5 font-label-md text-label-md text-outline">%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rent Deposit & Monthly Rent (전세/월세 지원) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+          <div class="space-y-1.5">
+            <div class="flex justify-between items-center">
+              <label class="font-label-md text-label-md font-bold text-on-surface" for="depositInput">임대 보증금 (회수자본)</label>
+              <span id="rentalTypeBadge" class="text-[11px] px-1.5 py-0.5 rounded font-bold bg-primary/10 text-primary">전세 세팅 (2.8억)</span>
+            </div>
+            <div class="relative">
+              <input class="w-full h-11 px-3 pr-10 py-2 bg-surface-container-low text-on-surface rounded-lg font-body-sm text-body-sm focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary outline-none text-right font-mono font-bold border border-outline-variant/30" id="depositInput" step="500" type="number" value="28000"/>
+              <span class="absolute right-3 top-2.5 font-label-md text-label-md text-outline">만원</span>
+            </div>
+          </div>
+          <div class="space-y-1.5">
+            <label class="font-label-md text-label-md font-bold text-on-surface" for="monthlyRentInput">월 임대료 수입 (전세 시 0원)</label>
+            <div class="relative">
+              <input class="w-full h-11 px-3 pr-10 py-2 bg-surface-container-low text-on-surface rounded-lg font-body-sm text-body-sm focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary outline-none text-right font-mono font-bold border border-outline-variant/30" id="monthlyRentInput" step="5" type="number" value="0"/>
+              <span class="absolute right-3 top-2.5 font-label-md text-label-md text-outline">만원</span>
+            </div>
+            <p class="font-label-sm text-label-sm text-secondary">연간 환산액: <span id="annualRentDisplay" class="font-bold text-on-surface">0</span>만원</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. 취득 부대비용 및 공과금 세부 설정 -->
+      <div class="bg-surface-container-lowest rounded-2xl p-5 sm:p-6 shadow-sm border border-outline-variant/30 space-y-4">
+        <div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">receipt_long</span>
+            <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">3. 취득 부대비용 및 공과금 세부 설정</h2>
+          </div>
+          <span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-md bg-surface-container text-primary font-mono font-bold">STEP 03</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+          <label class="flex items-center gap-3 p-3 bg-surface-container-low rounded-xl cursor-pointer hover:bg-surface-container transition-colors border border-outline-variant/20">
+            <input checked="" class="w-4 h-4 text-primary rounded accent-primary" id="brokerVatToggle" type="checkbox"/>
+            <div class="flex flex-col">
+              <span class="font-label-md text-label-md font-bold text-on-surface">중개보수 부가세 10% 가산</span>
+              <span class="font-label-sm text-label-sm text-secondary">일반과세 공인중개사 세금계산서</span>
+            </div>
+          </label>
+          <div class="p-3 bg-surface-container-low rounded-xl space-y-1.5 border border-outline-variant/20">
+            <div class="flex justify-between items-center">
+              <span class="font-label-md text-label-md font-bold text-on-surface">국민주택채권 할인율</span>
+              <span class="font-label-md text-label-md font-mono font-bold text-primary" id="bondDiscountDisplay">7.50%</span>
+            </div>
+            <input class="w-full h-1.5 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-primary" id="bondRateSlider" max="15.0" min="2.0" step="0.25" type="range" value="7.50"/>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN: Sticky Real-time Analytics & Decision Support (5 Cols) -->
+    <div class="lg:col-span-5 flex flex-col space-y-6 lg:sticky lg:top-6">
+      
+      <!-- Leverage Health Status Alert Badge -->
+      <div class="p-4 rounded-2xl bg-surface-container-high text-on-surface flex items-start gap-3 shadow-sm transition-all border border-outline-variant/20" id="leverageAlertBox">
+        <span class="material-symbols-outlined text-tertiary text-[24px] flex-shrink-0 mt-0.5">check_circle</span>
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="font-label-md text-label-md font-bold tracking-tight text-tertiary" id="leverageTitle">[투자 전략 판정] 🟢 전세 갭투자 &amp; 자본이득 극대화</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed" id="leverageDetailText">
+            전세 2.8억 원 회수로 실투자금을 5,744만 원으로 압축하여 안전마진을 확보합니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4-Quadrant Large KPI Card Cluster -->
+      <div class="bg-surface-container-lowest rounded-2xl p-5 sm:p-6 shadow-sm border border-outline-variant/30 space-y-4">
+        <div class="flex items-center justify-between border-b border-surface-container pb-3">
+          <div>
+            <span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Executive Yield Analytics</span>
+            <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">핵심 투자 성과 지표 (KPI)</h3>
+          </div>
+          <span class="material-symbols-outlined text-primary text-[24px]">monitoring</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <!-- 1. 순자본 (Equity) -->
+          <div class="p-4 rounded-xl bg-surface-container-low space-y-1 border border-outline-variant/20">
+            <span class="font-label-sm text-label-sm text-secondary">실투자금 (순자본 Equity)</span>
+            <div class="font-headline-md text-headline-md font-black text-primary tracking-tight" id="kpiNetEquity">
+              5,744<span class="font-body-sm text-body-sm font-normal text-on-surface-variant ml-0.5">만원</span>
+            </div>
+            <span class="font-label-sm text-label-sm text-secondary block" id="kpiNetEquitySub">총비용 - 전세보증금 회수</span>
+          </div>
+
+          <!-- 2. 월 순현금흐름 또는 전세 전략 -->
+          <div class="p-4 rounded-xl bg-surface-container-low space-y-1 border border-outline-variant/20">
+            <span class="font-label-sm text-label-sm text-secondary" id="kpiNcfLabel">월 순현금흐름 (NCF)</span>
+            <div class="font-headline-md text-headline-md font-black text-on-surface tracking-tight" id="kpiMonthlyCashFlow">
+              전세 세팅<span class="font-body-sm text-body-sm font-normal text-on-surface-variant ml-0.5">(이자0원)</span>
+            </div>
+            <span class="font-label-sm text-label-sm text-secondary block" id="kpiNcfSub">전세 2.8억 갭투자 회수</span>
+          </div>
+
+          <!-- 3. 자기자본수익률 (ROE) -->
+          <div class="p-4 rounded-xl bg-tertiary-container/10 space-y-1 border border-tertiary/20">
+            <span class="font-label-sm text-label-sm text-tertiary font-bold" id="kpiRoeLabel">예상 수익률 (ROE)</span>
+            <div class="font-headline-md text-headline-md font-black text-tertiary tracking-tight" id="kpiRoe">
+              21.5<span class="font-body-sm text-body-sm font-normal text-tertiary ml-0.5">%</span>
+            </div>
+            <span class="font-label-sm text-label-sm text-tertiary block" id="kpiRoeSub">자본이득(안전마진) 기준</span>
+          </div>
+
+          <!-- 4. 안전마진 (Safety Margin) -->
+          <div class="p-4 rounded-xl bg-surface-container-low space-y-1 border border-outline-variant/20">
+            <span class="font-label-sm text-label-sm text-secondary">실거래 안전마진</span>
+            <div class="font-headline-md text-headline-md font-black text-tertiary tracking-tight" id="kpiCapRate">
+              +8,256<span class="font-body-sm text-body-sm font-normal text-on-surface-variant ml-0.5">만원</span>
+            </div>
+            <span class="font-label-sm text-label-sm text-secondary block">실거래가(4.2억) 대비 갭</span>
+          </div>
+        </div>
+
+        <!-- 부대비용 및 소요비용 상세 테이블 -->
+        <div class="p-4 rounded-xl bg-surface-container-low space-y-2 border border-outline-variant/20 font-body-sm text-body-sm">
+          <div class="flex justify-between items-center text-xs pb-1 border-b border-outline-variant/20">
+            <span class="font-bold text-on-surface">총 취득 부대비용</span>
+            <span id="totalIncidentalCostSummary" class="font-bold text-primary">744만원</span>
+          </div>
+          <div class="flex justify-between text-xs text-secondary">
+            <span>취득세 + 지방교육세</span>
+            <span id="costTaxBreakdown">363만원</span>
+          </div>
+          <div class="flex justify-between text-xs text-secondary">
+            <span>중개보수료 (VAT포함)</span>
+            <span id="costBrokerage">145만원</span>
+          </div>
+          <div class="flex justify-between text-xs text-secondary">
+            <span>법무보수 + 국민주택채권</span>
+            <span id="costBondLegal">236만원</span>
+          </div>
+          <div class="flex justify-between text-xs pt-1 border-t border-outline-variant/20 font-bold text-on-surface">
+            <span>총 매입 소요자금</span>
+            <span id="totalOutlayRequired" class="text-primary font-bold">3억 3,744만원</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
