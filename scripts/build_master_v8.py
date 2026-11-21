@@ -161,75 +161,74 @@ master_html = '''<!DOCTYPE html>
 </head>
 <body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen flex flex-col">
 
-  <!-- ================= TOP NAVIGATION BAR (상단 고정 네비게이션 헤더) ================= -->
-  <header id="top-navbar" class="no-print bg-surface-container-lowest border-b border-outline-variant/30 sticky top-0 z-40 shadow-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+  <!-- ================= TOP NAVIGATION BAR (상단 고정 네비게이션 헤더: 와이드 & 노-드래그) ================= -->
+  <header id="top-navbar" class="no-print bg-surface-container-lowest border-b border-outline-variant/30 sticky top-0 z-40 shadow-xs w-full">
+    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-2 sm:gap-4">
       
       <!-- Brand Logo & Badge -->
-      <div class="flex items-center gap-3 shrink-0 cursor-pointer" onclick="switchMainTab('dashboard')">
+      <div class="flex items-center gap-2.5 shrink-0 cursor-pointer" onclick="switchMainTab('dashboard')">
         <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-black">PropIntelligence</span>
-        <span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-semibold shadow-xs">
+        <span class="px-2 py-0.5 rounded-full bg-primary text-on-primary text-[11px] font-semibold shadow-xs">
           v8.0 Pro
         </span>
       </div>
 
-      <!-- Main Navigation Tabs (상단 가로 나열 메뉴) -->
-      <nav class="hidden md:flex items-center gap-1.5 overflow-x-auto" id="main-nav">
+      <!-- Main Navigation Tabs (상단 가로 나열 메뉴: 드래그 없이 한눈에 원클릭 전환) -->
+      <nav class="hidden md:flex items-center gap-1 shrink-0" id="main-nav">
         <!-- 1. 매물 대시보드 -->
-        <button onclick="switchMainTab('dashboard')" data-path="dashboard" id="btn-tab-dashboard" class="nav-tab-btn px-3.5 py-2 font-label-md text-label-md rounded-xl transition-all flex items-center gap-1.5 bg-primary-container text-on-primary-container font-bold shadow-xs whitespace-nowrap">
-          <span class="material-symbols-outlined text-[18px]">table_chart</span>
+        <button onclick="switchMainTab('dashboard')" data-path="dashboard" id="btn-tab-dashboard" class="nav-tab-btn px-3 py-1.5 font-label-md text-label-md rounded-xl transition-all flex items-center gap-1.5 bg-primary-container text-on-primary-container font-bold shadow-xs whitespace-nowrap">
+          <span class="material-symbols-outlined text-[17px]">table_chart</span>
           <span>매물 대시보드</span>
         </button>
 
         <!-- 2. 투자수익률 계산기 -->
-        <button onclick="switchMainTab('yield-calculator')" data-path="yield-calculator" id="btn-tab-yield-calculator" class="nav-tab-btn px-3.5 py-2 font-label-md text-label-md rounded-xl transition-all flex items-center gap-1.5 text-on-surface-variant hover:bg-surface-container hover:text-on-surface whitespace-nowrap">
-          <span class="material-symbols-outlined text-[18px]">calculate</span>
+        <button onclick="switchMainTab('yield-calculator')" data-path="yield-calculator" id="btn-tab-yield-calculator" class="nav-tab-btn px-3 py-1.5 font-label-md text-label-md rounded-xl transition-all flex items-center gap-1.5 text-on-surface-variant hover:bg-surface-container hover:text-on-surface whitespace-nowrap">
+          <span class="material-symbols-outlined text-[17px]">calculate</span>
           <span>투자수익률 계산기</span>
         </button>
 
         <!-- 3. 경매 분석 시뮬레이터 -->
-        <button onclick="switchMainTab('auction-simulator')" data-path="auction-simulator" id="btn-tab-auction-simulator" class="nav-tab-btn px-3.5 py-2 font-label-md text-label-md rounded-xl transition-all flex items-center gap-1.5 text-on-surface-variant hover:bg-surface-container hover:text-on-surface whitespace-nowrap">
-          <span class="material-symbols-outlined text-[18px]">tune</span>
+        <button onclick="switchMainTab('auction-simulator')" data-path="auction-simulator" id="btn-tab-auction-simulator" class="nav-tab-btn px-3 py-1.5 font-label-md text-label-md rounded-xl transition-all flex items-center gap-1.5 text-on-surface-variant hover:bg-surface-container hover:text-on-surface whitespace-nowrap">
+          <span class="material-symbols-outlined text-[17px]">tune</span>
           <span>경매 분석 시뮬레이터</span>
         </button>
 
         <!-- 4. 시장동향 리포트 뷰어 -->
-        <button onclick="switchMainTab('market-reports')" data-path="market-reports" id="btn-tab-market-reports" class="nav-tab-btn px-3.5 py-2 font-label-md text-label-md rounded-xl transition-all flex items-center gap-1.5 text-on-surface-variant hover:bg-surface-container hover:text-on-surface whitespace-nowrap">
-          <span class="material-symbols-outlined text-[18px]">travel_explore</span>
+        <button onclick="switchMainTab('market-reports')" data-path="market-reports" id="btn-tab-market-reports" class="nav-tab-btn px-3 py-1.5 font-label-md text-label-md rounded-xl transition-all flex items-center gap-1.5 text-on-surface-variant hover:bg-surface-container hover:text-on-surface whitespace-nowrap">
+          <span class="material-symbols-outlined text-[17px]">travel_explore</span>
           <span>시장동향 리포트 뷰어</span>
         </button>
       </nav>
 
       <!-- Right Utility Actions -->
       <div class="flex items-center gap-2 shrink-0">
-        <!-- Macro indicators (desktop) -->
-        <div class="hidden lg:flex items-center gap-2 px-2.5 py-1 bg-surface-container-low rounded-lg border border-outline-variant/30 text-[11px] text-secondary font-medium">
+        <!-- 기준금리 단독 표기 -->
+        <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 bg-surface-container-low rounded-lg border border-outline-variant/30 text-xs text-secondary font-medium">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
           <span>기준금리 <strong class="text-primary font-bold">3.50%</strong></span>
-          <span class="opacity-40">|</span>
-          <span>환율 <strong>1,385원</strong></span>
         </div>
 
         <!-- 📋 브리핑 요약 복사 -->
-        <button onclick="copySummaryReport()" class="px-3 py-1.5 bg-primary hover:bg-primary-container text-on-primary rounded-xl font-label-md text-label-md font-bold transition flex items-center gap-1.5 shadow-xs text-xs sm:text-sm" type="button" title="카카오톡/메모장용 브리핑 요약 복사">
-          <span class="material-symbols-outlined text-[17px]">content_copy</span>
+        <button onclick="copySummaryReport()" class="px-2.5 sm:px-3 py-1.5 bg-primary hover:bg-primary-container text-on-primary rounded-xl font-label-md text-label-md font-bold transition flex items-center gap-1 shadow-xs text-xs sm:text-sm" type="button" title="카카오톡/메모장용 브리핑 요약 복사">
+          <span class="material-symbols-outlined text-[16px]">content_copy</span>
           <span>📋 요약 복사</span>
         </button>
 
         <!-- A4 인쇄 / PDF -->
-        <button onclick="window.print()" class="px-3 py-1.5 bg-surface-container hover:bg-surface-container-high text-on-surface rounded-xl font-label-md text-label-md font-semibold transition flex items-center gap-1.5 border border-outline-variant/30 shadow-xs text-xs sm:text-sm" type="button">
-          <span class="material-symbols-outlined text-[17px]">print</span>
+        <button onclick="window.print()" class="px-2.5 sm:px-3 py-1.5 bg-surface-container hover:bg-surface-container-high text-on-surface rounded-xl font-label-md text-label-md font-semibold transition flex items-center gap-1 border border-outline-variant/30 shadow-xs text-xs sm:text-sm" type="button">
+          <span class="material-symbols-outlined text-[16px]">print</span>
           <span class="hidden sm:inline">인쇄/PDF</span>
         </button>
       </div>
 
     </div>
 
-    <!-- Mobile Sub-Navigation Bar (모바일 화면 가로 스크롤 탭) -->
-    <div class="md:hidden flex items-center gap-1 px-3 py-2 border-t border-outline-variant/20 overflow-x-auto no-scrollbar bg-surface-container-low">
-      <button onclick="switchMainTab('dashboard')" class="mobile-tab-btn px-3 py-1.5 text-xs font-bold rounded-lg whitespace-nowrap bg-primary-container text-on-primary-container" data-mpath="dashboard">대시보드</button>
-      <button onclick="switchMainTab('yield-calculator')" class="mobile-tab-btn px-3 py-1.5 text-xs font-medium text-secondary rounded-lg whitespace-nowrap" data-mpath="yield-calculator">수익률계산기</button>
-      <button onclick="switchMainTab('auction-simulator')" class="mobile-tab-btn px-3 py-1.5 text-xs font-medium text-secondary rounded-lg whitespace-nowrap" data-mpath="auction-simulator">경매시뮬레이터</button>
-      <button onclick="switchMainTab('market-reports')" class="mobile-tab-btn px-3 py-1.5 text-xs font-medium text-secondary rounded-lg whitespace-nowrap" data-mpath="market-reports">시장동향리포트</button>
+    <!-- Mobile Sub-Navigation Bar (드래그 없이 4분할 균등 원클릭 탭) -->
+    <div class="md:hidden grid grid-cols-4 gap-1 px-2 py-1.5 border-t border-outline-variant/20 bg-surface-container-low">
+      <button onclick="switchMainTab('dashboard')" class="mobile-tab-btn py-1.5 text-[11px] font-bold rounded-lg text-center bg-primary-container text-on-primary-container" data-mpath="dashboard">대시보드</button>
+      <button onclick="switchMainTab('yield-calculator')" class="mobile-tab-btn py-1.5 text-[11px] font-medium text-secondary rounded-lg text-center hover:bg-surface-container" data-mpath="yield-calculator">수익률</button>
+      <button onclick="switchMainTab('auction-simulator')" class="mobile-tab-btn py-1.5 text-[11px] font-medium text-secondary rounded-lg text-center hover:bg-surface-container" data-mpath="auction-simulator">시뮬레이터</button>
+      <button onclick="switchMainTab('market-reports')" class="mobile-tab-btn py-1.5 text-[11px] font-medium text-secondary rounded-lg text-center hover:bg-surface-container" data-mpath="market-reports">시장동향</button>
     </div>
   </header>
 
@@ -562,13 +561,13 @@ master_html = '''<!DOCTYPE html>
         }
       });
 
-      // 2. 모바일 서브 탭 버튼 스타일 전환
+      // 2. 모바일 서브 탭 버튼 스타일 전환 (드래그 없는 4분할 원클릭)
       document.querySelectorAll('.mobile-tab-btn').forEach(mbtn => {
         const mpath = mbtn.getAttribute('data-mpath');
         if (mpath === tabId) {
-          mbtn.className = 'mobile-tab-btn px-3 py-1.5 text-xs font-bold rounded-lg whitespace-nowrap bg-primary-container text-on-primary-container';
+          mbtn.className = 'mobile-tab-btn py-1.5 text-[11px] font-bold rounded-lg text-center bg-primary-container text-on-primary-container';
         } else {
-          mbtn.className = 'mobile-tab-btn px-3 py-1.5 text-xs font-medium text-secondary rounded-lg whitespace-nowrap hover:bg-surface-container';
+          mbtn.className = 'mobile-tab-btn py-1.5 text-[11px] font-medium text-secondary rounded-lg text-center hover:bg-surface-container';
         }
       });
 

@@ -142,6 +142,18 @@ items_count = len([d for d in os.listdir(items_dir) if not d.startswith("_") and
 test("28. data/items/ 개별 매물 폴더 패키징", has_items_dir and items_count >= 6, f"{items_count}개 개별 매물 폴더 격리 관리 확인")
 test("29. 새 매물 템플릿 (_template_new_property)", has_template, "property.json 및 README.md 템플릿 완비 확인")
 
+# 20. [v8 추가 개선] 기준금리 단독 표기 및 환율 삭제 검증
+has_base_rate = "기준금리" in content and "3.50%" in content
+has_fx_rate = "환율" in content or "1,385원" in content
+test("30. [v8] 기준금리 단독 표기 & 환율 삭제", has_base_rate and not has_fx_rate, 
+     "기준금리(3.50%)만 단독 표기 및 환율 삭제 확인" if (has_base_rate and not has_fx_rate) else "환율 잔존 또는 기준금리 누락")
+
+# 21. [v8 추가 개선] 와이드 레이아웃(max-w-[1720px]) 및 드래그 없는 탭 검증
+has_wide = "max-w-[1720px]" in content
+has_no_drag_tab = "grid-cols-4" in content
+test("31. [v8] 와이드 레이아웃 & 드래그 없는 원클릭 탭", has_wide and has_no_drag_tab, 
+     "1720px 와이드 레이아웃 및 4분할 원클릭 탭 확인" if (has_wide and has_no_drag_tab) else "와이드 또는 탭 레이아웃 불일치")
+
 print("=" * 60)
 passed_count = sum(1 for _, ok, _ in results if ok)
 total_count = len(results)
