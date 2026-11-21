@@ -22,7 +22,8 @@
       theme: {
         extend: {
           colors: {
-            "on-tertiary-container": "#f6fff5",
+            "tertiary-container": "#dcfce7",
+            "on-tertiary-container": "#14532d",
             "surface-dim": "#d1dbed",
             "outline": "#717786",
             "surface-bright": "#f8f9ff",
@@ -1419,7 +1420,8 @@
             <p id="modal-summary-address" class="font-bold text-on-surface text-sm sm:text-base">-</p>
           </div>
           <div class="flex items-center gap-2">
-            <span id="modal-status-badge" class="px-3 py-1 rounded-lg bg-tertiary-container text-on-tertiary-container font-bold text-xs">
+            <span id="modal-status-badge" class="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-xs shadow-xs">
+              <span class="material-symbols-outlined text-[15px] text-emerald-600 font-bold">verified</span>
               안전 물건
             </span>
             <span id="modal-auction-date" class="px-3 py-1 rounded-lg bg-surface-container text-on-surface font-semibold text-xs">
@@ -1853,8 +1855,8 @@
                   <span class="text-[10px] text-secondary block">${p.rental?.rentalType === '전세' ? '전세갭투자' : '월세셋팅'}</span>
                 </td>
                 <td class="py-3 px-4 text-center">
-                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-tertiary-container text-on-tertiary-container">
-                    <span class="material-symbols-outlined text-[13px]">verified</span>
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-2xs">
+                    <span class="material-symbols-outlined text-[15px] text-emerald-600 font-bold">verified</span>
                     안전
                   </span>
                 </td>
@@ -2514,7 +2516,10 @@
           <div class="space-y-3">
             <div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
               <span class="font-bold text-sm text-on-surface">1. 매각물건명세서 (법원 공식 고시)</span>
-              <span class="px-2 py-0.5 rounded text-xs font-bold bg-tertiary-container text-on-tertiary-container">하자 0건 클린</span>
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                <span class="material-symbols-outlined text-[13px] text-emerald-600">check_circle</span>
+                하자 0건 클린
+              </span>
             </div>
             <p class="text-xs text-on-surface leading-relaxed">
               • 최선순위 설정일자: <strong>${rig.malsoStandard || '2016-12-01 한국주택금융공사 근저당'}</strong><br>
@@ -2570,7 +2575,10 @@
           <div class="space-y-3">
             <div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
               <span class="font-bold text-sm text-on-surface">5. 전입세대확인서 (주민센터 열람본)</span>
-              <span class="px-2 py-0.5 rounded text-xs font-bold bg-tertiary-container text-on-tertiary-container">대항력 없음</span>
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                <span class="material-symbols-outlined text-[13px] text-emerald-600">check_circle</span>
+                대항력 없음
+              </span>
             </div>
             <p class="text-xs text-on-surface leading-relaxed">
               • 세대주 성명: 소유자 장OO 세대 전입 확인<br>
