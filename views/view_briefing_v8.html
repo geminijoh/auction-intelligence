@@ -1,11 +1,11 @@
 <!-- ================= 3. VIEW: 경매 분석 시뮬레이터 (V6: 2025타경56772 실전 분석 및 공적서류 5종 정밀 연동) ================= -->
-<div class="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+<div class="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 pt-2.5 pb-8 space-y-3.5">
 
   <!-- Top Real Auction Property Selector Bar (2줄 구조: 정확한 사건번호 + 경매 이름) -->
-  <div class="bg-surface-container-lowest rounded-2xl p-4 sm:p-5 shadow-sm border border-outline-variant/30 space-y-3">
+  <div class="bg-surface-container-lowest rounded-xl p-3 sm:p-3.5 shadow-xs border border-outline-variant/30 space-y-2">
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-2">
-        <span class="material-symbols-outlined text-primary text-[20px]">account_tree</span>
+        <span class="material-symbols-outlined text-primary text-[18px]">account_tree</span>
         <span class="font-label-md text-label-md font-bold text-on-surface uppercase tracking-wide">실전 분석 대상 매물 선택 (원클릭 전환)</span>
       </div>
       <span class="text-xs text-secondary font-medium">선택 즉시 5대 공적 서류 및 수지분석 슬라이더 자동 동기화</span>
@@ -18,77 +18,77 @@
   </div>
 
   <!-- Main Analysis Briefing Header -->
-  <section class="bg-surface-container-lowest rounded-2xl p-5 sm:p-6 shadow-sm border border-outline-variant/30 space-y-4">
-    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-outline-variant/20">
-      <div class="space-y-2">
+  <section class="bg-surface-container-lowest rounded-xl p-3.5 sm:p-4 shadow-xs border border-outline-variant/30 space-y-3">
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-3 border-b border-outline-variant/20">
+      <div class="space-y-1.5">
         <div class="flex flex-wrap items-center gap-2">
-          <span id="sim-category-badge" class="px-2.5 py-0.5 rounded-md font-label-sm text-label-sm font-bold bg-primary text-on-primary">
+          <span id="sim-category-badge" class="px-2 py-0.5 rounded-md font-label-sm text-label-sm font-bold bg-primary text-on-primary">
             경매
           </span>
           <span id="sim-court-case" class="font-label-md text-label-md text-secondary font-mono font-bold">
             수원지방법원 본원 경매4계 • 2025타경56772
           </span>
-          <span id="sim-status-badge" class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-error/10 text-error font-bold">
+          <span id="sim-status-badge" class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-error/10 text-error font-bold">
             1회 유찰 (70%)
           </span>
         </div>
-        <h1 id="sim-property-name" class="font-headline-lg text-headline-lg font-black text-on-surface tracking-tight">
+        <h1 id="sim-property-name" class="text-lg sm:text-xl font-black text-on-surface tracking-tight">
           화성 봉담 우방아이유쉘1단지 102동 1301호
-          <span id="sim-area-info" class="font-headline-sm text-headline-sm text-secondary font-medium">(85.0㎡ / 25.71평형)</span>
+          <span id="sim-area-info" class="text-sm font-medium text-secondary ml-1">(85.0㎡ / 25.71평형)</span>
         </h1>
-        <div class="flex items-center gap-2 text-secondary font-body-sm text-body-sm">
-          <span class="material-symbols-outlined text-[18px]">location_on</span>
+        <div class="flex items-center gap-1.5 text-secondary text-xs">
+          <span class="material-symbols-outlined text-[16px]">location_on</span>
           <span id="sim-address">경기도 화성시 봉담읍 수영리 674</span>
         </div>
       </div>
 
-      <div class="flex flex-row lg:flex-col items-center lg:items-end justify-between gap-2 border-t lg:border-t-0 pt-3 lg:pt-0">
+      <div class="flex flex-row lg:flex-col items-center lg:items-end justify-between gap-2 border-t lg:border-t-0 pt-2 lg:pt-0">
         <div class="text-left lg:text-right">
-          <span class="text-xs text-secondary font-medium block">매각 기일</span>
-          <span id="sim-auction-date" class="font-headline-sm text-headline-sm font-bold text-primary font-mono">2026.11.25 (10:00)</span>
+          <span class="text-[11px] text-secondary font-medium block">매각 기일</span>
+          <span id="sim-auction-date" class="text-sm sm:text-base font-bold text-primary font-mono">2026.11.25 (10:00)</span>
         </div>
-        <button onclick="window.print()" class="px-3.5 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition flex items-center gap-1.5 border border-outline-variant/30 shadow-sm">
-          <span class="material-symbols-outlined text-[18px]">print</span>
+        <button onclick="window.print()" class="px-3 py-1 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-semibold transition flex items-center gap-1 border border-outline-variant/30 shadow-2xs">
+          <span class="material-symbols-outlined text-[16px]">print</span>
           <span>브리핑 출력</span>
         </button>
       </div>
     </div>
 
     <!-- 4 Key Price Comparison Metrics -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-      <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between">
-        <span id="sim-label-appraised" class="font-label-sm text-label-sm text-secondary font-medium">감정평가액</span>
-        <div class="mt-1">
-          <span id="sim-val-appraised" class="font-headline-sm text-headline-sm font-bold text-on-surface">4억 500만 원</span>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+      <div class="p-2.5 sm:p-3 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between">
+        <span id="sim-label-appraised" class="text-[11px] text-secondary font-medium">감정평가액</span>
+        <div class="my-0.5">
+          <span id="sim-val-appraised" class="text-sm sm:text-base font-bold text-on-surface">4억 500만 원</span>
         </div>
-        <span class="font-label-sm text-label-sm text-secondary mt-0.5">법원 공인 감정가</span>
+        <span class="text-[10px] text-secondary">법원 공인 감정가</span>
       </div>
 
-      <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between">
+      <div class="p-2.5 sm:p-3 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between">
         <div class="flex items-center justify-between">
-          <span id="sim-label-min" class="font-label-sm text-label-sm text-error font-bold">최저매각가</span>
-          <span id="sim-rate-min" class="font-label-sm text-label-sm text-error font-medium">(70%)</span>
+          <span id="sim-label-min" class="text-[11px] text-error font-bold">최저매각가</span>
+          <span id="sim-rate-min" class="text-[11px] text-error font-medium">(70%)</span>
         </div>
-        <div class="mt-1">
-          <span id="sim-val-min" class="font-headline-sm text-headline-sm font-black text-error">2억 8,350만 원</span>
+        <div class="my-0.5">
+          <span id="sim-val-min" class="text-sm sm:text-base font-black text-error">2억 8,350만 원</span>
         </div>
-        <span class="font-label-sm text-label-sm text-secondary mt-0.5">1회 유찰 감가 반영</span>
+        <span class="text-[10px] text-secondary">1회 유찰 감가 반영</span>
       </div>
 
-      <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between">
-        <span class="font-label-sm text-label-sm text-secondary font-medium">인근 최근 실거래 시세</span>
-        <div class="mt-1">
-          <span id="sim-market-price" class="font-headline-sm text-headline-sm font-bold text-on-surface">4억 2,000만 원</span>
+      <div class="p-2.5 sm:p-3 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col justify-between">
+        <span class="text-[11px] text-secondary font-medium">인근 최근 실거래 시세</span>
+        <div class="my-0.5">
+          <span id="sim-market-price" class="text-sm sm:text-base font-bold text-on-surface">4억 2,000만 원</span>
         </div>
-        <span id="sim-margin-text" class="font-label-sm text-label-sm text-tertiary font-bold mt-0.5">안전마진: 약 +8,256만</span>
+        <span id="sim-margin-text" class="text-[11px] text-tertiary font-bold">안전마진: 약 +8,256만</span>
       </div>
 
-      <div class="p-3.5 rounded-xl bg-primary-container/10 border border-primary/20 flex flex-col justify-between">
-        <span class="font-label-sm text-label-sm text-primary font-bold">권리분석 안전 판정</span>
-        <div class="mt-1">
-          <span id="sim-takeover-val" class="font-headline-sm text-headline-sm font-black text-primary">인수금 0원</span>
+      <div class="p-2.5 sm:p-3 rounded-lg bg-primary-container/10 border border-primary/20 flex flex-col justify-between">
+        <span class="text-[11px] text-primary font-bold">권리분석 안전 판정</span>
+        <div class="my-0.5">
+          <span id="sim-takeover-val" class="text-sm sm:text-base font-black text-primary">인수금 0원</span>
         </div>
-        <span class="font-label-sm text-label-sm text-tertiary font-bold mt-0.5">대항력 임차인 없음 (완벽 안전)</span>
+        <span class="text-[11px] text-tertiary font-bold">대항력 임차인 없음 (완벽 안전)</span>
       </div>
     </div>
   </section>
