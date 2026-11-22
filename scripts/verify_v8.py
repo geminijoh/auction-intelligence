@@ -154,6 +154,12 @@ has_no_drag_tab = "grid-cols-4" in content
 test("31. [v8] 와이드 레이아웃 & 드래그 없는 원클릭 탭", has_wide and has_no_drag_tab, 
      "1720px 와이드 레이아웃 및 4분할 원클릭 탭 확인" if (has_wide and has_no_drag_tab) else "와이드 또는 탭 레이아웃 불일치")
 
+# 22. [v8 추가 개선] 상단 공백 초슬림 압축 (Above-the-fold 최적화)
+has_slim_briefing = 'pt-1.5 pb-8 space-y-2.5' in content and 'grid-cols-2 sm:grid-cols-4 gap-1.5 shrink-0' in content
+has_slim_reports = 'pt-1.5 pb-8 w-full flex flex-col gap-2' in content and 'report-interactive-frame' in content
+test("32. [v8] 상단 공백 초슬림화 (시뮬레이터/리포트 Above-the-fold)", has_slim_briefing and has_slim_reports,
+     "통합 슬림 헤더(~120px) 및 리포트 프레임 즉각 가시화 확인" if (has_slim_briefing and has_slim_reports) else "상단 공백 과다 잔존")
+
 print("=" * 60)
 passed_count = sum(1 for _, ok, _ in results if ok)
 total_count = len(results)

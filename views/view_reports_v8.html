@@ -1,113 +1,112 @@
-<!-- ================= 4. VIEW: 시장동향 리포트 뷰어 (V6: 5대 권역 실전 PropX 전문 보고서 & 마스터플랜 완전 연동) ================= -->
+<!-- ================= 4. VIEW: 시장동향 리포트 뷰어 (V8: 초슬림 상단 스트립 & iframe 즉각 가시화) ================= -->
 <div class="flex flex-col w-full pb-16">
-  <!-- Document Sub-Header & Region Selection Strip -->
+  <!-- Document Sub-Header & Region Selection Strip (초슬림 1열 통합 바) -->
   <section class="w-full bg-surface-container-lowest shadow-2xs border-b border-outline-variant/20 relative">
-    <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5 space-y-2">
+    <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-1.5 flex flex-col md:flex-row md:items-center justify-between gap-1.5">
       
-      <!-- Breadcrumb and Action Buttons -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-        <div class="flex items-center gap-2 text-on-surface-variant text-xs overflow-x-auto whitespace-nowrap">
-          <span class="flex items-center gap-1.5 text-primary font-bold">
-            <span class="material-symbols-outlined text-[16px]">travel_explore</span>
-            지역 심층 리서치 랩 (시장동향 리포트)
-          </span>
-          <span class="text-outline-variant">/</span>
+      <!-- 5대 권역 탭 바 (초슬림 가로 인라인) -->
+      <div class="flex items-center gap-1.5 overflow-x-auto" id="regional-tab-bar">
+        <button onclick="switchRegionalReport('bongdam')" id="tab-reg-bongdam" class="reg-tab px-2.5 py-1 rounded-lg bg-primary text-on-primary text-xs font-semibold transition whitespace-nowrap shadow-2xs">
+          화성(봉담) · 서수원(오목천) ★
+        </button>
+        <button onclick="switchRegionalReport('anseong')" id="tab-reg-anseong" class="reg-tab px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant text-xs hover:bg-surface-container-high transition whitespace-nowrap">
+          경기도 안성시
+        </button>
+        <button onclick="switchRegionalReport('pyeongtaek')" id="tab-reg-pyeongtaek" class="reg-tab px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant text-xs hover:bg-surface-container-high transition whitespace-nowrap">
+          경기도 평택시
+        </button>
+        <button onclick="switchRegionalReport('cheonan')" id="tab-reg-cheonan" class="reg-tab px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant text-xs hover:bg-surface-container-high transition whitespace-nowrap">
+          충청남도 천안시
+        </button>
+        <button onclick="switchRegionalReport('cheongju')" id="tab-reg-cheongju" class="reg-tab px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant text-xs hover:bg-surface-container-high transition whitespace-nowrap">
+          충청북도 청주시
+        </button>
+      </div>
+
+      <!-- Breadcrumb and Action Buttons (우측 슬림 정렬) -->
+      <div class="flex items-center justify-between md:justify-end gap-2 text-xs">
+        <div class="hidden sm:flex items-center gap-1.5 text-on-surface-variant text-[11px] whitespace-nowrap">
           <span id="report-breadcrumb-region" class="font-bold text-on-surface">화성(봉담) · 서수원(오목천)</span>
           <span class="text-outline-variant">/</span>
-          <span class="inline-flex items-center px-1.5 py-0.5 rounded bg-surface-container text-on-surface text-[11px] font-semibold" id="report-breadcrumb-date">2026.11 기준</span>
-          <span class="inline-flex items-center gap-1 text-tertiary font-semibold ml-1.5 text-[11px]">
-            <span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
-            PropX 데이터솔루션 연동
-          </span>
+          <span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface font-semibold" id="report-breadcrumb-date">2026.11 기준</span>
         </div>
-        <div class="flex items-center gap-1.5 self-start sm:self-auto shrink-0">
-          <a id="btn-open-external" href="시장동향리포트뷰어/오목천_봉담_통합_지역종합분석보고서.html" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-primary text-on-primary text-xs hover:bg-primary-container transition shadow-2xs font-semibold">
-            <span class="material-symbols-outlined text-[14px]">open_in_new</span>
-            <span>새 탭에서 전체보기</span>
+        <div class="flex items-center gap-1 shrink-0">
+          <a id="btn-open-external" href="시장동향리포트뷰어/오목천_봉담_통합_지역종합분석보고서.html" target="_blank" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-primary text-on-primary text-[11px] hover:bg-primary-container transition shadow-2xs font-semibold">
+            <span class="material-symbols-outlined text-[13px]">open_in_new</span>
+            <span>새 탭 전체보기</span>
           </a>
-          <button class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-xs transition border border-outline-variant/30" onclick="window.print()" title="A4 인쇄 최적화">
-            <span class="material-symbols-outlined text-[14px]">print</span>
+          <button class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-[11px] transition border border-outline-variant/30" onclick="window.print()" title="A4 인쇄 최적화">
+            <span class="material-symbols-outlined text-[13px]">print</span>
             <span>인쇄</span>
           </button>
         </div>
-      </div>
-
-      <!-- 5대 권역 탭 바 (컴팩트 슬림) -->
-      <div class="flex items-center gap-1.5 overflow-x-auto pt-0.5 pb-0.5" id="regional-tab-bar">
-        <button onclick="switchRegionalReport('bongdam')" id="tab-reg-bongdam" class="reg-tab px-3 py-1.5 rounded-lg bg-primary text-on-primary text-xs font-semibold transition whitespace-nowrap shadow-2xs">
-          화성(봉담) · 서수원(오목천) ★
-        </button>
-        <button onclick="switchRegionalReport('anseong')" id="tab-reg-anseong" class="reg-tab px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant text-xs hover:bg-surface-container-high transition whitespace-nowrap">
-          경기도 안성시
-        </button>
-        <button onclick="switchRegionalReport('pyeongtaek')" id="tab-reg-pyeongtaek" class="reg-tab px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant text-xs hover:bg-surface-container-high transition whitespace-nowrap">
-          경기도 평택시
-        </button>
-        <button onclick="switchRegionalReport('cheonan')" id="tab-reg-cheonan" class="reg-tab px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant text-xs hover:bg-surface-container-high transition whitespace-nowrap">
-          충청남도 천안시
-        </button>
-        <button onclick="switchRegionalReport('cheongju')" id="tab-reg-cheongju" class="reg-tab px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant text-xs hover:bg-surface-container-high transition whitespace-nowrap">
-          충청북도 청주시
-        </button>
       </div>
 
     </div>
   </section>
 
   <!-- ================= 리포트 메인 컨텐츠 영역 ================= -->
-  <article class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 pt-2.5 pb-8 w-full flex flex-col gap-3">
+  <article class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 pt-1.5 pb-8 w-full flex flex-col gap-2">
     
-    <!-- Top Executive Headline Card (상단 공백 대폭 압축) -->
-    <div class="p-3.5 sm:p-4 rounded-xl bg-surface-container-lowest border border-outline-variant/30 shadow-xs flex flex-col gap-2.5">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-1.5">
-        <div class="flex items-center gap-2">
-          <span id="report-badge" class="px-2 py-0.5 rounded-md bg-primary-container text-on-primary-container text-[11px] font-bold">
+    <!-- Top Executive Headline Strip (초슬림 콤팩트 인포 스트립) -->
+    <div class="p-2 sm:p-2.5 rounded-xl bg-surface-container-lowest border border-outline-variant/30 shadow-2xs flex flex-col gap-1.5">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
+        <div class="flex flex-wrap items-center gap-2">
+          <span id="report-badge" class="px-1.5 py-0.5 rounded bg-primary-container text-on-primary-container text-[10px] font-bold">
             10만 세대급 메가 서남부 신성장 생활권
           </span>
-          <span id="report-std-date" class="text-[11px] text-secondary">
-            2026년 11월 기준
+          <h1 id="report-title" class="text-xs sm:text-sm font-bold text-on-surface tracking-tight">
+            화성(봉담) · 서수원(오목천) 광역생활권 부동산 시장 및 도시개발 심층 분석
+          </h1>
+          <span id="report-std-date" class="text-[10px] text-secondary hidden sm:inline">
+            (2026년 11월 기준)
           </span>
         </div>
-        <div class="flex items-center gap-1 text-[11px] text-tertiary font-bold">
-          <span class="material-symbols-outlined text-[14px]">verified</span>PropX 공식 검증 리포트
+        <div class="flex items-center gap-1 text-[10px] text-tertiary font-bold shrink-0">
+          <span class="material-symbols-outlined text-[13px]">verified</span>PropX 공식 검증
         </div>
       </div>
 
-      <div>
-        <h1 id="report-title" class="text-base sm:text-lg font-black text-on-surface tracking-tight">
-          화성(봉담) · 서수원(오목천) 광역생활권 부동산 시장 및 도시개발 심층 분석
-        </h1>
-        <p id="report-summary" class="text-xs text-on-surface-variant mt-1 leading-relaxed">
-          효행지구(1.2만 호)를 중심으로 수원 권선구와 화성 봉담이 단일 생활권으로 통합. 2024년 대규모 입주 피크 통과 후 극심한 공급 절벽 도래, 미분양 사실상 제로화(수원 21호, 화성 57호). 삼성디지털시티·현대차 남양연구소 등 배후 자족 일자리 풍부.
-        </p>
-      </div>
+      <p id="report-summary" class="text-[11px] text-on-surface-variant leading-tight truncate">
+        효행지구(1.2만 호)를 중심으로 수원 권선구와 화성 봉담이 단일 생활권으로 통합. 2024년 대규모 입주 피크 통과 후 극심한 공급 절벽 도래, 미분양 사실상 제로화(수원 21호, 화성 57호). 삼성디지털시티·현대차 남양연구소 등 배후 자족 일자리 풍부.
+      </p>
 
-      <!-- 5 Key Metric Cards (슬림화) -->
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-2 pt-1">
-        <div class="p-2 sm:p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col">
-          <span class="text-[10px] text-secondary">1. 미분양 현황</span>
-          <span id="metric-unsold" class="text-xs sm:text-sm font-bold text-primary mt-0.5">수원 21호 · 화성 57호</span>
-          <span class="text-[10px] text-secondary">완전 소진 Clean</span>
+      <!-- 5 Key Metric Cards (초슬림 1열 칩스) -->
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-1.5 pt-0.5">
+        <div class="px-2 py-1 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col justify-center">
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] text-secondary">미분양</span>
+            <span class="text-[9px] text-secondary">소진</span>
+          </div>
+          <span id="metric-unsold" class="text-[11px] sm:text-xs font-bold text-primary truncate">수원 21호 · 화성 57호</span>
         </div>
-        <div class="p-2 sm:p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col">
-          <span class="text-[10px] text-secondary">2. 공급 사이클</span>
-          <span id="metric-supply" class="text-xs sm:text-sm font-bold text-on-surface mt-0.5">2026년 806호</span>
-          <span class="text-[10px] text-secondary">극심한 공급 절벽</span>
+        <div class="px-2 py-1 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col justify-center">
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] text-secondary">공급 사이클</span>
+            <span class="text-[9px] text-secondary">절벽</span>
+          </div>
+          <span id="metric-supply" class="text-[11px] sm:text-xs font-bold text-on-surface truncate">2026년 806호</span>
         </div>
-        <div class="p-2 sm:p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col">
-          <span class="text-[10px] text-secondary">3. 인구/소득</span>
-          <span id="metric-demographics" class="text-xs sm:text-sm font-bold text-on-surface mt-0.5">100만 화성 돌파</span>
-          <span class="text-[10px] text-secondary">봉담 10만 계획인구</span>
+        <div class="px-2 py-1 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col justify-center">
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] text-secondary">인구/소득</span>
+            <span class="text-[9px] text-secondary">성장</span>
+          </div>
+          <span id="metric-demographics" class="text-[11px] sm:text-xs font-bold text-on-surface truncate">100만 화성 돌파</span>
         </div>
-        <div class="p-2 sm:p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col">
-          <span class="text-[10px] text-secondary">4. 핵심 교통</span>
-          <span id="metric-traffic" class="text-xs sm:text-sm font-bold text-tertiary mt-0.5">신분당선 봉담연장</span>
-          <span class="text-[10px] text-secondary">KTX 어천역(2026)</span>
+        <div class="px-2 py-1 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col justify-center">
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] text-secondary">핵심 교통</span>
+            <span class="text-[9px] text-secondary">호재</span>
+          </div>
+          <span id="metric-traffic" class="text-[11px] sm:text-xs font-bold text-tertiary truncate">신분당선 봉담연장</span>
         </div>
-        <div class="p-2 sm:p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col">
-          <span class="text-[10px] text-secondary">5. 위험/기회</span>
-          <span id="metric-risk" class="text-xs sm:text-sm font-bold text-secondary mt-0.5">군공항 이전 호재</span>
-          <span class="text-[10px] text-secondary">신분당선 착공 시차</span>
+        <div class="px-2 py-1 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col justify-center">
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] text-secondary">위험/기회</span>
+            <span class="text-[9px] text-secondary">분석</span>
+          </div>
+          <span id="metric-risk" class="text-[11px] sm:text-xs font-bold text-secondary truncate">군공항 이전 호재</span>
         </div>
       </div>
     </div>

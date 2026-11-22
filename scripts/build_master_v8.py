@@ -1148,13 +1148,13 @@ master_html = '''<!DOCTYPE html>
         selectorContainer.innerHTML = PROPERTIES.map(item => {
           const isSelected = item.id === propId;
           const cls = isSelected
-            ? "p-2.5 rounded-xl bg-primary text-on-primary font-semibold shadow-sm transition border border-primary text-left flex flex-col justify-center"
-            : "p-2.5 rounded-xl bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition border border-outline-variant/30 text-left flex flex-col justify-center";
+            ? "p-1.5 sm:p-2 rounded-lg bg-primary text-on-primary font-semibold shadow-xs transition border border-primary text-left flex flex-col justify-center cursor-pointer"
+            : "p-1.5 sm:p-2 rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition border border-outline-variant/30 text-left flex flex-col justify-center cursor-pointer";
           const subName = item.propertyName.length > 14 ? item.propertyName.slice(0, 14) + '...' : item.propertyName;
           return `
             <button onclick="selectSimProperty('${item.id}')" class="${cls}">
-              <div class="font-bold text-xs font-mono tracking-tight">${item.caseNumber}</div>
-              <div class="text-[11px] truncate opacity-90 mt-0.5 font-medium">${subName}</div>
+              <div class="font-bold text-[11px] sm:text-xs font-mono tracking-tight">${item.caseNumber}</div>
+              <div class="text-[10px] sm:text-[11px] truncate opacity-90 mt-0.5 font-medium">${subName}</div>
             </button>
           `;
         }).join('');
